@@ -1,0 +1,14 @@
+{
+    "name": "esqueleto/comercio-zf2",
+    "description": "Bird Skeleton Alpha",
+    "keywords": [
+        "framework",
+        "zf2",
+        "ecommerce"
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "~2.3",
+        "zf-commons/zfc-twig": "1.*"
+    }
+}
