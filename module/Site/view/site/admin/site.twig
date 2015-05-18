@@ -1,0 +1,40 @@
+{% extends 'admin/index/index' %}
+{% block conteudo %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form accept-charset="UTF-8" action="/admin/site/salvar/" method="post">
+                <input type="hidden" name="id" value="{{site.id}}">
+                <div class="form-group" id="inputSiteLogoGroup">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="sizing-addon-logo"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></span>
+                      <input id="inputSiteLogo" name="logo" value="{{site.logo}}" type="text" class="form-control" placeholder="Coloque aqui o caminho do arquivo do logo do site" aria-describedby="sizing-addon-logo">
+                    </div>
+                </div>
+                <div class="form-group" id="inputSiteNomeGroup">
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-addon" id="sizing-addon-nome">Nome</span>
+                      <input id="inputSiteNome" name="nome" value="{{site.nome}}" type="text" class="form-control" placeholder="Escreva aqui o nome do site" aria-describedby="sizing-addon-nome">
+                    </div>
+                </div>
+                <div class="form-group" id="inputSiteIntroGroup">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="sizing-addon-intro">Introdução</span>
+                        <input id="inputSiteIntro" name="intro" value="{{site.intro}}" type="text" class="form-control" placeholder="Escreva aqui o texto que aparecerá na página inicial do site" aria-describedby="sizing-addon-intro">
+                    </div>
+                </div>
+                <div class="form-group" id="inputSiteCopyrightGroup">
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-addon" id="sizing-addon-copyright">©</span>
+                      <input id="inputSiteCopyright" name='copyright' value="{{site.copyright}}" type="text" class="form-control" placeholder="Escreva aqui a informação de copyright do site" aria-describedby="sizing-addon-copyright">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="form-control btn btn-success pull-right btn-lg" type="submit" id="buttonSiteSalvar">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/admin/site/validation.js"></script>
+{% endblock %}

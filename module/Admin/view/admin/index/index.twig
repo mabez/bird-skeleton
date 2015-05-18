@@ -1,0 +1,26 @@
+{% extends 'layout/layout' %}
+{% block nomeSite %}{{site.nome}}{% endblock nomeSite %}
+{% block logoSite %}{{site.logo}}{% endblock logoSite %}
+{% block cabecalho %}
+    {% embed "site/admin/cabecalho"%}
+        {% block siteNome %}
+            {{site.nome}}
+        {% endblock siteNome %}
+    {% endembed %}
+{% endblock cabecalho %}
+{% block conteudo %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default">
+                <ul class="nav nav-pills nav-stacked">
+		            {% for entidade in entidades %}
+                	    <li><a href="{{entidade.route}}">{{entidade.nome}}</a></li>
+        		    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block copyright %}{{site.copyright}}{% endblock copyright %}
