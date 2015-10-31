@@ -1,0 +1,37 @@
+{% extends 'admin/index/index' %}
+{% block conteudo %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            {{form().openTag(formulario)|raw}}
+	            {{formHidden(formulario.get('id'))|raw}}
+                <div class="form-group" id="inputSiteLogoGroup">
+		            {{formHidden(formulario.get('logoAntigo'))|raw}}
+                    <div class="input-group input-group-lg">
+	                    {{formRow(formulario.get('logo'))|raw}}
+                    </div>
+                </div>
+                <div class="form-group" id="inputSiteNomeGroup">
+                    <div class="input-group input-group-lg">
+	                    {{formRow(formulario.get('nome'))|raw}}
+                    </div>
+                </div>
+                <div class="form-group" id="inputSiteIntroGroup">
+                    <div class="input-group input-group-lg">
+	                    {{formRow(formulario.get('intro'))|raw}}
+                    </div>
+                </div>
+                <div class="form-group" id="inputSiteCopyrightGroup">
+                    <div class="input-group input-group-lg">
+	                    {{formRow(formulario.get('copyright'))|raw}}
+                    </div>
+                </div>
+                <div class="form-group">
+                	{{formSubmit(formulario.get('submit'))|raw}}
+                </div>
+            {{form().closeTag()|raw}}
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/admin-site.js"></script>
+{% endblock %}

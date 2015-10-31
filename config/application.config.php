@@ -2,11 +2,12 @@
 
 return array(
     'modules' => array(
-        'Site',
-        'ZfcTwig',
-        'Login',
+        'Admin',
         'Anuncio',
-        'Admin'
+        'Application',
+        'Login',
+        'Site',
+        'ZfcTwig'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

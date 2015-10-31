@@ -1,19 +1,11 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
-class Module implements ViewHelperProviderInterface
+class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
@@ -24,7 +16,14 @@ class Module implements ViewHelperProviderInterface
 
     public function getConfig()
     {
-        return include __DIR__ . '/config/module.config.php';
+        return array_merge_recursive(
+            include __DIR__ . '/config/controllers.config.php',
+            include __DIR__ . '/config/db.config.php',
+            include __DIR__ . '/config/router.config.php',
+            include __DIR__ . '/config/service.manager.config.php',
+            include __DIR__ . '/config/view.manager.config.php',
+            include __DIR__ . '/config/zfctwig.config.php'
+        );
     }
 
     public function getAutoloaderConfig()
@@ -35,15 +34,6 @@ class Module implements ViewHelperProviderInterface
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
-        );
-    }
-    
-    public function getViewHelperConfig()
-    {
-        return array(
-            'invokables' => array(
-                'real_format' => 'Application\View\Helper\RealFormat'
-            )
         );
     }
 }

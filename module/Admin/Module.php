@@ -8,7 +8,13 @@ class Module implements ViewHelperProviderInterface
 {
     public function getConfig()
     {
-        return include __DIR__ . '/config/module.config.php';
+        return array_merge_recursive(
+            include __DIR__ . '/config/admin.routes.config.php',
+            include __DIR__ . '/config/controllers.config.php',
+            include __DIR__ . '/config/router.config.php',
+            include __DIR__ . '/config/service.manager.config.php',
+            include __DIR__ . '/config/view.manager.config.php'
+        );
     }
 
     public function getAutoloaderConfig()
@@ -21,9 +27,13 @@ class Module implements ViewHelperProviderInterface
             ),
         );
     }
-    
+
     public function getViewHelperConfig()
     {
-        return array();
+        return array(
+            'invokables' => array(
+                'flashmessenger' => 'Zend\View\Helper\FlashMessenger'
+            )
+        );
     }
 }

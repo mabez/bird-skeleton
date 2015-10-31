@@ -49,9 +49,9 @@ INSERT INTO `bird_skeleton_beta1`.`anuncio` (`titulo`, `imagem`, `descricao`, `p
 CREATE TABLE IF NOT EXISTS `bird_skeleton_beta1`.`login` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `usuario` VARCHAR(60) NOT NULL,
-  `senha` CHAR(32) NOT NULL,
+  `senha` CHAR(64) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `usuario_UNIQUE` (`usuario` ASC))
 ENGINE = InnoDB;
 
-INSERT INTO `bird_skeleton_beta1`.`login` (`usuario`, `senha`) VALUES ('bird', 'skeleton');
+INSERT INTO `bird_skeleton_beta1`.`login` (`usuario`, `senha`) VALUES ('bird', '$2y$10$5d40f13fe318177525fc0ONFKoYjlYorAen41.sKHtHTnaVgvCa3C');

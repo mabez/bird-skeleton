@@ -26,7 +26,7 @@ class Module implements ViewHelperProviderInterface
     {
         return array(
             'invokables' => array(
-                'real_format' => 'Anuncio\View\Helper\RealFormat'
+                'currencyFormat' => 'Zend\I18n\View\Helper\CurrencyFormat'
             )
         );
     }
