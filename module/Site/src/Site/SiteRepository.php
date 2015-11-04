@@ -96,9 +96,9 @@ class SiteRepository
     {
         $id = $site->getId();
         if ($id == 0) {
-            return $this->getTableGatway()->insert($site->toArray());
+            return $this->getTableGateway()->insert($site->toArray());
         } elseif ($this->findById($id)) {
-            return $this->getTableGatway()->update($site->toArray(), array("id" => $id));
+            return $this->getTableGateway()->update($site->toArray(), array("id" => $id));
         } else {
             return NULL;
         }

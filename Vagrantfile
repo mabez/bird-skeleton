@@ -33,6 +33,7 @@ service apache2 restart
 cd /var/www/bird-skeleton
 mysql -u root -pbird_skeleton < data/mysql/install.sql
 mkdir public/img
+chmod 777 public/img
 curl -Ss https://getcomposer.org/installer | php
 COMPOSER_PROCESS_TIMEOUT=600000 php composer.phar --no-interaction install --no-progress
 echo "** [ZEND] Visit http://localhost:8086 in your browser for to view the bird-skeleton application **"
