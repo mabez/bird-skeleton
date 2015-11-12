@@ -7,13 +7,12 @@ VAGRANTFILE_API_VERSION = '2'
 DOCUMENT_ROOT_ZEND="/var/www/bird-skeleton/public"
 apt-get update
 apt-get install -y apache2 git curl php5-cli php5 php5-intl libapache2-mod-php5
+apt-get -y install postgresql php5-pgsql 
+su - postgres
 
-MYSQL_ROOT_PASS='bird_skeleton'
-
-echo "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS" | debconf-set-selections
-echo "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS" | debconf-set-selections
-apt-get -y install mysql-server php5-mysql
-
+echo "create user bird_skeleton with password 'bird_skeleton'; create database bird_skeleton owner bird_skeleton;" > user.sql
+psql < user.sql
+exit
 echo "
 <VirtualHost *:80>
     ServerName bird-skeleton 
@@ -31,7 +30,11 @@ a2dissite 000-default
 a2ensite bird-skeleton 
 service apache2 restart
 cd /var/www/bird-skeleton
-mysql -u root -pbird_skeleton < data/mysql/install.sql
+
+su - postgres
+psql bird_skeleton -U bird_skeleton < /var/www/bird-skeleton/data/postgresql/install.sql
+exit
+
 mkdir /var/img
 ln -s /var/img public/img
 chmod 777 -R /var/img
