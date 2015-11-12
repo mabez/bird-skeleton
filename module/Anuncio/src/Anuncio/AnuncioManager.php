@@ -40,7 +40,7 @@ class AnuncioManager implements ServiceManagerAwareInterface
      * Obtem todos os anuncios
      * @return Iterator
      */
-    public function getTodosAnuncios()
+    public function obterTodos()
     {
         return $this->getRepository()->findAll();
     }

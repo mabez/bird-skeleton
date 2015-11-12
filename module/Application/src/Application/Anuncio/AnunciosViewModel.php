@@ -24,7 +24,7 @@ class AnunciosViewModel extends SiteViewModel
     {
         parent::__construct($siteManager, $autenticacao, $uri);
         $this->generateVariablesByAnunciosIterator(
-            $anuncioManager->getTodosAnuncios()
+            $anuncioManager->obterTodos()
         );
     }
 

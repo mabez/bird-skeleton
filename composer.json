@@ -1,10 +1,10 @@
 {
-  "name" : "mabez/bird-skeleton",
-  "description" : "Bird Skeleton",
+  "name" : "esqueleto/comercio-zf2",
+  "description" : "Bird Skeleton Alpha",
   "require" : {
     "php" : ">=5.3.3",
     "zendframework/zendframework" : "2.5.*",
     "zf-commons/zfc-twig" : "1.*"
   },
-  "keywords" : [ "zend framework 2", "zf2", "e-commerce" ]
+  "keywords" : [ "framework", "zf2", "ecommerce" ]
 }

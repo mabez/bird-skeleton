@@ -13,9 +13,9 @@
     <div class="row">
         <div class="col-md-12">
             <nav class="navbar navbar-default">
-                <ul class="nav nav-pills nav-stacked">
+                <ul class="nav nav-pills nav-stacked nav-justified">
 		            {% for entidade in entidades %}
-                	    <li><a href="{{entidade.route}}">{{entidade.nome}}</a></li>
+                	    <li><a href="{{entidade.route}}"><h4>{{entidade.nome}}</h4></a></li>
         		    {% endfor %}
                 </ul>
             </nav>

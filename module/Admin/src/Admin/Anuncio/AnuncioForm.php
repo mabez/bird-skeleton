@@ -231,7 +231,7 @@ class AnuncioForm extends Form
             $this->add(
                 array(
                     'name' => 'avancado',
-                    'type' => 'Admin\Anuncio\AvancadoFieldset',
+                    'type' => 'Admin\AvancadoFieldset',
                     'options' => array(
                         'idRemover' => 'buttonAnuncioRemover',
                         'hrefRemover' => $linkRemover

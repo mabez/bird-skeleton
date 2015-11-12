@@ -1,11 +1,13 @@
 <?php
 namespace Application\Site;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Acesso\AcessoController;
 use Application\Site\Mensagem;
 
-class SiteController extends AbstractActionController
+class SiteController extends AcessoController
 {
+
+    protected $resource = 'site';
 
     /**
      * Mostra a página do site
@@ -16,7 +18,7 @@ class SiteController extends AbstractActionController
     {
         return $this->getViewModel();
     }
-    
+
     private function getViewModel()
     {
         return $this->getServiceLocator()->get('SiteViewModel');

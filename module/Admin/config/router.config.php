@@ -30,7 +30,7 @@ return array(
                     )
                 )
             ),
-            'admin-anuncios' => array(
+            'admin-anuncio' => array(
                 'type' => 'Literal',
                 'options' => array(
                     'route' => '/admin/anuncios/',
@@ -74,6 +74,17 @@ return array(
                     'may_terminate' => true
                 )
             ),
+            'admin-compras' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/compras/',
+                    'defaults' => array(
+                        'controller' => 'AdminComprasController',
+                        'action' => 'index'
+                    ),
+                    'may_terminate' => true
+                )
+            ),
             'admin-site' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -92,6 +103,49 @@ return array(
                         'controller' => 'AdminSiteController',
                         'action' => 'salvar'
                     )
+                )
+            ),
+            'admin-usuario' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/usuario/',
+                    'defaults' => array(
+                        'controller' => 'AdminUsuariosController',
+                        'action' => 'index'
+                    )
+                )
+            ),
+            'admin-usuario-modificar' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/admin/usuario/modificar[/:usuarioId][/:routeRedirect][/]',
+                    'defaults' => array(
+                        'controller' => 'AdminUsuariosController',
+                        'action' => 'modificar'
+                    ),
+                    'may_terminate' => true
+                )
+            ),
+            'admin-usuario-remover' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/admin/usuario/remover/:usuarioId[/:routeRedirect][/]',
+                    'defaults' => array(
+                        'controller' => 'AdminUsuariosController',
+                        'action' => 'remover'
+                    )
+                ),
+                'may_terminate' => true
+            ),
+            'admin-usuario-salvar' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/admin/usuario/salvar[/:routeRedirect][/]',
+                    'defaults' => array(
+                        'controller' => 'AdminUsuariosController',
+                        'action' => 'salvar'
+                    ),
+                    'may_terminate' => true
                 )
             )
         )

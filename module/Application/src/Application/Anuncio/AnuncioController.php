@@ -6,7 +6,7 @@ use Application\Site\SiteController;
 
 class AnuncioController extends SiteController
 {
-
+    
     /**
      * Mostra a página de anúncios
      * @return AnunciosViewModel

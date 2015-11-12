@@ -12,8 +12,8 @@ return array(
             'error/404' => __DIR__ . '/../view/error/404.twig',
             'error/index' => __DIR__ . '/../view/error/index.twig',
             'layout/layout' => __DIR__ . '/../view/layout/layout.twig',
-            'layout/layout/mensagens' => __DIR__ . '/../view/layout/mensagens.twig',
-            'login/index' => __DIR__ . '/../view/login/index/index.twig',
+            'layout/nav' => __DIR__ . '/../view/layout/nav.twig',
+            'layout/mensagens' => __DIR__ . '/../view/layout/mensagens.twig',
             'site/index/cabecalho' => __DIR__ . '/../view/site/index/cabecalho.twig',
             'site/index/index' => __DIR__ . '/../view/site/index/index.twig'
         ),

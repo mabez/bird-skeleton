@@ -1,0 +1,49 @@
+{% extends 'conta/index/index' %}
+{% block conteudo %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            {{form().openTag(formulario)|raw}}
+                {{formHidden(formulario.get('id'))|raw}}
+                <div class="form-group" id="inputAdminUsuarioGroup">
+                    <div class="input-group input-group-lg">
+                    	{{formRow(formulario.get('usuario'))|raw}}
+                    </div>
+                </div>
+                <div class="form-group" id="inputAdminSenhaGroup">
+                    <div class="input-group input-group-lg">
+                    	{{formRow(formulario.get('senha'))|raw}}
+                    </div>
+                </div>
+                <div class="form-group">
+	                <div class="row">
+			            <div class="col-xs-12 col-sm-6 col-md-12">
+						  	{{formSubmit(formulario.get('submit'))|raw}}
+					    </div>
+	                </div>
+                </div>
+                {% if formulario.has('avancado') %}
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	                <div class="panel panel-default">
+		                <div class="panel-heading" role="tab" id="headingAdvanced">
+			                <a data-toggle="collapse" data-parent="#accordion" href="#collapseAdvanced" aria-expanded="true" aria-controls="collapseAdvanced">
+					 	       <h4><p class="text-center">Avançado (crítico)</p></h4>
+	        				</a>
+			    	    </div>
+		 		        <div id="collapseAdvanced" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingAdvanced">
+					        <div class="panel-body">
+				                <div class="form-group">
+				                	{{formRow(formulario.get('avancado').get('button-remover'))|raw}}
+				                </div>
+			                </div>
+		                </div>
+	                </div>
+                </div>
+                {% endif %}
+            {{form().closeTag()|raw}}
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/jquery.price_format.2.0.min.js"></script>
+<script type="text/javascript" src="/js/admin-anuncio.js"></script>
+{% endblock %}

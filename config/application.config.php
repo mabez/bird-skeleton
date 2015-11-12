@@ -2,9 +2,14 @@
 
 return array(
     'modules' => array(
+        'Acesso',
         'Admin',
         'Anuncio',
+        'Autenticacao',
         'Application',
+        'Compra',
+        'Consumidor',
+        'Conta',
         'Login',
         'Site',
         'ZfcTwig'

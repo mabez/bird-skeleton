@@ -3,9 +3,11 @@
 return array(
     'controllers' => array(
         'invokables' => array(
+            'AdminAnunciosController' => 'Admin\Anuncio\AnuncioController',
+            'AdminComprasController' => 'Admin\Compra\CompraController',
             'AdminController' => 'Admin\AdminController',
             'AdminSiteController' => 'Admin\Site\SiteController',
-            'AdminAnunciosController' => 'Admin\Anuncio\AnuncioController'
+            'AdminUsuariosController' => 'Admin\Usuario\UsuarioController'
         )
     )
 );

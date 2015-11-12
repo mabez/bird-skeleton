@@ -2,11 +2,13 @@
 
 namespace Admin\Site;
 
-use Admin\AdminController;
+use Application\Site\SiteController as ApplicationSiteController;
 
-class SiteController extends AdminController
+class SiteController extends ApplicationSiteController
 {
 
+    protected $resource = 'admin-site';
+    
     /**
      * Mostra a página de administração das informações do site
      * @return AdminSiteViewModel

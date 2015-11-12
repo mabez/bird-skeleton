@@ -1,0 +1,13 @@
+{% extends 'layout/layout' %}
+{% block nomeSite %}{{site.nome}}{% endblock nomeSite %}
+{% block logoSite %}{{site.logo}}{% endblock logoSite %}
+{% block cabecalho %}
+    {% embed "conta/index/cabecalho"%}
+        {% block siteNome %}
+            {{site.nome}}
+        {% endblock siteNome %}
+    {% endembed %}
+{% endblock cabecalho %}
+{% block conteudo %}
+{% endblock %}
+{% block copyright %}{{site.copyright}}{% endblock copyright %}

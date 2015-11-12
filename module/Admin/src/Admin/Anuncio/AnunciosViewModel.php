@@ -24,6 +24,6 @@ class AnunciosViewModel extends AdminViewModel
     {
         parent::__construct($siteManager, $authentication, $uri);
         $this->variables['pagina'] = array('descricao' => 'Gerenciamento de anúncios.');
-        $this->variables['anuncios'] = $anuncioManager->getTodosAnuncios();
+        $this->variables['anuncios'] = $anuncioManager->obterTodos();
     }
 }

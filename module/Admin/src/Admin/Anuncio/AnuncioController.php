@@ -2,11 +2,12 @@
 
 namespace Admin\Anuncio;
 
-use Admin\AdminController;
+use Application\Site\SiteController;
 
-class AnuncioController extends AdminController
+class AnuncioController extends SiteController
 {
-
+    protected $resource = 'admin-anuncio';
+    
     /**
      * Mostra a página de administração de anúncios
      * @return AdminAnunciosViewModel
@@ -82,7 +83,7 @@ class AnuncioController extends AdminController
         $this->getModificarViewModel()->remove($id);
         $this->setFlashMessagesFromMensagens($this->getModificarViewModel()->getMensagens());
         if (!$routeRedirect) {
-            return $this->redirect()->toRoute('admin-anuncios');
+            return $this->redirect()->toRoute('admin-anuncio');
         }
         
         return $this->redirect()->toRoute($routeRedirect);

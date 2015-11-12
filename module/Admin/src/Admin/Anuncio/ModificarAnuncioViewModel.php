@@ -88,7 +88,8 @@ class ModificarAnuncioViewModel extends AdminViewModel
         } catch (\Exception $e) {
             $this->addMessagem(new Mensagem(Mensagem::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
         }
-        return $this->getMensagens();
+        
+        return true;
     }
 
     /**

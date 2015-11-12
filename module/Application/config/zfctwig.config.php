@@ -5,7 +5,8 @@ return array(
             'Twig_Extension_Debug'
         ),
         'environment_options' => array(
-            'debug' => true
+            'debug' => true,
+            'cache' => __DIR__ . '/../../../data/cache/twig',
         )
     )
 );

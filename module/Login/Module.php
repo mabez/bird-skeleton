@@ -2,11 +2,26 @@
 
 namespace Login;
 
+use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
+
 class Module
 {
+    public function onBootstrap(MvcEvent $e)
+    {
+        $eventManager        = $e->getApplication()->getEventManager();
+        $moduleRouteListener = new ModuleRouteListener();
+        $moduleRouteListener->attach($eventManager);
+    }
+
     public function getConfig()
     {
-        return include __DIR__ . '/config/module.config.php';
+        return array_merge_recursive(
+            include __DIR__ . '/config/controllers.config.php',
+            include __DIR__ . '/config/router.config.php',
+            include __DIR__ . '/config/service.manager.config.php',
+            include __DIR__ . '/config/view.manager.config.php'
+        );
     }
 
     public function getAutoloaderConfig()
