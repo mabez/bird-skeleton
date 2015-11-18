@@ -5,15 +5,21 @@ VAGRANTFILE_API_VERSION = '2'
 
 @script = <<SCRIPT
 DOCUMENT_ROOT_ZEND="/var/www/bird-skeleton/public"
+
+echo "configurando o servidor...\n";
 apt-get update
 apt-get install -y apache2 git curl php5-cli php5 php5-intl libapache2-mod-php5
 apt-get -y install postgresql php5-pgsql 
-su - postgres
+apt-get install -y expect
 
-echo "create user bird_skeleton with password 'bird_skeleton'; create database bird_skeleton owner bird_skeleton;" > user.sql
-psql < user.sql
-exit
-echo "
+echo "criando o banco de dados...\n";
+su postgres << EOF 
+psql -c "create user bird_skeleton with password 'bird_skeleton'"
+psql -c "create database bird_skeleton owner bird_skeleton"
+EOF
+
+echo "configurando o apache...\n"
+echo " 
 <VirtualHost *:80>
     ServerName bird-skeleton 
     DocumentRoot $DOCUMENT_ROOT_ZEND
@@ -31,16 +37,28 @@ a2ensite bird-skeleton
 service apache2 restart
 cd /var/www/bird-skeleton
 
-su - postgres
-psql bird_skeleton -U bird_skeleton < /var/www/bird-skeleton/data/postgresql/install.sql
-exit
+echo "Importando o banco de dados"
+useradd bird_skeleton -p bird_skeleton
+su bird_skeleton << EOF
+psql < /var/www/bird-skeleton/data/postgresql/install.sql
+EOF
 
+echo "Configurando a pasta de imagens"
+cd /var/www/bird-skeleton
 mkdir /var/img
 ln -s /var/img public/img
 chmod 777 -R /var/img
 
+echo "Configurando a pasta de cache"
+cd /var/www/bird-skeleton
+mkdir /var/cachei
+rm -R data/cache
+ln -s /var/cache data/cache
+chmod 777 -R /var/cache
+
 curl -Ss https://getcomposer.org/installer | php
 COMPOSER_PROCESS_TIMEOUT=600000 php composer.phar --no-interaction install --no-progress
+COMPOSER_PROCESS_TIMEOUT=600000 php composer.phar --no-interaction update --no-progress
 echo "** [ZEND] Visit http://localhost:8086 in your browser for to view the bird-skeleton application **"
 SCRIPT
 
