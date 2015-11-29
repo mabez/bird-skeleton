@@ -7,7 +7,7 @@ return array(
                 'options' => array(
                     'route' => '/',
                     'defaults' => array(
-                        'controller' => 'AnuncioController',
+                        'controller' => 'ProdutoController',
                         'action' => 'index'
                     ),
                     'may_terminate' => true

@@ -19,6 +19,7 @@
     <body>
         {% embed 'layout/nav' with {'logoSite':block('logoSite'),'nomeSite':block('nomeSite'), 'autenticacao':autenticacao}%}
         {% endembed %}
+		<hr>
         <section class="container">
             {% block cabecalho %}{% endblock cabecalho %}
             {% embed 'layout/mensagens'%}

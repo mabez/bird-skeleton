@@ -10,6 +10,45 @@ class CompraForm extends Form
     public function __construct()
     {
         parent::__construct('formCompra');
+        
+        $this->setAttribute('method', 'POST');
+        $this->setAttribute('accept-charset', 'UTF-8');
+        $this->setAttribute('action', '/comprar/');
+
+        $this->add(array(
+            'name' => 'produto_id',
+            'type' => 'Hidden'
+        ));
+        
+        $this->add(array(
+            'name' => 'quantidade',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Quantidade',
+                'label_attributes' => array(
+                    'class' => 'input-group-addon'
+                )
+            ),
+            'attributes' => array(
+                'id' => 'inputCompraQuantidade',
+                'class' => 'form-control',
+                'aria-describedby' => 'sizing-addon-quantidade',
+                'placeholder' => 'Digite aqui a quantidade',
+                'value' => 1
+            ),
+        ));
+        
+        $this->add(array(
+            'name' => 'submit',
+            'type' => 'Submit',
+            'options' => array(),
+            'attributes' => array(
+                'id' => 'buttonCompraComprar',
+                'class' => 'form-control btn btn-default btn-lg btn-success',
+                'value' => 'Comprar'
+            )
+        ));
+        
         $this->generateInputFilter();
     }
 
@@ -18,8 +57,8 @@ class CompraForm extends Form
         $inputFilterFactory = new InputFilterFactory();
         
         $this->setInputFilter($inputFilterFactory->createInputFilter(array(
-            'anuncio_id' => array(
-                'name' => 'anuncio_id',
+            'produto_id' => array(
+                'name' => 'produto_id',
                 'filters' => array(
                     array(
                         'name' => 'StripTags'
@@ -36,7 +75,7 @@ class CompraForm extends Form
                         'name' => 'NotEmpty',
                         'options' => array(
                             'messages' => array(
-                                'isEmpty' => 'O id do anuncio é obrigatório.'
+                                'isEmpty' => 'O id do produto é obrigatório.'
                             )
                         )
                     )
@@ -65,7 +104,53 @@ class CompraForm extends Form
                         )
                     )
                 )
+            ),
+            'quantidade' => array(
+                'name' => 'quantidade',
+                'required' => false,
+                'filters' => array(
+                    array(
+                        'name' => 'StripTags'
+                    ),
+                    array(
+                        'name' => 'StringTrim'
+                    ),
+                    array(
+                        'name' => 'Int'
+                    )
+                )
+            ),
+            'valor' => array(
+                'name' => 'valor',
+                'filters' => array(
+                    array(
+                        'name' => 'StripTags'
+                    ),
+                    array(
+                        'name' => 'StringTrim'
+                    ),
+                    array(
+                        'name' => 'NumberParse'
+                    )
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'NotEmpty',
+                        'options' => array(
+                            'messages' => array(
+                                'isEmpty' => 'O valor é obrigatório.'
+                            )
+                        )
+                    )
+                )
             )
         )));
+    }
+    
+    
+    public function setProdutoId($produtoId)
+    {
+        $this->get('produto_id')->setValue($produtoId);
+        return $this;
     }
 }

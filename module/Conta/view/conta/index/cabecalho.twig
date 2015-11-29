@@ -1,6 +1,6 @@
 {% block cabecalho %}
 <div class="jumbotron">
-    <h1>{{pagina.titulo}} <span class="zf-green">{% block siteNome %}{% endblock siteNome %}</span></h1>
+    <h1>{{pagina.titulo}} <span class="zf-green">{{siteDefault().nome}}</span></h1>
     <p>{{pagina.descricao}}</p>
 </div>
 {% endblock cabecalho %}

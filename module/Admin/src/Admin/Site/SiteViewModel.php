@@ -2,17 +2,18 @@
 namespace Admin\Site;
 
 use Site\SiteManager;
-use Application\Site\Mensagem;
 use Site\Site;
-use Admin\AdminViewModel;
-use Zend\Authentication\AuthenticationService;
-use Zend\Uri\Uri;
+use Zend\View\Model\ViewModel;
+use Notificacao\Notificacao;
+use Notificacao\NotificacoesContainerTrait;
+use Zend\Session\Container;
 
 /**
  * Gerador da estrutura da página de administração de informações do site
  */
-class SiteViewModel extends AdminViewModel
+class SiteViewModel extends ViewModel
 {
+    use NotificacoesContainerTrait;
 
     const MESSAGE_INTERNAL_ERROR = "Ocorreu um erro. Tente mais tarde.";
     const MESSAGE_SUCCESS = "As informações foram salvas.";
@@ -21,22 +22,21 @@ class SiteViewModel extends AdminViewModel
     
     private $form;
     
+    private $cache;
+    
     /**
      * Injeta dependencias
      * @param \Site\SiteManager $siteManager
-     * @param \Zend\Authentication\AuthenticationService $authentication
-     * @param \Zend\Uri\Uri $uri
      * @param SiteForm $form
      * @param mixed $cacheSiteArray
      */
-    public function __construct(SiteManager $siteManager, AuthenticationService $authentication, Uri $uri, SiteForm $form, $cacheSiteArray = array())
+    public function __construct(SiteManager $siteManager, SiteForm $form, Container $cache)
     {
-        parent::__construct($siteManager, $authentication, $uri);
         $this->siteManager = $siteManager;
         $this->form = $form;
         
-        $site = new Site();
-        $site->exchangeArray($cacheSiteArray);
+        $site =  $cache->offsetExists('objeto') ? $cache->offsetGet('objeto') : new Site();
+        $this->cache = $cache;
         $this->variables['pagina'] = array('descricao' => 'Configurações do site.');
         $this->variables['formulario'] = $form->setEntity($site)->prepare();
     }
@@ -61,10 +61,12 @@ class SiteViewModel extends AdminViewModel
             $site = new Site();
             $site->exchangeArray($array);
             $this->siteManager->salvar($site);
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_SUCESSO, self::MESSAGE_SUCCESS));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, self::MESSAGE_SUCCESS));
+            $this->cache->offsetSet('objeto', $site);
         } catch (\Exception $e) {
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR));
         }
-        return $this->getMensagens();
+        
+        return true;
     }
 }

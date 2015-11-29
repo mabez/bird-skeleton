@@ -4,8 +4,9 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
-class Module
+class Module implements ViewHelperProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {
@@ -40,13 +41,12 @@ class Module
     public function getViewHelperConfig()
     {
         return array(
-            'invokables' => array(
-                'flashmessenger' => 'Zend\View\Helper\FlashMessenger'
-            ),
             'factories' => array(
               'acesso' => 'Acesso\AcessoViewHelperFactory',
-              'identificacaoUsuario' => 'Login\Identificacao\IdentificacaoUsuarioViewHelperFactory'
-           ),
+              'identificacaoUsuario' => 'Login\Identificacao\IdentificacaoUsuarioViewHelperFactory',
+              'identificado' => 'Login\Identificacao\IdentificadoViewHelperFactory',
+              'siteDefault' => 'Application\Site\SiteDefaultViewHelperFactory'
+            )
         );
    }
 }

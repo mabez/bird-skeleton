@@ -2,10 +2,13 @@
 
 namespace Admin\Usuario;
 
-use Application\Site\SiteController;
+use Acesso\AcessoController;
+use Notificacao\FlashMessagesContainerTrait;
 
-class UsuarioController extends SiteController
+class UsuarioController extends AcessoController
 {
+    use FlashMessagesContainerTrait;
+    
     protected $resource = 'admin-usuario';
     
     /**
@@ -45,7 +48,7 @@ class UsuarioController extends SiteController
     }
     
     /**
-     * Salva o anuncio com as informações enviadas por post
+     * Salva o usuário com as informações enviadas por post
      */
     public function salvarAction()
     {
@@ -56,9 +59,9 @@ class UsuarioController extends SiteController
 
         if ($this->getModificarViewModel()->getForm()->isValid()) {
             $this->getModificarViewModel()->saveArray($this->getModificarViewModel()->getForm()->getData());
-            $this->setFlashMessagesFromMensagens($this->getModificarViewModel()->getMensagens());
+            $this->setFlashMessagesFromNotificacoes($this->getModificarViewModel()->getNotificacoes());
         } else {
-            $this->setFlashMessagesFromMensagens($this->getModificarViewModel()->getForm()->getMessages());
+            $this->setFlashMessagesFromNotificacoes($this->getModificarViewModel()->getForm()->getMessages());
             $routeRedirect = null;
         }
 
@@ -78,7 +81,7 @@ class UsuarioController extends SiteController
         $routeRedirect = $this->params('routeRedirect');
         
         $this->getModificarViewModel()->remove($id);
-        $this->setFlashMessagesFromMensagens($this->getModificarViewModel()->getMensagens());
+        $this->setFlashMessagesFromNotificacoes($this->getModificarViewModel()->getNotificacoes());
         if (!$routeRedirect) {
             return $this->redirect()->toRoute('admin-usuario');
         }

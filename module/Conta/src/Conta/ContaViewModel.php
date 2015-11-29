@@ -1,34 +1,24 @@
 <?php
 namespace Conta;
 
-use Application\Site\SiteViewModel;
-use Site\SiteManager;
-use Zend\Authentication\AuthenticationService;
-use Zend\Uri\Uri;
+use Zend\View\Model\ViewModel;
 
 /**
- * Gerador da estrutura da página de admin do site
+ * Gerador da estrutura da página de conta
  */
-class ContaViewModel extends SiteViewModel
+class ContaViewModel extends ViewModel
 {
     protected $mensagens = array();
-    
-    /**
-     * Injeta dependências
-     * @param \Site\SiteManager $siteService
-     * @param \Zend\Authentication\AuthenticationService $autenticacao
-     * @param \Zend\Uri\Uri $uri
-     */
-    public function __construct(SiteManager $siteService, AuthenticationService $autenticacao, Uri $uri)
+
+    public function __construct()
     {
-        parent::__construct($siteService, $autenticacao, $uri);
         $this->setTituloPagina('Minha Conta');
     }
 
     protected function setTituloPagina($titulo) {
         $this->variables['pagina']['titulo'] = $titulo;
     }
-    
+
     protected function setDescricaoPagina($descricao) {
         $this->variables['pagina']['descricao'] = $descricao;
     }

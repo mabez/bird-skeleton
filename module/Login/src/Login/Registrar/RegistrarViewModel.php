@@ -1,38 +1,33 @@
 <?php
 namespace Login\Registrar;
 
-use Autenticacao\AutenticacaoManager;
-use Application\Site\SiteViewModel;
-use Site\SiteManager;
-use Zend\Authentication\AuthenticationService;
-use Zend\Uri\Uri;
-use Autenticacao\Autenticacao;
-use Application\Site\Mensagem;
 use Acesso\Acesso;
+use Autenticacao\AutenticacaoManager;
+use Autenticacao\Autenticacao;
+use Notificacao\Notificacao;
+use Notificacao\NotificacoesContainerTrait;
+use Zend\View\Model\ViewModel;
 
 /**
  * Gerador da estrutura da página de login
  */
-class RegistrarViewModel extends SiteViewModel
+class RegistrarViewModel extends ViewModel
 {
-
+    use NotificacoesContainerTrait;
+    
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao regitrar uma conta!';
-    const MESSAGE_INSERT_SUCCESS = 'O login foi registrado com sucesso!';
+    const MESSAGE_FINALIZADA_SUCCESS = 'O login foi registrado com sucesso!';
     
     private $autenticacaoManager;
     private $form;
 
     /**
      * Injeta dependências
-     * @param \Site\SiteManager $siteManager
-     * @param \Zend\Authentication\AuthenticationService $authentication
-     * @param \Zend\Uri\Uri $uri
      * @param \Autenticacao\AutenticacaoManager $autenticacaoManager
      * @param RegistrarForm $form
      */
-    public function __construct(SiteManager $siteManager, AuthenticationService $authentication, Uri $uri, AutenticacaoManager $autenticacaoManager, RegistrarForm $form)
+    public function __construct(AutenticacaoManager $autenticacaoManager, RegistrarForm $form)
     {
-        parent::__construct($siteManager, $authentication, $uri);
         $this->autenticacaoManager = $autenticacaoManager;
         $this->form = $form;
         $this->variables['formulario'] = $form;
@@ -61,10 +56,11 @@ class RegistrarViewModel extends SiteViewModel
                 $autenticacao->setPerfilId($perfilDefault->getId())
                     ->setPerfil($perfilDefault)
             );
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_SUCESSO, self::MESSAGE_INSERT_SUCCESS));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, self::MESSAGE_INSERT_SUCCESS));
         } catch (\Exception $e) {
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR));
         }
-        return $this->getMensagens();
+        
+        return true;
     }
 }

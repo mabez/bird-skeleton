@@ -2,7 +2,7 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'AnuncioController' => 'Application\Anuncio\AnuncioController',
+            'ProdutoController' => 'Application\Produto\ProdutoController',
             'IndexController' => 'Application\Site\SiteController'
         )
     )

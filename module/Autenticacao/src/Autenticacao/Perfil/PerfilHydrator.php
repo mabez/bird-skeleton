@@ -6,7 +6,7 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 class PerfilHydrator implements HydratorInterface
 {
     /**
-     * Converte um objeto anuncio em vetor
+     * Converte um objeto perfil em vetor
      * @param Perfil $object objeto
      * @return array
      */
@@ -18,7 +18,7 @@ class PerfilHydrator implements HydratorInterface
     }
 
     /**
-     * Converte um vetor em um objeto anuncio
+     * Converte um vetor em um objeto perfil
      * @param array $data vetor
      * @param Perfil $object (prototipo)
      * @return Perfil

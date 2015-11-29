@@ -9,6 +9,7 @@ class AcessoController extends AbstractActionController
 {
 
     protected $resource = 'acesso';
+    protected $defaultRoute = 'site';
 
     /**
      * 
@@ -18,8 +19,11 @@ class AcessoController extends AbstractActionController
     {
         $redirect = $this->params()->fromQuery('routeRedirect');
 
-        if (!$this->getAcessoViewModel()->podeAcessar($this->resource)) {
-            return $this->redirect()->toRoute($redirect ? $redirect : 'site');
+        if (!($this->defaultRoute == $this->getEvent()->getRouteMatch()->getMatchedRouteName()) 
+            && !$this->getAcessoViewModel()->podeAcessar($this->resource)) {
+                
+                $this->flashMessenger()->addWarningMessage('Você não tem acesso a esse recurso. Por favor efetue o login com um usuário que tenha esse acesso.');
+                return $this->redirect()->toRoute($redirect ? $redirect : $this->defaultRoute);
         }
     }
 

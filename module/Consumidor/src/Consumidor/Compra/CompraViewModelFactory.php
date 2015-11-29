@@ -3,17 +3,17 @@ namespace Consumidor\Compra;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Authentication\AuthenticationService;
+use Zend\Stdlib\Hydrator\ArraySerializable;
 
 class CompraViewModelFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator) {
         return new CompraViewModel(
-            $serviceLocator->get('SiteManager'),
-            new AuthenticationService(),
-            $serviceLocator->get('Request')->getUri(),
             $serviceLocator->get('CompraManager'),
-            new CompraForm()
+            new CompraForm(),
+            new ArraySerializable(),
+            $serviceLocator->get('Application')->getMvcEvent()->getApplication()->getEventManager(),
+            $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams()
         );
     }
 }

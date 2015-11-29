@@ -1,11 +1,11 @@
-{% extends 'layout/layout' %}
-{% block nomeSite %}{{site.nome}}{% endblock nomeSite %}
-{% block logoSite %}{{site.logo}}{% endblock logoSite %}
+{% extends 'site/layout' %}
+{% block nomeSite %}{{siteDefault().nome}}{% endblock nomeSite %}
+{% block logoSite %}{{siteDefault().logo}}{% endblock logoSite %}
 {% block cabecalho %}
     {% embed "site/index/cabecalho"%}
         {% block siteNome %}
-            {{site.nome}}
+            {{siteDefault().nome}}
         {% endblock siteNome %}
     {% endembed %}
 {% endblock cabecalho %}
-{% block copyright %}{{site.copyright}}{% endblock copyright %}
+{% block copyright %}{{siteDefault().copyright}}{% endblock copyright %}

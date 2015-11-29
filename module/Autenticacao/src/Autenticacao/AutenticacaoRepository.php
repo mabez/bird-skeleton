@@ -18,7 +18,7 @@ class AutenticacaoRepository
 
     protected $prototipo;
 
-    private $tableName = 'login';
+    private $tableName = 'autenticacao';
 
     private $columns = array(
         'id',

@@ -2,9 +2,9 @@
 
 namespace Conta\Compra;
 
-use Application\Site\SiteController;
+use Acesso\AcessoController;
 
-class CompraController extends SiteController
+class CompraController extends AcessoController
 {
     protected $resource = 'conta-compras';
     

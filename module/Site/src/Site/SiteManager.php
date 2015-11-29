@@ -37,12 +37,12 @@ class SiteManager implements ServiceManagerAwareInterface
     }
 
     /**
-     * Obtem um objeto com as informações do site padrão
+     * Obtem um objeto com as informações do primeiro site cadastrado
      * @return Site
      */
-    public function getSiteDefault()
+    public function obterPrimeiroSite()
     {
-        return $this->getRepository()->find();
+        return $this->getRepository()->findFirst();
     }
     
     /**

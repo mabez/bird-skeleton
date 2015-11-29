@@ -3,9 +3,11 @@ namespace Admin\Usuario;
 
 use Login\LoginForm;
 use Autenticacao\Autenticacao;
+use AvancadoForm\AvancadoFieldsetContainerTrait;
 
 class UsuarioForm extends LoginForm
 {
+    use AvancadoFieldsetContainerTrait;
 
     private $new;
 
@@ -51,35 +53,7 @@ class UsuarioForm extends LoginForm
     public function setNew($new)
     {
         $this->new = $new;
-        $this->generateAvancado();
+        $this->generateAvancado("/admin/usuario/remover/{$this->get('id')->getValue()}/{$this->routeRedirect}", 'buttonUsuarioRemover');
         return $this;
-    }
-
-    private function generateAvancado()
-    {
-        $usuarioId = $this->get('id')->getValue();
-        $linkRemover = "/admin/usuario/remover/{$usuarioId}/{$this->routeRedirect}";
-        $campoExiste = array_key_exists('avancado', $this->getElements());
-        
-        if ($campoExiste) {
-            
-            if ($this->new) {
-                
-                $this->remove('avancado');
-            } else {
-                
-                $this->get('avancado')->setOption('hrefRemover', $linkRemover);
-            }
-        } elseif (! $this->new) {
-            
-            $this->add(array(
-                'name' => 'avancado',
-                'type' => 'Admin\AvancadoFieldset',
-                'options' => array(
-                    'idRemover' => 'buttonUsuarioRemover',
-                    'hrefRemover' => $linkRemover
-                )
-            ));
-        }
     }
 }

@@ -1,35 +1,34 @@
 <?php
 namespace Login;
 
-use Autenticacao\AutenticacaoManager;
-use Application\Site\SiteViewModel;
-use Site\SiteManager;
-use Zend\Authentication\AuthenticationService;
-use Zend\Uri\Uri;
-use Application\Site\Mensagem;
 use Autenticacao\Autenticacao;
+use Autenticacao\AutenticacaoManager;
+use Notificacao\Notificacao;
+use Notificacao\NotificacoesContainerTrait;
+use Zend\View\Model\ViewModel;
+use Zend\Authentication\AuthenticationService;
 
 /**
  * Gerador da estrutura da página de login
  */
-class LoginViewModel extends SiteViewModel
+class LoginViewModel extends ViewModel
 {
+    use NotificacoesContainerTrait;
+    
     const MENSAGEM_ERRO_LOGIN_INVALIDO = 'Usuario ou senha inválidos.';
 
+    private $authenticationService;
     private $autenticacaoManager;
     private $form;
 
     /**
      * Injeta dependências
-     * @param \Site\SiteManager $siteManager
-     * @param \Zend\Authentication\AuthenticationService $authentication
-     * @param \Zend\Uri\Uri $uri
      * @param \AutenticacaoManager $autenticacaoManager
      * @param LoginForm $form
      */
-    public function __construct(SiteManager $siteManager, AuthenticationService $authentication, Uri $uri, AutenticacaoManager $autenticacaoManager, LoginForm $form)
+    public function __construct(AuthenticationService $authenticationService, AutenticacaoManager $autenticacaoManager, LoginForm $form)
     {
-        parent::__construct($siteManager, $authentication, $uri);
+        $this->authenticationService = $authenticationService;
         $this->autenticacaoManager = $autenticacaoManager;
         $this->form = $form;
         $this->variables['formulario'] = $form;
@@ -37,12 +36,11 @@ class LoginViewModel extends SiteViewModel
 
     /**
      * Adiciona Mensagem de erro
-     * @param string $mensagemErro
      * @return LoginViewModel
      */
-    private function addMensagemErro($mensagemErro)
+    private function addMensagemErro()
     {
-       return $this->addMessagem(new Mensagem(Mensagem::TIPO_ERRO, $mensagemErro));
+       return $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MENSAGEM_ERRO_LOGIN_INVALIDO));
     }
 
     /**
@@ -73,7 +71,7 @@ class LoginViewModel extends SiteViewModel
             $resultadoAutenticacao = $this->autenticacaoManager->autenticar($autenticacao);
 
             if (!$resultadoAutenticacao->isValid()) {
-                $this->addMensagemErro(self::MENSAGEM_ERRO_LOGIN_INVALIDO);
+                $this->addMensagemErro();
                 return false;
             }
 
@@ -85,6 +83,6 @@ class LoginViewModel extends SiteViewModel
     
     public function limparAutenticacao()
     {
-        $this->getAuthentication()->clearIdentity();
+        $this->authenticationService->clearIdentity();
     }
 }

@@ -2,11 +2,14 @@
 
 namespace Admin\Site;
 
-use Application\Site\SiteController as ApplicationSiteController;
+use Acesso\AcessoController;
+use Notificacao\FlashMessagesContainerTrait;
 
-class SiteController extends ApplicationSiteController
+class SiteController extends AcessoController
 {
 
+    use FlashMessagesContainerTrait;
+    
     protected $resource = 'admin-site';
     
     /**
@@ -17,7 +20,6 @@ class SiteController extends ApplicationSiteController
     {
         return $this->getViewModel()->setTemplate('admin/admin/site');
     }
-
 
     /**
      * Obtem a ViewModel
@@ -41,16 +43,15 @@ class SiteController extends ApplicationSiteController
 
         $viewModel->getForm()->setData($params);
         if ($viewModel->getForm()->isValid()) {
-            $this->setFlashMessagesFromMensagens(
-                $viewModel->saveArray($viewModel->getForm()->getData())
-            );
+            $viewModel->saveArray($viewModel->getForm()->getData());
+            $this->setFlashMessagesFromNotificacoes($viewModel->getNotificacoes());
 
             $routeRedirect = $this->params()->fromQuery('routeRedirect');
             if ($routeRedirect) {
                 return $this->redirect()->toRoute($routeRedirect);
             }
         } else {
-            $this->setFlashMessagesFromMensagens($viewModel->getForm()->getMessages());
+            $this->setFlashMessagesFromNotificacoes($viewModel->getForm()->getMessages());
         }
 
         return $this->redirect()->toRoute('admin-site');

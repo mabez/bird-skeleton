@@ -18,7 +18,7 @@ class CompraHydrator implements HydratorInterface
     }
 
     /**
-     * Converte um vetor em um objeto anuncio
+     * Converte um vetor em um objeto compra
      * @param array $data vetor
      * @param Compra $object (prototipo)
      * @return Compra

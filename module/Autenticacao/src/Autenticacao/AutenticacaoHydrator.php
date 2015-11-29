@@ -6,7 +6,7 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 class AutenticacaoHydrator implements HydratorInterface
 {
     /**
-     * Converte um objeto anuncio em vetor
+     * Converte um objeto autenticacao em vetor
      * @param Autenticacao $object objeto
      * @return array
      */
@@ -18,7 +18,7 @@ class AutenticacaoHydrator implements HydratorInterface
     }
 
     /**
-     * Converte um vetor em um objeto anuncio
+     * Converte um vetor em um objeto autenticacao
      * @param array $data vetor
      * @param Autenticacao $object (prototipo)
      * @return Autenticacao

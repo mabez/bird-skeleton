@@ -2,43 +2,43 @@
 namespace Conta\Registro;
 
 use Autenticacao\AutenticacaoManager;
-use Site\SiteManager;
 use Zend\Authentication\AuthenticationService;
-use Zend\Uri\Uri;
-use Application\Site\Mensagem;
+use Notificacao\Notificacao;
 use Autenticacao\Autenticacao;
 use Acesso\Acesso;
 use Conta\ContaViewModel;
+use Notificacao\NotificacoesContainerTrait;
 
 /**
- * Gerador da estrutura da página de administração de informações do anuncio
+ * Gerador da estrutura da página de registro da conta
  */
 class RegistroViewModel extends ContaViewModel
 {
+    use NotificacoesContainerTrait;
+    
     const MESSAGE_UPDATE_SUCCESS = 'Dados modificados com sucesso!';
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao salvar os dados!';
     
     private $autenticacaoManager;
     protected $form;
+    protected $usuario;
     
     /**
      * Injeta as dependências
-     * @param \Site\SiteManager $siteManager
      * @param \Zend\Authentication\AuthenticationService $authentication
-     * @param \Zend\Uri\Uri $uri
      * @param \Autenticacao\AutenticacaoManager $autenticacaoManager
      * @param RegistroForm $form
      * @param mixed $params
      */
-    public function __construct(SiteManager $siteManager, AuthenticationService $authentication, Uri $uri, AutenticacaoManager $autenticacaoManager, RegistroForm $form, $params = array())
+    public function __construct(AuthenticationService $authentication, AutenticacaoManager $autenticacaoManager, RegistroForm $form, $params = array())
     {
-        parent::__construct($siteManager, $authentication, $uri);
+        parent::__construct();
         extract($params);
         if (!isset($redirect)) $redirect = null;
         
-        $usuario = $authentication->getIdentity();
+        $this->usuario = $authentication->getIdentity();
         $this->setDescricaoPagina('Modificando meus dados.');
-        $form->setEntity($usuario);
+        $form->setEntity($this->usuario);
         $form->setRouteRedirect($redirect);
         $form->prepare();
         $this->variables['formulario'] = $form;
@@ -55,15 +55,14 @@ class RegistroViewModel extends ContaViewModel
     public function saveArray($array)
     {
         try {
-            $autenticacao = $this->authentication->getIdentity();
             $usuario = new Autenticacao();
             $usuario->exchangeArray($array);
-            $usuario->setId($autenticacao->getId());
-            $usuario->setPerfilId($autenticacao->getPerfilId());
+            $usuario->setId($this->usuario->getId());
+            $usuario->setPerfilId($this->usuario->getPerfilId());
             $usuario = $this->autenticacaoManager->salvar($usuario);
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_SUCESSO, self::MESSAGE_UPDATE_SUCCESS, array($usuario->getId())));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, self::MESSAGE_UPDATE_SUCCESS, array($usuario->getId())));
         } catch (\Exception $e) {
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($usuario->getId())));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($usuario->getId())));
         }
         
         return true;

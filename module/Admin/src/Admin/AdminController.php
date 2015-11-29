@@ -1,11 +1,10 @@
 <?php
 namespace Admin;
 
-use Application\Site\SiteController;
+use Acesso\AcessoController;
 
-class AdminController extends SiteController
+class AdminController extends AcessoController
 {
-
     protected $resource = 'admin';
     
     /**

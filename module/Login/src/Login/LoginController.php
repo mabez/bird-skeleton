@@ -1,10 +1,13 @@
 <?php
 namespace Login;
 
-use Application\Site\SiteController;
+use Acesso\AcessoController;
+use Notificacao\FlashMessagesContainerTrait;
 
-class LoginController extends SiteController
+class LoginController extends AcessoController
 {
+    use FlashMessagesContainerTrait;
+    
     protected $resource = 'login';
     
     /**
@@ -42,7 +45,7 @@ class LoginController extends SiteController
             return $this->redirect()->toRoute($redirect?$redirect:'site');
         }
         
-        $this->setFlashMessagesFromMensagens($viewModel->getMensagens());
+        $this->setFlashMessagesFromNotificacoes($viewModel->getNotificacoes());
         return $this->redirect()->toRoute('login');
     }
 }

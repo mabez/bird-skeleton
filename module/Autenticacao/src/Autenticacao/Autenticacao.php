@@ -101,7 +101,7 @@ class Autenticacao
     }
     
      /**
-     * Obtem a estrutura da entity Anuncio em formato array
+     * Obtem a estrutura da entity Autenticacao em formato array
      * @return array
      */
     public function toArray()

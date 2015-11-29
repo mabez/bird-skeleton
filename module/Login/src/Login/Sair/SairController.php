@@ -1,20 +1,11 @@
 <?php
 namespace Login\Sair;
 
-use Application\Site\SiteController;
+use Acesso\AcessoController;
 
-class SairController extends SiteController
+class SairController extends AcessoController
 {
     protected $resource = 'sair';
-
-     /**
-     * Verifica se o usuário está logado
-     * @see \Login\Logado\LogadoController::isLogado()
-     */
-    protected function isLogado()
-    {
-        return true;
-    }
 
     /**
      * Obtem a ViewModel da página de login

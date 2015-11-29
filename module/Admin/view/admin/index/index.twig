@@ -1,10 +1,8 @@
-{% extends 'layout/layout' %}
-{% block nomeSite %}{{site.nome}}{% endblock nomeSite %}
-{% block logoSite %}{{site.logo}}{% endblock logoSite %}
+{% extends 'site/layout' %}
 {% block cabecalho %}
-    {% embed "admin/site/cabecalho"%}
+    {% embed "admin/index/cabecalho"%}
         {% block siteNome %}
-            {{site.nome}}
+            {{siteDefault().nome}}
         {% endblock siteNome %}
     {% endembed %}
 {% endblock cabecalho %}
@@ -23,4 +21,3 @@
     </div>
 </div>
 {% endblock %}
-{% block copyright %}{{site.copyright}}{% endblock copyright %}

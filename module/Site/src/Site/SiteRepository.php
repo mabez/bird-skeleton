@@ -26,7 +26,7 @@ class SiteRepository
     /**
      * Insere o TableGatway
      * @param \Zend\Db\TableGateway\TableGateway $tableGateway
-     * @return AnuncioRepository
+     * @return SiteRepository
      */
     private function setTableGatway(TableGateway $tableGateway)
     {
@@ -47,16 +47,17 @@ class SiteRepository
     }
 
     /**
-     * Encontra o objeto com as informações do site no BD
+     * Encontra o objeto com as informações do primeiro site no BD
      * @return Site
      */
-    public function find()
+    public function findFirst()
     {
         $rowset = $this->getTableGateway()
             ->select(
                 function(Select $select) {
                     $select->columns($this->columns);
                     $select->limit(1);
+                    $select->order('id asc');
                 }
             );
         $row = $rowset->current();

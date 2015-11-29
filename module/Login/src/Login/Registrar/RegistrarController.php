@@ -1,32 +1,23 @@
 <?php
 namespace Login\Registrar;
 
-use Application\Site\SiteController;
+use Acesso\AcessoController;
+use Notificacao\FlashMessagesContainerTrait;
 
-class RegistrarController extends SiteController
+class RegistrarController extends AcessoController
 {
+    use FlashMessagesContainerTrait;
+    
     protected $resource = 'registrar';
     
     /**
-     * Obtem a ViewModel da página de login
+     * Obtem a ViewModel da página de registrar
      *
      * @return RegistrarViewModel
      */
     private function getViewModel()
     {
         return $this->serviceLocator->get('RegistrarViewModel');
-    }
-
-    /**
-     * Verifica se o usuário é anônimo
-     *
-     * @see \Application\Login\Anonimo\AnonimoController::isAnonimo()
-     */
-    protected function isAnonimo()
-    {
-        return ! $this->getViewModel()
-            ->getAuthentication()
-            ->hasIdentity();
     }
 
     /**
@@ -47,16 +38,19 @@ class RegistrarController extends SiteController
     public function registrarAction()
     {
         $viewModel = $this->getViewModel();
-        $viewModel->getFormulario()->setData($this->params()
-            ->fromPost());
+        $viewModel->getFormulario()->setData($this->params()->fromPost());
         if ($viewModel->getFormulario()->isValid() && $viewModel->save()) {
             $redirect = $this->params()->fromPost('routeRedirect');
             $this->getServiceLocator()->get('LoginViewModel')->validaLogin($viewModel->getFormulario()->getData());
             $viewModel->getFormulario($redirect?$redirect:'site');
         }
         
-        $mensagens = $viewModel->getMensagens() ? $viewModel->getMensagens() : $viewModel->getFormulario()->getMessages();
-        $this->setFlashMessagesFromMensagens($mensagens);
+        $mensagens = $viewModel->getNotificacoes();
+        if ($mensagens) {
+            $this->setFlashMessagesFromNotificacoes($mensagens);
+        } else {
+            $this->setFlashMessagesFromNotificacoes($viewModel->getFormulario()->getMessages());
+        }
         return $this->redirect()->toRoute('registrar');
     }
 }

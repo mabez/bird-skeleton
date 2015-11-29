@@ -11,9 +11,7 @@ class CompraViewModelFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         return new CompraViewModel(
-            $serviceLocator->get('SiteManager'),
             new AuthenticationService(),
-            $serviceLocator->get('Request')->getUri(),
             $serviceLocator->get('CompraManager')
         );
     }

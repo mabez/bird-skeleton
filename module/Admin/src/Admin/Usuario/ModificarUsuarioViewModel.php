@@ -3,21 +3,21 @@ namespace Admin\Usuario
 ;
 
 use Autenticacao\AutenticacaoManager;
-use Site\SiteManager;
-use Admin\AdminViewModel;
-use Zend\Authentication\AuthenticationService;
-use Zend\Uri\Uri;
-use Application\Site\Mensagem;
 use Autenticacao\Autenticacao;
 use Acesso\Acesso;
+use Zend\View\Model\ViewModel;
+use Notificacao\NotificacoesContainerTrait;
+use Notificacao\Notificacao;
 
 /**
- * Gerador da estrutura da página de administração de informações do anuncio
+ * Gerador da estrutura da página de administração de informações do usuário
  */
-class ModificarUsuarioViewModel extends AdminViewModel
+class ModificarUsuarioViewModel extends ViewModel
 {
+    use NotificacoesContainerTrait;
+    
     const MESSAGE_UPDATE_SUCCESS = 'Usuário #%s modificado com sucesso!';
-    const MESSAGE_INSERT_SUCCESS = 'Usuário #%s incluído com sucesso!';
+    const MESSAGE_FINALIZADA_SUCCESS = 'Usuário #%s incluído com sucesso!';
     const MESSAGE_REMOVE_SUCCESS = 'Usuário #%s removido com sucesso!';
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao modificar o usuário #%s!';
     const MESSAGE_REMOVE_INTERNAL_ERROR = 'Ocorreu um erro ao deletar o usuário #%s, verifique se ele já não possui compra!';
@@ -27,16 +27,12 @@ class ModificarUsuarioViewModel extends AdminViewModel
     
     /**
      * Injeta as dependências
-     * @param \Site\SiteManager $siteManager
-     * @param \Zend\Authentication\AuthenticationService $authentication
-     * @param \Zend\Uri\Uri $uri
      * @param \Autenticacao\AutenticacaoManager $autenticacaoManager
      * @param UsuarioForm $form
      * @param mixed $params
      */
-    public function __construct(SiteManager $siteManager, AuthenticationService $authentication, Uri $uri, AutenticacaoManager $autenticacaoManager, UsuarioForm $form, $params = array())
+    public function __construct(AutenticacaoManager $autenticacaoManager, UsuarioForm $form, $params = array())
     {
-        parent::__construct($siteManager, $authentication, $uri);
         extract($params);
         if (!isset($usuarioId)) $usuarioId = null;
         if (!isset($redirect)) $redirect = null;
@@ -95,9 +91,9 @@ class ModificarUsuarioViewModel extends AdminViewModel
             $usuario->setPerfilId($perfilId);
             
             $usuario = $this->autenticacaoManager->salvar($usuario);
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_SUCESSO, $messageSuccess, array($usuario->getId())));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, $messageSuccess, array($usuario->getId())));
         } catch (\Exception $e) {
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
         }
         
         return true;
@@ -115,9 +111,9 @@ class ModificarUsuarioViewModel extends AdminViewModel
             $usuario->setId($id);
 
             $this->autenticacaoManager->remover($usuario);
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_SUCESSO, self::MESSAGE_REMOVE_SUCCESS, array($id)));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, self::MESSAGE_REMOVE_SUCCESS, array($id)));
         } catch (\Exception $e) {
-            $this->addMessagem(new Mensagem(Mensagem::TIPO_ERRO, self::MESSAGE_REMOVE_INTERNAL_ERROR, array($id)));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_REMOVE_INTERNAL_ERROR, array($id)));
         }
         
         return true;

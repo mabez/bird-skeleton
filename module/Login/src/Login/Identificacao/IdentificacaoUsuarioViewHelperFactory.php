@@ -8,7 +8,6 @@ use Zend\Authentication\AuthenticationService;
 class IdentificacaoUsuarioViewHelperFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator) {
-        $zendConfig = $serviceLocator->getServiceLocator()->get('config');
         return new IdentificacaoUsuarioViewHelper(new AuthenticationService());
     }
 }

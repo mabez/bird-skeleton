@@ -30,45 +30,45 @@ return array(
                     )
                 )
             ),
-            'admin-anuncio' => array(
+            'admin-produto' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/admin/anuncios/',
+                    'route' => '/admin/produtos/',
                     'defaults' => array(
-                        'controller' => 'AdminAnunciosController',
+                        'controller' => 'AdminProdutosController',
                         'action' => 'index'
                     ),
                     'may_terminate' => true
                 )
             ),
-            'admin-anuncios-modificar' => array(
+            'admin-produtos-modificar' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/admin/anuncios/modificar[/:anuncioId][/:routeRedirect][/]',
+                    'route' => '/admin/produtos/modificar[/:produtoId][/:routeRedirect][/]',
                     'defaults' => array(
-                        'controller' => 'AdminAnunciosController',
+                        'controller' => 'AdminProdutosController',
                         'action' => 'modificar'
                     ),
                     'may_terminate' => true
                 )
             ),
-            'admin-anuncios-remover' => array(
+            'admin-produtos-remover' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/admin/anuncios/remover/:anuncioId[/:routeRedirect][/]',
+                    'route' => '/admin/produtos/remover/:produtoId[/:routeRedirect][/]',
                     'defaults' => array(
-                        'controller' => 'AdminAnunciosController',
+                        'controller' => 'AdminProdutosController',
                         'action' => 'remover'
                     )
                 ),
                 'may_terminate' => true
             ),
-            'admin-anuncios-salvar' => array(
+            'admin-produtos-salvar' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/admin/anuncios/salvar[/:routeRedirect][/]',
+                    'route' => '/admin/produtos/salvar[/:routeRedirect][/]',
                     'defaults' => array(
-                        'controller' => 'AdminAnunciosController',
+                        'controller' => 'AdminProdutosController',
                         'action' => 'salvar'
                     ),
                     'may_terminate' => true
@@ -80,6 +80,17 @@ return array(
                     'route' => '/admin/compras/',
                     'defaults' => array(
                         'controller' => 'AdminComprasController',
+                        'action' => 'index'
+                    ),
+                    'may_terminate' => true
+                )
+            ),
+            'admin-pagamentos' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/pagamentos/',
+                    'defaults' => array(
+                        'controller' => 'AdminPagamentoController',
                         'action' => 'index'
                     ),
                     'may_terminate' => true

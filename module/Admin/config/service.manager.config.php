@@ -3,10 +3,11 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'AdminAnunciosViewModel' => 'Admin\Anuncio\AnunciosViewModelFactory',
+            'AdminProdutosViewModel' => 'Admin\Produto\ProdutosViewModelFactory',
             'AdminCompraViewModel' => 'Admin\Compra\CompraViewModelFactory',
-            'AdminModificarAnuncioViewModel' => 'Admin\Anuncio\ModificarAnuncioViewModelFactory',
+            'AdminModificarProdutoViewModel' => 'Admin\Produto\ModificarProdutoViewModelFactory',
             'AdminModificarUsuarioViewModel' => 'Admin\Usuario\ModificarUsuarioViewModelFactory',
+            'AdminPagamentoViewModel' => 'Admin\Pagamento\PagamentoViewModelFactory',
             'AdminSiteViewModel' => 'Admin\Site\SiteViewModelFactory',
             'AdminUsuarioViewModel' => 'Admin\Usuario\UsuarioViewModelFactory',
             'AdminViewModel' => 'Admin\AdminViewModelFactory'

@@ -1,0 +1,46 @@
+{% extends 'site/index/index' %}
+{% block cabecalho %}
+{% endblock cabecalho %}
+{% block conteudo %}
+<div class="row">
+    <div class="col-md-12">
+		<div class="panel panel-default">
+		    <div class="panel-heading">
+		        <div class="panel-title"><h1>{{produto.titulo}}</h1></div>
+		    </div>
+		    <div class="panel-body">
+			    <div class="col-md-6">
+			        <img width="100%" class="img-responsive" src="/img/{{produto.imagem}}"/>
+    			</div>
+    			<div class="col-md-6">
+			        <h4>{{produto.descricao}}</h4>
+			        <h2>Preço: <span class="zf-green" id="precoProduto">{{currencyFormat(produto.preco, 'BRL', null, 'pt_BR')}}</span></h2>
+			        {{form().openTag(formulario)|raw}}
+				        {{formHidden(formulario.get('produto_id'))|raw}}
+				        <input type="hidden" id="inputProdutoPreco" name="preco" value="{{produto.preco}}">
+			            <div class="form-group" id="inputCompraQuantidadeGroup">
+			                <div class="input-group input-group-lg">
+			                	{{formRow(formulario.get('quantidade'))|raw}}
+			                </div>
+			            </div>
+			            <div class="form-group" id="inputCompraValorGroup">
+			                <div class="input-group input-group-lg">
+					            <label for="inputCompraValor" class="input-group-addon">Total</label>
+					            <input disabled type="text" value="{{currencyFormat(produto.preco, 'BRL', null, 'pt_BR')}}" aria-describedby="sizing-addon-valor" class="form-control" id="inputCompraValor" name="valor">
+				            </div>
+			            </div>
+			            <div class="form-group">
+			        		<!-- PayPal Logo --><img  src="https://www.paypal-brasil.com.br/logocenter/util/img/botao-checkout_horizontal_comprecom_pb.png" border="0" alt="compre com paypal" class="img-responsive" width="100%"/><!-- PayPal Logo -->
+		        		</div>
+			            <div class="form-group">
+			        		{{formSubmit(formulario.get('submit'))|raw}}
+		        		</div>
+	        		{{form().closeTag()|raw}}
+    			</div>
+		    </div>
+		</div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/jquery.price_format.2.0.min.js"></script>
+<script type="text/javascript" src="/js/compra.js"></script>
+{% endblock conteudo %}

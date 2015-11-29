@@ -21,17 +21,18 @@ class Module implements ViewHelperProviderInterface
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
+                )
+            )
         );
     }
 
     public function getViewHelperConfig()
     {
         return array(
-            'invokables' => array(
-                'flashmessenger' => 'Zend\View\Helper\FlashMessenger'
+            'factories' => array(
+                'identificacaoId' => 'Login\Identificacao\IdentificacaoIdViewHelperFactory',
+                'valorTotalCompra' => 'ValorTotalCompra\ValorTotalCompraViewHelperFactory'
             )
         );
     }

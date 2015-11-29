@@ -4,14 +4,18 @@ return array(
     'modules' => array(
         'Acesso',
         'Admin',
-        'Anuncio',
-        'Autenticacao',
         'Application',
+        'Autenticacao',
+        'AvancadoForm',
         'Compra',
-        'Consumidor',
         'Conta',
+        'Consumidor',
         'Login',
+        'Notificacao',
+        'Pagamento',
+        'Produto',
         'Site',
+        'ValorTotalCompra',
         'ZfcTwig'
     ),
     'module_listener_options' => array(

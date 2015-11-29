@@ -1,13 +1,17 @@
 <?php
 return array(
     'admin_routes' => array(
-        'anuncio' => array(
-           'nome' => 'Anuncios',
-           'route' => '/admin/anuncios/'
+        'produto' => array(
+           'nome' => 'Produtos',
+           'route' => '/admin/produtos/'
         ),
         'compra' => array(
             'nome' => 'Compras',
             'route' => '/admin/compras/'
+        ),
+        'pagamento' => array(
+            'nome' => 'Pagamentos',
+            'route' => '/admin/pagamentos/'
         ),
         'site' => array(
             'nome' => 'Site',

@@ -62,9 +62,7 @@ class CompraManager implements ServiceManagerAwareInterface
     {
         $resultado = array();
         foreach ($iterator as $compra) {
-            $compra->setAutenticacao($this->getAutenticacaoManager()->obterAutenticacaoBasica($compra->getAutenticacaoId()));
-            $compra->setAnuncio($this->getAnuncioManager()->getAnuncio($compra->getAnuncioId()));
-            $resultado[] = $compra;
+            $resultado[] = $this->preencherCompra($compra);
         }
         
         return $resultado;
@@ -80,11 +78,11 @@ class CompraManager implements ServiceManagerAwareInterface
     }
     
     /**
-     * @return \Anuncio\AnuncioManager
+     * @return \Produto\ProdutoManager
      */
-    private function getAnuncioManager()
+    public function getProdutoManager()
     {
-        return $this->getServiceManager()->get('AnuncioManager');
+        return $this->getServiceManager()->get('ProdutoManager');
     }
     
     /**
@@ -93,5 +91,36 @@ class CompraManager implements ServiceManagerAwareInterface
     private function getAutenticacaoManager()
     {
         return $this->getServiceManager()->get('AutenticacaoManager');
+    }
+
+    /**
+     * Cauculo do valor total da compra
+     * @param Compra $compra
+     * @return double
+     */
+    public function caucularValorTotal(Compra $compra)
+    {
+        return $compra->getProduto()->getPreco() * $compra->getQuantidade();
+    }
+
+    /**
+     * Preenche as entidades relacionadas na compra
+     * @param Compra $compra
+     * @return \Compra\Compra
+     */
+    public function preencherCompra(Compra $compra)
+    {
+        $compra->setProduto($this->getProdutoManager()->getProduto($compra->getProdutoId()));
+        $compra->setAutenticacao($this->getAutenticacaoManager()->obterAutenticacaoBasica($compra->getAutenticacaoId()));
+        $compra->setStatus($this->getStatusManager()->obterStatus($compra->getStatusId()));
+        return $compra;
+    }
+
+    /**
+     * @return \Compra\Compra\Status\StatusManager
+     */
+    public function getStatusManager()
+    {
+        return $this->getServiceManager()->get('CompraStatusManager');
     }
 }

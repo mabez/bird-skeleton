@@ -2,30 +2,37 @@
 
 namespace Consumidor;
 
-use Application\Site\SiteController;
+use Acesso\AcessoController;
+use Notificacao\FlashMessagesContainerTrait;
 
-class ConsumidorController extends SiteController
+class ConsumidorController extends AcessoController
 {
+    use FlashMessagesContainerTrait;
+    
+    protected $resource = 'comprar';
+
     /**
-     * Ação de comprar um anuncio
+     * Ação de comprar um produto
      * Registra a compra e redireciona a página
      */
-    public function comprarAction()
+    public function executarCompraAction()
     {
-        $params = array(
-            'anuncio_id' => $this->params('anuncioId'),
-            'autenticacao_id' => $this->getCompraViewModel()->getAuthentication()->getIdentity()->getId()
+        $callbackIdentificacaoId = $this->getServiceLocator()->get("ViewHelperManager")->get('identificacaoId');
+        $params = array_merge_recursive(
+            $this->params()->fromPost(),
+            array(
+                'autenticacao_id' => $callbackIdentificacaoId()
+            )
         );
         
         $routeRedirect = $this->params('routeRedirect');
-        
-        $this->getCompraViewModel()->getForm()->setData($params);
+        $this->getCompraViewModel()->setPreparedData($params);
 
         if ($this->getCompraViewModel()->getForm()->isValid()) {
-            $this->getCompraViewModel()->saveArray($this->getCompraViewModel()->getForm()->getData());
-            $this->setFlashMessagesFromMensagens($this->getCompraViewModel()->getMensagens());
+            $this->getCompraViewModel()->finalizar($this->getCompraViewModel()->getForm()->getData());
+            $this->setFlashMessagesFromNotificacoes($this->getCompraViewModel()->getNotificacoes());
         } else {
-            $this->setFlashMessagesFromMensagens($this->getCompraViewModel()->getForm()->getMessages());
+            $this->setFlashMessagesFromNotificacoes($this->getCompraViewModel()->getForm()->getMessages());
             $routeRedirect = null;
         }
         
@@ -36,6 +43,11 @@ class ConsumidorController extends SiteController
         return $this->redirect()->toRoute($routeRedirect);
     }
     
+    public function comprarAction()
+    {
+        return $this->getCompraViewModel()->setTemplate('comprar/index');
+    }
+
     /**
      * @return CompraViewModel
      */

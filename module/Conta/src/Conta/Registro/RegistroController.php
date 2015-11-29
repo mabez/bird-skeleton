@@ -2,10 +2,13 @@
 
 namespace Conta\Registro;
 
-use Application\Site\SiteController;
+use Acesso\AcessoController;
+use Notificacao\FlashMessagesContainerTrait;
 
-class RegistroController extends SiteController
+class RegistroController extends AcessoController
 {
+    use FlashMessagesContainerTrait;
+    
     protected $resource = 'conta-registro';
     
     /**
@@ -27,7 +30,7 @@ class RegistroController extends SiteController
     }
 
     /**
-     * Salva o anuncio com as informações enviadas por post
+     * Salva o usuário com as informações enviadas por post
      */
     public function salvarAction()
     {
@@ -38,9 +41,9 @@ class RegistroController extends SiteController
 
         if ($this->getViewModel()->getForm()->isValid()) {
             $this->getViewModel()->saveArray($this->getViewModel()->getForm()->getData());
-            $this->setFlashMessagesFromMensagens($this->getViewModel()->getMensagens());
+            $this->setFlashMessagesFromNotificacoes($this->getViewModel()->getNotificacoes());
         } else {
-            $this->setFlashMessagesFromMensagens($this->getViewModel()->getForm()->getMessages());
+            $this->setFlashMessagesFromNotificacoes($this->getViewModel()->getForm()->getMessages());
             $routeRedirect = null;
         }
 

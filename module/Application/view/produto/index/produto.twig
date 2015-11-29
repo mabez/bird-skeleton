@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title"><h4>{{produto.titulo}}</h4></div>
+    </div>
+    <div class="panel-body">
+    	<div class="col-md-12">
+	        <p><img width="100%" class="img-responsive" src="/img/{{produto.imagem}}"/></p>
+	        <p>{{produto.descricao}}</p>
+        </div>
+        <div class="col-md-6">
+	        <p><strong>Preço: <span class="zf-green">{{currencyFormat(produto.preco, 'BRL', null, 'pt_BR')}}</span></strong></p>
+        </div>
+        <div class="col-md-6">
+        	<div class="form-group">
+        		<a href="/produto/comprar/{{produto.id}}" id="buttonGoComprar-{{produto.id}}" class="form-control btn btn-success">Comprar</a>
+    		</div>
+		</div>
+    </div>
+</div>
