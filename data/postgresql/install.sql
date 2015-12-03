@@ -40,7 +40,7 @@ CREATE TABLE public.compra_status (
 
 CREATE TABLE public.compra (
   id BIGSERIAL PRIMARY KEY,
-  status_id integer references status_compra(id),
+  status_id integer references compra_status(id),
   autenticacao_id integer references autenticacao(id),
   produto_id integer references produto(id),
   quantidade integer DEFAULT 1,

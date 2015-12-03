@@ -16,7 +16,7 @@ class RegistrarViewModel extends ViewModel
     use NotificacoesContainerTrait;
     
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao regitrar uma conta!';
-    const MESSAGE_FINALIZADA_SUCCESS = 'O login foi registrado com sucesso!';
+    const MESSAGE_INSERT_SUCCESS = 'O login foi registrado com sucesso!';
     
     private $autenticacaoManager;
     private $form;
