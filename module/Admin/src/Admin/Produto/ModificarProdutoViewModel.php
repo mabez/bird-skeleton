@@ -15,7 +15,7 @@ class ModificarProdutoViewModel extends ViewModel
     use NotificacoesContainerTrait;
     
     const MESSAGE_UPDATE_SUCCESS = 'Produto #%s modificado com sucesso!';
-    const MESSAGE_FINALIZADA_SUCCESS = 'Produto #%s incluído com sucesso!';
+    const MESSAGE_INSERT_SUCCESS = 'Produto #%s incluído com sucesso!';
     const MESSAGE_REMOVE_SUCCESS = 'Produto #%d removido com sucesso!';
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao modificar o anúncio #%s!';
     const MESSAGE_REMOVE_ERROR = 'Ocorreu um erro ao remover o produto #%s! Verifique se já não existe compra para esse produto.';

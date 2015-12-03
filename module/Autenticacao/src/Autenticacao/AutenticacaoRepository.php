@@ -122,7 +122,7 @@ class AutenticacaoRepository
     public function findAll()
     {
         $sql = new Sql($this->dbAdapter);
-        $select = $sql->select('login');
+        $select = $sql->select($this->tableName);
         
         $stmt = $sql->prepareStatementForSqlObject($select);
         $result = $stmt->execute();

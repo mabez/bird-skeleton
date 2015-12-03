@@ -17,7 +17,7 @@ class ModificarUsuarioViewModel extends ViewModel
     use NotificacoesContainerTrait;
     
     const MESSAGE_UPDATE_SUCCESS = 'Usuário #%s modificado com sucesso!';
-    const MESSAGE_FINALIZADA_SUCCESS = 'Usuário #%s incluído com sucesso!';
+    const MESSAGE_INSERT_SUCCESS = 'Usuário #%s incluído com sucesso!';
     const MESSAGE_REMOVE_SUCCESS = 'Usuário #%s removido com sucesso!';
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao modificar o usuário #%s!';
     const MESSAGE_REMOVE_INTERNAL_ERROR = 'Ocorreu um erro ao deletar o usuário #%s, verifique se ele já não possui compra!';
@@ -93,7 +93,7 @@ class ModificarUsuarioViewModel extends ViewModel
             $usuario = $this->autenticacaoManager->salvar($usuario);
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, $messageSuccess, array($usuario->getId())));
         } catch (\Exception $e) {
-            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
+var_dump($e->getMessage());die;            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
         }
         
         return true;
