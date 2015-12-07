@@ -18,4 +18,4 @@ vagrant up
 
 Acesse [http://localhost:8086](http://localhost:8086) no seu navegador.
 
-Veja [Vagrantfile](https://github.com/zendframework/ZendSkeletonApplication/blob/master/Vagrantfile) para mais detalhes.
+Veja [Vagrantfile](https://github.com/mabez/bird-skeleton/blob/master/Vagrantfile) para mais detalhes.
