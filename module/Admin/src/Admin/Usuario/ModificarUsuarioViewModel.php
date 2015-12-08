@@ -93,7 +93,7 @@ class ModificarUsuarioViewModel extends ViewModel
             $usuario = $this->autenticacaoManager->salvar($usuario);
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, $messageSuccess, array($usuario->getId())));
         } catch (\Exception $e) {
-var_dump($e->getMessage() . ' ===] ' . $e->getTraceAsString());die;            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
+            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
         }
         
         return true;
