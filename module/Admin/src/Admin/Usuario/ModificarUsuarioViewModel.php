@@ -83,7 +83,7 @@ class ModificarUsuarioViewModel extends ViewModel
             $id = $usuario->getId();
             if ($id == 0) {
                 $messageSuccess = self::MESSAGE_INSERT_SUCCESS;
-                $perfilId = $this->autenticacaoManager->getPerfilManager()->obterPerfil(Acesso::getDefaultRole())->getId();
+                $perfilId = $this->autenticacaoManager->getPerfilManager()->obterPerfilByNome(Acesso::getDefaultRole())->getId();
             } else {
                 $messageSuccess = self::MESSAGE_UPDATE_SUCCESS;
                 $perfilId = $this->autenticacaoManager->obterAutenticacaoBasica($id)->getPerfilId();
@@ -93,7 +93,7 @@ class ModificarUsuarioViewModel extends ViewModel
             $usuario = $this->autenticacaoManager->salvar($usuario);
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, $messageSuccess, array($usuario->getId())));
         } catch (\Exception $e) {
-var_dump($e->getMessage());die;            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
+var_dump($e->getMessage() . ' ===] ' . $e->getTraceAsString());die;            $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
         }
         
         return true;
