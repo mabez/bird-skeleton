@@ -1,5 +1,5 @@
 {
-  "name" : "esqueleto/comercio-zf2",
+  "name" : "mabez/bird-skeleton",
   "description" : "Bird Skeleton Alpha",
   "require" : {
     "php" : ">=5.3.3",
