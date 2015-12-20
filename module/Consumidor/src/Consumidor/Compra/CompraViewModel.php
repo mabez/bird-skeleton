@@ -8,6 +8,9 @@ use Notificacao\NotificacoesContainerTrait;
 use Notificacao\Notificacao;
 use Zend\Stdlib\Hydrator\HydrationInterface;
 use Zend\EventManager\EventManagerInterface;
+use Paypal\ExpressCheckout\ExpressCheckout;
+use Paypal\ExpressCheckout\PaymentRequest\PaymentRequest;
+use Paypal\ExpressCheckout\PaymentRequest\LPaymentRequest;
 
 /**
  * Gerador da estrutura da página de anúncios
@@ -27,6 +30,7 @@ class CompraViewModel extends ViewModel
     private $hydrator;
     private $form;
     private $eventManager;
+    private $expressCheckout;
 
     /**
      * Injeta dependências
@@ -34,13 +38,15 @@ class CompraViewModel extends ViewModel
      * @param \Produto\ProdutoManager $compraManager
      * @param CompraForm $form
      */
-    public function __construct(CompraManager $compraManager, CompraForm $form, HydrationInterface $hydrator, EventManagerInterface $eventManager, $params = array())
+    public function __construct(CompraManager $compraManager, CompraForm $form, HydrationInterface $hydrator, EventManagerInterface $eventManager, ExpressCheckout $expressCheckout, $params = array())
     {
-        extract($params);
         $this->compraManager = $compraManager;
         $this->hydrator = $hydrator;
         $this->form = $form;
         $this->eventManager = $eventManager;
+        $this->expressCheckout = $expressCheckout;
+        
+        extract($params);
         if (isset($produtoId)) {
             $this->variables['formulario'] = $form->setProdutoId($produtoId)->prepare();
             $this->variables['produto'] = $compraManager->getProdutoManager()->getProduto($produtoId);
@@ -61,12 +67,33 @@ class CompraViewModel extends ViewModel
             $dados['status_id'] = $statusFinalizada->getId();
             $compra = $this->hydrator->hydrate($dados, new Compra());
             $compra = $this->compraManager->salvar($compra);
+            
+            $this->compraManager->preencherCompra($compra);
+            
+            $paymentRequest = new PaymentRequest(0);
+            $paymentRequest->setAmt($compra->getProduto()->getPreco()*$compra->getQuantidade());
+            $paymentRequest->setCurrencyCode('BRL');
+            $paymentRequest->setInvNum(1234);
+            $paymentRequest->setItemAmt($compra->getProduto()->getPreco()*$compra->getQuantidade());
+            $paymentRequest->setPaymentAction('SALE');
+            
+            $lPaymentRequest = new LPaymentRequest();
+            $lPaymentRequest->setAmt($compra->getProduto()->getPreco());
+            $lPaymentRequest->setDesc($compra->getProduto()->getDescricao());
+            $lPaymentRequest->setItemAmt($compra->getProduto()->getPreco());
+            $lPaymentRequest->setName($compra->getProduto()->getTitulo());
+            $lPaymentRequest->setQty($compra->getQuantidade());
+            $paymentRequest->addLPaymentRequest($lPaymentRequest);
+            
+            $result = $this->expressCheckout->set($paymentRequest, 'http://localhost:8888', 'http://localhost:8888', 'BR_EC_EMPRESA', 'marcelbzrra@gmail.com');
+            
             $this->eventManager->trigger(self::EVENT_COMPRA_FINALIZADA, $this, $dados);
 
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, self::MESSAGE_FINALIZADA_SUCCESS, array(
                 $compra->getProdutoId()
             )));
         } catch (\Exception $e) {
+            die($e->getMessage().' '.$e->getTraceAsString());
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array(
                 $compra->getProdutoId()
             )));

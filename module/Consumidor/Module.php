@@ -22,6 +22,7 @@ class Module
     {
         return array_merge_recursive(
             include __DIR__ . '/config/controllers.config.php',
+            include __DIR__ . '/config/paypal.config.php',
             include __DIR__ . '/config/router.config.php',
             include __DIR__ . '/config/service.manager.config.php',
             include __DIR__ . '/config/view.manager.config.php'

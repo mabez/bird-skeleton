@@ -3,7 +3,7 @@ namespace Paypal\ExpressCheckout;
 
 use Zend\Http\Client\Adapter\Curl;
 use Zend\Http\Client;
-use Zend\Uri\Uri;
+use Zend\Uri\Http;
 use Paypal\ExpressCheckout\PaymentRequest\PaymentRequest;
 use Zend\Http\Request;
 use Zend\Http\Headers;
@@ -27,8 +27,7 @@ class ExpressCheckout
 
     public function set(PaymentRequest $paymentRequest, $returnUrl, $cancelUrl, $buttonSource, $subject)
     {
-        $this->client->setMethod('POST');
-        
+
         $request = $this->getRequest(array_merge_recursive($paymentRequest->toArray(), array(
             'METHOD' => 'SetExpressCheckout',
             'RETURNURL' => $returnUrl,
@@ -37,10 +36,12 @@ class ExpressCheckout
             'SUBJECT' => $subject
         )));
         
+        $request->setMethod(Request::METHOD_POST);
+        
         $response = $this->client->send($request);
         
         if ($response->isClientError()) {
-            return false;
+            throw new ExpressCheckoutException($response->getContent(), $response->getStatusCode());
         }
         
         $result = new ResultSet();
@@ -61,13 +62,13 @@ class ExpressCheckout
 
     public function getDetails($token)
     {
-        $this->client->setMethod('POST');
-        
         $request = $this->getRequest(array(
             'METHOD' => 'GetExpressCheckoutDetails',
             'TOKEN' => $token
         ));
-
+            
+        $request->setMethod(Request::METHOD_POST);
+        
         $response = $this->client->send($request);
         
         if ($response->isClientError()) {
@@ -92,7 +93,7 @@ class ExpressCheckout
 
     private function validateConfig($config)
     {
-        if (! isset($config['Host'])) {
+        if (! isset($config['URL'])) {
             throw new ExpressCheckoutException(ExpressCheckoutException::CONFIG_PARAM_HOST_INVALID);
         }
         
@@ -113,7 +114,7 @@ class ExpressCheckout
     {
         $this->config['headers']['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
         $this->config['VERSION'] = '114.0';
-        $this->config['httpVersion'] = '1.1';
+        $this->config['httpVersion'] = Request::VERSION_11;
     }
 
     private function getHttpVersion()
@@ -123,7 +124,7 @@ class ExpressCheckout
 
     private function getUri()
     {
-        return new Uri($this->config['Host']);
+        return new Http($this->config['URL']);
     }
 
     private function getDefaultHeaders()
@@ -160,6 +161,7 @@ class ExpressCheckout
         $headers = new Headers();
         $headers->addHeaders($this->getDefaultHeaders());
         $request->setHeaders($headers);
+        $request->setVersion($this->getHttpVersion());
         $request->setContent($content);
         
         return $request;

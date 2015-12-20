@@ -133,5 +133,6 @@ class PaymentRequest
                 $array[self::PREFIX_LFIELD . '_' . $this->index . '_' . $lfield . $i] = $lvalue;
             }
         }
+        return $array;
     }
 }

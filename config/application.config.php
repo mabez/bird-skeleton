@@ -13,6 +13,7 @@ return array(
         'Login',
         'Notificacao',
         'Pagamento',
+        'Paypal',
         'Produto',
         'Site',
         'ValorTotalCompra',
