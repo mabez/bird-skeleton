@@ -36,7 +36,6 @@ a2dissite 000-default
 a2ensite bird-skeleton 
 service apache2 restart
 cd /var/www/bird-skeleton
-
 echo "Importando o banco de dados"
 useradd bird_skeleton -p bird_skeleton
 su bird_skeleton << EOF
@@ -56,19 +55,16 @@ rm -R data/cache
 ln -s /var/cache data/cache
 chmod 777 -R /var/cache
 
-curl -Ss https://getcomposer.org/installer | php
-COMPOSER_PROCESS_TIMEOUT=600000 php composer.phar --no-interaction install --no-progress
-COMPOSER_PROCESS_TIMEOUT=600000 php composer.phar --no-interaction update --no-progress
 echo "** [ZEND] Visit http://localhost:8086 in your browser for to view the bird-skeleton application **"
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'bento/ubuntu-14.04'
-  config.vm.network "forwarded_port", guest: 80, host: 8086
+  config.vm.network "forwarded_port", guest: 80, host: 8090
   config.vm.hostname = "bird-skeleton"
   config.vm.synced_folder '.', '/var/www/bird-skeleton'
   config.vm.provision 'shell', inline: @script
-
+  config.vm.boot_timeout = 9999999999 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end

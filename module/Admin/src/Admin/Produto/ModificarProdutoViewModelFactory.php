@@ -9,7 +9,7 @@ class ModificarProdutoViewModelFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator) {
         return new ModificarProdutoViewModel(
             $serviceLocator->get('ProdutoManager'),
-            new ProdutoForm(),
+            new ProdutoForm($serviceLocator->get('config')['image_directory']),
             $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams()
         );
     }

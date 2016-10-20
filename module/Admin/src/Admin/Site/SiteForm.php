@@ -7,8 +7,12 @@ use Zend\InputFilter\Factory as InputFilterFactory;
 
 class SiteForm extends Form
 {
-    public function __construct()
+    protected $imageDirectory;
+
+    public function __construct($imageDirectory)
     {
+        $this->imageDirectory = $imageDirectory;
+
         parent::__construct('formSite');
 
         $this->setAttribute('method', 'POST');
@@ -21,7 +25,7 @@ class SiteForm extends Form
                 'type' => 'Hidden'
             )
         );
-        
+
         $this->add(
             array(
                 'name' => 'logoAntigo',
@@ -114,7 +118,7 @@ class SiteForm extends Form
                 ),
             )
         );
-        
+
         $inputFilterFactory = new InputFilterFactory();
         $this->setInputFilter($inputFilterFactory->createInputFilter(array(
             'id' => array(
@@ -159,7 +163,7 @@ class SiteForm extends Form
                     array(
                         'name' => '\Zend\Filter\File\RenameUpload',
                         'options' => array(
-                            'target'    => '/var/img/logo.png',
+                            'target'    => $this->imageDirectory . 'logo.png',
                             'overwrite' => true
                         )
                     )
@@ -209,7 +213,7 @@ class SiteForm extends Form
             ),
         )));
     }
-    
+
     public function setEntity(Site $site)
     {
         $this->get('id')->setValue($site->getId());

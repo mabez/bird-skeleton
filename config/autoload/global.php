@@ -1,2 +1,2 @@
 <?php
-return array();
+return array('image_directory' => __DIR__ . '/../../public/img/');

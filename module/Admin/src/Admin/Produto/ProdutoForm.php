@@ -12,11 +12,14 @@ class ProdutoForm extends Form
     private $entity = null;
     private $new = true;
     private $redirect = null;
+    protected $imageDirectory;
 
-    public function __construct()
+    public function __construct($imageDirectory)
     {
+        $this->imageDirectory = $imageDirectory;
+
         parent::__construct('formProduto');
-        
+
         $this->generateHeader();
         $this->generateId();
         $this->generateTitulo();
@@ -27,7 +30,7 @@ class ProdutoForm extends Form
         $this->generateSubmit();
         $this->generateAvancadoInfo();
         $this->generateInputFilter();
-        
+
     }
 
     private function generateHeader()
@@ -36,7 +39,7 @@ class ProdutoForm extends Form
         $this->setAttribute('accept-charset', 'UTF-8');
         $this->generateAction();
     }
-    
+
     private function generateAction()
     {
         $this->setAttribute('action', "/admin/produtos/salvar/{$this->redirect}");
@@ -50,10 +53,10 @@ class ProdutoForm extends Form
                 'type' => 'Hidden',
             )
         );
-    
+
         $this->setId();
     }
-    
+
     private function setId() {
         if ($this->entity instanceof Produto){
             $this->get('id')->setValue($this->entity->getId());
@@ -68,10 +71,10 @@ class ProdutoForm extends Form
                 'type' => 'Hidden',
             )
         );
-    
+
         $this->setImagemAntiga();
     }
-    
+
     private function setImagemAntiga() {
         if ($this->entity instanceof Produto){
             $this->get('imagem')->setLabel('<img src="/img/'.$this->entity->getImagem().'" height="100%">');
@@ -99,10 +102,10 @@ class ProdutoForm extends Form
                 )
             )
         );
-        
+
         $this->setId();
     }
-    
+
     private function setTitulo()
     {
         if ($this->entity instanceof Produto){
@@ -133,7 +136,7 @@ class ProdutoForm extends Form
                 )
             )
         );
-        
+
     }
 
     private function generatePreco()
@@ -156,10 +159,10 @@ class ProdutoForm extends Form
                 )
             )
         );
-        
+
         $this->setPreco();
     }
-    
+
     private function setPreco()
     {
         if ($this->entity instanceof Produto){
@@ -186,10 +189,10 @@ class ProdutoForm extends Form
                 )
             )
         );
-        
+
         $this->setDescricao();
     }
-    
+
     private function setDescricao()
     {
         if ($this->entity instanceof Produto){
@@ -219,7 +222,7 @@ class ProdutoForm extends Form
         $linkRemover = "/admin/produtos/remover/{$produtoId}/{$this->redirect}";
         $this->generateAvancado($linkRemover, 'buttonProdutoRemover');
     }
-    
+
     public function setRedirect($redirect)
     {
         $this->redirect = $redirect;
@@ -227,7 +230,7 @@ class ProdutoForm extends Form
         $this->generateAvancadoInfo();
         return $this;
     }
-    
+
     public function setEntity(Produto $entity) {
         $this->entity = $entity;
         $this->setId();
@@ -238,18 +241,18 @@ class ProdutoForm extends Form
         $this->generateAvancadoInfo();
         return $this;
     }
-    
+
     public function setNew($new)
     {
         $this->new = $new;
         $this->generateAvancadoInfo();
         return $this;
     }
-    
+
     private function generateInputFilter()
     {
         $inputFilterFactory = new InputFilterFactory();
-        
+
         $this->setInputFilter($inputFilterFactory->createInputFilter(array(
             'id' => array(
                 'name' => 'id',
@@ -293,7 +296,7 @@ class ProdutoForm extends Form
                     array(
                         'name' => '\Zend\Filter\File\RenameUpload',
                         'options' => array(
-                            'target'    => '/var/img/produto.png',
+                            'target'    => $this->imageDirectory . 'produto.png',
                             'randomize' => true,
                             'overwrite' =>true
                         )
