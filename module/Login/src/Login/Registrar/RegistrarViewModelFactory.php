@@ -1,14 +1,14 @@
 <?php
 namespace Login\Registrar;
 
-use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Authentication\AuthenticationService;
+use Acesso\AcessoViewModelFactory;
 
-class RegistrarViewModelFactory implements FactoryInterface
+class RegistrarViewModelFactory extends AcessoViewModelFactory
 {
     public function createService(ServiceLocatorInterface $serviceLocator) {
         return new RegistrarViewModel(
+            $this->getAcesso($serviceLocator),
             $serviceLocator->get('AutenticacaoManager'),
             new RegistrarForm()
         );

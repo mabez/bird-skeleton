@@ -2,13 +2,13 @@
 
 return array(
     'controllers' => array(
-        'invokables' => array(
-            'AdminProdutosController' => 'Admin\Produto\ProdutoController',
-            'AdminComprasController' => 'Admin\Compra\CompraController',
-            'AdminController' => 'Admin\AdminController',
-            'AdminPagamentoController' => 'Admin\Pagamento\PagamentoController',
-            'AdminSiteController' => 'Admin\Site\SiteController',
-            'AdminUsuariosController' => 'Admin\Usuario\UsuarioController'
+        'factories' => array(
+            'AdminProdutosController' => 'Admin\Produto\ProdutoControllerFactory',
+            'AdminComprasController' => 'Admin\Compra\CompraControllerFactory',
+            'AdminController' => 'Admin\AdminControllerFactory',
+            'AdminPagamentoController' => 'Admin\Pagamento\PagamentoControllerFactory',
+            'AdminSiteController' => 'Admin\Site\SiteControllerFactory',
+            'AdminUsuariosController' => 'Admin\Usuario\UsuarioControllerFactory'
         )
     )
 );

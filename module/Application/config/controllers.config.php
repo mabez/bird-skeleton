@@ -1,9 +1,9 @@
 <?php
 return array(
     'controllers' => array(
-        'invokables' => array(
-            'ProdutoController' => 'Application\Produto\ProdutoController',
-            'IndexController' => 'Application\Site\SiteController'
+        'factories' => array(
+            'ProdutoController' => 'Application\Produto\ProdutoControllerFactory',
+            'IndexController' => 'Application\Site\SiteControllerFactory'
         )
     )
 );

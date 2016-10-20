@@ -1,10 +1,10 @@
 <?php
 return array(
     'controllers' => array(
-        'invokables' => array(
-            'LoginController' => 'Login\LoginController',
-            'SairController' => 'Login\Sair\SairController',
-            'RegistrarController' => 'Login\Registrar\RegistrarController'
+        'factories' => array(
+            'LoginController' => 'Login\LoginControllerFactory',
+            'SairController' => 'Login\Sair\SairControllerFactory',
+            'RegistrarController' => 'Login\Registrar\RegistrarControllerFactory'
         )
     )
 );

@@ -6,23 +6,24 @@ use Produto\Produto;
 use Zend\View\Model\ViewModel;
 use Notificacao\Notificacao;
 use Notificacao\NotificacoesContainerTrait;
+use Admin\ModificarViewModelInterface;
 
 /**
  * Gerador da estrutura da página de administração de informações do produto
  */
-class ModificarProdutoViewModel extends ViewModel
+class ModificarProdutoViewModel extends ViewModel implements ModificarViewModelInterface
 {
     use NotificacoesContainerTrait;
-    
+
     const MESSAGE_UPDATE_SUCCESS = 'Produto #%s modificado com sucesso!';
     const MESSAGE_INSERT_SUCCESS = 'Produto #%s incluído com sucesso!';
     const MESSAGE_REMOVE_SUCCESS = 'Produto #%d removido com sucesso!';
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao modificar o anúncio #%s!';
     const MESSAGE_REMOVE_ERROR = 'Ocorreu um erro ao remover o produto #%s! Verifique se já não existe compra para esse produto.';
-    
+
     private $produtoManager;
     protected $form;
-    
+
     /**
      * Injeta as dependências
      * @param Produto\ProdutoManager $produtoManager
@@ -34,7 +35,7 @@ class ModificarProdutoViewModel extends ViewModel
         extract($params);
         if (!isset($produtoId)) $produtoId = null;
         if (!isset($redirect)) $redirect = null;
-        
+
         $produto = $produtoManager->getProduto($produtoId);
         $isNew = false;
         if (!($produto instanceof Produto)) {
@@ -53,7 +54,7 @@ class ModificarProdutoViewModel extends ViewModel
      * Obtem a descrição da página
      * @param string $id do produto que está sendo modificado (opcional)
      */
-    private function getDescricao($id = null)
+    public function getDescricao($id = null)
     {
         if ($id) {
             return 'Modificar o anúncio #'.$id;
@@ -72,20 +73,20 @@ class ModificarProdutoViewModel extends ViewModel
         try {
             $produto = new Produto();
             $produto->exchangeArray($array);
-    
+
             $id = $produto->getId();
             if ($id == 0) {
                 $messageSuccess = self::MESSAGE_INSERT_SUCCESS;
             } else {
                 $messageSuccess = self::MESSAGE_UPDATE_SUCCESS;
             }
-    
+
             $produto = $this->produtoManager->salvar($produto);
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, $messageSuccess, array($produto->getId())));
         } catch (\Exception $e) {
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, $e->getMessage(), array($id)));
         }
-        
+
         return true;
     }
 
@@ -99,13 +100,13 @@ class ModificarProdutoViewModel extends ViewModel
         try {
             $produto = new Produto();
             $produto->setId($id);
-    
+
             $this->produtoManager->remover($produto);
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, self::MESSAGE_REMOVE_SUCCESS, array($id)));
         } catch (\Exception $e) {
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_REMOVE_ERROR, array($id)));
         }
-        
+
         return true;
     }
 

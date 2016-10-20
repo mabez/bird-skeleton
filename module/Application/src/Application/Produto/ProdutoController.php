@@ -1,8 +1,7 @@
 <?php
-
 namespace Application\Produto;
 
-use Admin\Site\SiteController;
+use Application\Site\SiteController;
 
 class ProdutoController extends SiteController
 {
@@ -14,13 +13,13 @@ class ProdutoController extends SiteController
     {
         return $this->getViewModel()->setTemplate('produto/lista');
     }
-    
+
     /**
      * Obtem a Model da página de anúncios
      * @return ProdutosViewModel
      */
-    private function getViewModel()
+    protected function getViewModel()
     {
-        return $this->getServiceLocator()->get('ProdutosViewModel');
+        return $this->viewModel;
     }
 }

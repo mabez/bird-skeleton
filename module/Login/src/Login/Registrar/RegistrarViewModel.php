@@ -6,28 +6,30 @@ use Autenticacao\AutenticacaoManager;
 use Autenticacao\Autenticacao;
 use Notificacao\Notificacao;
 use Notificacao\NotificacoesContainerTrait;
-use Zend\View\Model\ViewModel;
+use Acesso\AcessoViewModel;
 
 /**
  * Gerador da estrutura da página de login
  */
-class RegistrarViewModel extends ViewModel
+class RegistrarViewModel extends AcessoViewModel
 {
     use NotificacoesContainerTrait;
-    
+
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao regitrar uma conta!';
     const MESSAGE_INSERT_SUCCESS = 'O login foi registrado com sucesso!';
-    
+
     private $autenticacaoManager;
     private $form;
 
     /**
      * Injeta dependências
+     * @param \Acesso\Acesso
      * @param \Autenticacao\AutenticacaoManager $autenticacaoManager
      * @param RegistrarForm $form
      */
-    public function __construct(AutenticacaoManager $autenticacaoManager, RegistrarForm $form)
+    public function __construct(Acesso $acesso, AutenticacaoManager $autenticacaoManager, RegistrarForm $form)
     {
+        parent::__construct($acesso);
         $this->autenticacaoManager = $autenticacaoManager;
         $this->form = $form;
         $this->variables['formulario'] = $form;
@@ -60,7 +62,7 @@ class RegistrarViewModel extends ViewModel
         } catch (\Exception $e) {
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR));
         }
-        
+
         return true;
     }
 }

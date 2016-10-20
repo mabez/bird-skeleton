@@ -35,28 +35,28 @@ class ExpressCheckout
             'BUTTONSOURCE' => $buttonSource,
             'SUBJECT' => $subject
         )));
-        
+
         $request->setMethod(Request::METHOD_POST);
-        
+
         $response = $this->client->send($request);
-        
+
         if ($response->isClientError()) {
             throw new ExpressCheckoutException($response->getContent(), $response->getStatusCode());
         }
-        
+
         $result = new ResultSet();
-        
+
         $content = $response->getBody();
-        
+
         parse_str($content);
-        
-        $result->setToken($TOKEN);
-        $result->setDateTime($TIMESTAMP);
-        $result->setCorrelationId($CORRELATIONID);
-        $result->setAck($ACK);
-        $result->setVersion($VERSION);
-        $result->setBuild($BUILD);
-        
+
+//         $result->setToken($TOKEN);
+//         $result->setDateTime($TIMESTAMP);
+//         $result->setCorrelationId($CORRELATIONID);
+//         $result->setAck($ACK);
+//         $result->setVersion($VERSION);
+//         $result->setBuild($BUILD);
+
         return $result;
     }
 
@@ -66,20 +66,20 @@ class ExpressCheckout
             'METHOD' => 'GetExpressCheckoutDetails',
             'TOKEN' => $token
         ));
-            
+
         $request->setMethod(Request::METHOD_POST);
-        
+
         $response = $this->client->send($request);
-        
+
         if ($response->isClientError()) {
             return false;
         }
-        
+
         $content = $response->getBody();
-        
+
         parse_str($content);
-        
-        return $result;
+
+        return $content;
     }
 
     public function doPayment()
@@ -96,15 +96,15 @@ class ExpressCheckout
         if (! isset($config['URL'])) {
             throw new ExpressCheckoutException(ExpressCheckoutException::CONFIG_PARAM_HOST_INVALID);
         }
-        
+
         if (! isset($config['USER'])) {
             throw new ExpressCheckoutException(ExpressCheckoutException::CONFIG_PARAM_USER_INVALID);
         }
-        
+
         if (! isset($config['PWD'])) {
             throw new ExpressCheckoutException(ExpressCheckoutException::CONFIG_PARAM_PWD_INVALID);
         }
-        
+
         if (! isset($config['SIGNATURE'])) {
             throw new ExpressCheckoutException(ExpressCheckoutException::CONFIG_PARAM_SIGNATURE_INVALID);
         }
@@ -146,7 +146,7 @@ class ExpressCheckout
                 $defaultParams[$key] = $param;
             }
         }
-        
+
         return $defaultParams;
     }
 
@@ -155,7 +155,7 @@ class ExpressCheckout
         if (is_array($content)) {
             $content = http_build_query($content);
         }
-        
+
         $request = new Request();
         $request->setUri($this->getUri());
         $headers = new Headers();
@@ -163,7 +163,7 @@ class ExpressCheckout
         $request->setHeaders($headers);
         $request->setVersion($this->getHttpVersion());
         $request->setContent($content);
-        
+
         return $request;
     }
 }

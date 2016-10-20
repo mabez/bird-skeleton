@@ -9,17 +9,17 @@ use Zend\View\Model\ViewModel;
 class AcessoViewModel extends ViewModel
 {
 
-    private $acesso;
+    protected $acesso;
 
     /**
      * Injeta dependências
-     * @param Acesso $acesso
+     * @param \Acesso\Acesso
      */
     public function __construct(Acesso $acesso)
     {
         $this->acesso = $acesso;
     }
-    
+
     /**
      * Verifica se o usuário autenticado pode acessar o recurso
      * @param string $resource
@@ -27,6 +27,9 @@ class AcessoViewModel extends ViewModel
      */
     public function podeAcessar($resource)
     {
+        if (! ($this->acesso instanceof Acesso)) {
+            throw new AcessoMalUsoException('Acesso\AcessoViewModel->acesso deve ser um instância de Acesso\Acesso');
+        }
         return $this->acesso->isRoleAtualAllowed($resource);
     }
 }

@@ -17,13 +17,13 @@ use Paypal\ExpressCheckout\PaymentRequest\LPaymentRequest;
  */
 class CompraViewModel extends ViewModel
 {
-    
+
     use NotificacoesContainerTrait;
 
     const MESSAGE_FINALIZADA_SUCCESS = 'A compra do item #%d foi efetuada com sucesso!';
 
     const MESSAGE_INTERNAL_ERROR = 'A compra do item #%d não aconteceu!';
-    
+
     const EVENT_COMPRA_FINALIZADA = 'compra.finalizada';
 
     private $compraManager;
@@ -34,7 +34,7 @@ class CompraViewModel extends ViewModel
 
     /**
      * Injeta dependências
-     * 
+     *
      * @param \Produto\ProdutoManager $compraManager
      * @param CompraForm $form
      */
@@ -45,7 +45,7 @@ class CompraViewModel extends ViewModel
         $this->form = $form;
         $this->eventManager = $eventManager;
         $this->expressCheckout = $expressCheckout;
-        
+
         extract($params);
         if (isset($produtoId)) {
             $this->variables['formulario'] = $form->setProdutoId($produtoId)->prepare();
@@ -55,7 +55,7 @@ class CompraViewModel extends ViewModel
 
     /**
      * Finaliza uma compra a partir de um array
-     * 
+     *
      * @param array $dados
      *            a ser salvo
      * @return array contendo as mensagens de sucesso ou erro.
@@ -67,16 +67,16 @@ class CompraViewModel extends ViewModel
             $dados['status_id'] = $statusFinalizada->getId();
             $compra = $this->hydrator->hydrate($dados, new Compra());
             $compra = $this->compraManager->salvar($compra);
-            
+
             $this->compraManager->preencherCompra($compra);
-            
+
             $paymentRequest = new PaymentRequest(0);
             $paymentRequest->setAmt($compra->getProduto()->getPreco()*$compra->getQuantidade());
             $paymentRequest->setCurrencyCode('BRL');
             $paymentRequest->setInvNum(1234);
             $paymentRequest->setItemAmt($compra->getProduto()->getPreco()*$compra->getQuantidade());
             $paymentRequest->setPaymentAction('SALE');
-            
+
             $lPaymentRequest = new LPaymentRequest();
             $lPaymentRequest->setAmt($compra->getProduto()->getPreco());
             $lPaymentRequest->setDesc($compra->getProduto()->getDescricao());
@@ -84,9 +84,9 @@ class CompraViewModel extends ViewModel
             $lPaymentRequest->setName($compra->getProduto()->getTitulo());
             $lPaymentRequest->setQty($compra->getQuantidade());
             $paymentRequest->addLPaymentRequest($lPaymentRequest);
-            
+
             $result = $this->expressCheckout->set($paymentRequest, 'http://localhost:8888', 'http://localhost:8888', 'BR_EC_EMPRESA', 'marcelbzrra@gmail.com');
-            
+
             $this->eventManager->trigger(self::EVENT_COMPRA_FINALIZADA, $this, $dados);
 
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, self::MESSAGE_FINALIZADA_SUCCESS, array(
@@ -98,10 +98,10 @@ class CompraViewModel extends ViewModel
                 $compra->getProdutoId()
             )));
         }
-        
+
         return true;
     }
-    
+
     /**
      * @param array $data
      * @return CompraViewModel
@@ -114,7 +114,7 @@ class CompraViewModel extends ViewModel
         $this->form->setData($data);
         return $this;
     }
-    
+
     /**
      * @return CompraForm
      */

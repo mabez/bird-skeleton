@@ -2,19 +2,22 @@
 namespace Admin\Compra;
 
 use Compra\CompraManager;
-use Zend\View\Model\ViewModel;
+use Acesso\AcessoViewModel;
+use Acesso\Acesso;
 
 /**
  * Gerador da estrutura da página de administração de compras
  */
-class CompraViewModel extends ViewModel
+class CompraViewModel extends AcessoViewModel
 {
     /**
      * Injeta dependências
+     * @param \Acesso\Acesso
      * @param \Compra\CompraManager $compraManager
      */
-    public function __construct(CompraManager $compraManager)
+    public function __construct(Acesso $acesso, CompraManager $compraManager)
     {
+        parent::__construct($acesso);
         $this->variables['pagina'] = array('descricao' => 'Relatório de compras.');
         $this->variables['compras'] = $compraManager->obterTodasCompras();
     }

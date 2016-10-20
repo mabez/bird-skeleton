@@ -2,10 +2,8 @@
 
 return array(
     'service_manager' => array(
-        'invokables' => array(
-           'PagamentoManager' => 'Pagamento\PagamentoManager'
-        ),
         'factories' => array(
+            'PagamentoManager' => 'Pagamento\PagamentoManagerFactory',
             'PagamentoRepository' => 'Pagamento\PagamentoRepositoryFactory'
         )
     )

@@ -3,19 +3,22 @@ namespace Application\Produto;
 
 use Produto\ProdutoManager;
 use \Iterator;
-use Zend\View\Model\ViewModel;
+use Acesso\AcessoViewModel;
+use Acesso\Acesso;
 
 /**
  * Gerador da estrutura da página de produtos
  */
-class ProdutosViewModel extends ViewModel
+class ProdutosViewModel extends AcessoViewModel
 {
     /**
      * Injeta dependências
+     * @param \Acesso\Acesso
      * @param \Produto\ProdutoManager $produtoManager
      */
-    public function __construct(ProdutoManager $produtoManager)
+    public function __construct(Acesso $acesso, ProdutoManager $produtoManager)
     {
+        parent::__construct($acesso);
         $this->generateVariablesByProdutosIterator(
             $produtoManager->obterTodos()
         );

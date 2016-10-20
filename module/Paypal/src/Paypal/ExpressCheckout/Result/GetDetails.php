@@ -1,12 +1,12 @@
 <?php
 namespace Paypal\ExpressCheckout\Result;
 
-use Paypal\ExpressCheckout\PaymentRequest\PaymentRequest;
+// use Paypal\ExpressCheckout\PaymentRequest\PaymentRequest;
 
 class GetDetails extends Result
 {
     protected $paymentRequests;
-    
+
     /**
      * @return array
      */

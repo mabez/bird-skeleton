@@ -1,6 +1,5 @@
 <?php
-namespace Admin\Usuario
-;
+namespace Admin\Usuario;
 
 use Autenticacao\AutenticacaoManager;
 use Autenticacao\Autenticacao;
@@ -8,23 +7,24 @@ use Acesso\Acesso;
 use Zend\View\Model\ViewModel;
 use Notificacao\NotificacoesContainerTrait;
 use Notificacao\Notificacao;
+use Admin\ModificarViewModelInterface;
 
 /**
  * Gerador da estrutura da página de administração de informações do usuário
  */
-class ModificarUsuarioViewModel extends ViewModel
+class ModificarUsuarioViewModel extends ViewModel implements ModificarViewModelInterface
 {
     use NotificacoesContainerTrait;
-    
+
     const MESSAGE_UPDATE_SUCCESS = 'Usuário #%s modificado com sucesso!';
     const MESSAGE_INSERT_SUCCESS = 'Usuário #%s incluído com sucesso!';
     const MESSAGE_REMOVE_SUCCESS = 'Usuário #%s removido com sucesso!';
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao modificar o usuário #%s!';
     const MESSAGE_REMOVE_INTERNAL_ERROR = 'Ocorreu um erro ao deletar o usuário #%s, verifique se ele já não possui compra!';
-    
+
     private $autenticacaoManager;
     protected $form;
-    
+
     /**
      * Injeta as dependências
      * @param \Autenticacao\AutenticacaoManager $autenticacaoManager
@@ -36,7 +36,7 @@ class ModificarUsuarioViewModel extends ViewModel
         extract($params);
         if (!isset($usuarioId)) $usuarioId = null;
         if (!isset($redirect)) $redirect = null;
-        
+
         $usuario = $autenticacaoManager->obterAutenticacaoBasica($usuarioId);
         $isNew = false;
         if (!($usuario instanceof Autenticacao)) {
@@ -59,7 +59,7 @@ class ModificarUsuarioViewModel extends ViewModel
      * Obtem a descrição da página
      * @param string $id do usuário que está sendo modificado (opcional)
      */
-    private function getDescricao($id = null)
+    public function getDescricao($id = null)
     {
         if ($id) {
             return 'Modificar o usuário #'.$id;
@@ -89,13 +89,13 @@ class ModificarUsuarioViewModel extends ViewModel
                 $perfilId = $this->autenticacaoManager->obterAutenticacaoBasica($id)->getPerfilId();
             }
             $usuario->setPerfilId($perfilId);
-            
+
             $usuario = $this->autenticacaoManager->salvar($usuario);
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_SUCESSO, $messageSuccess, array($usuario->getId())));
         } catch (\Exception $e) {
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($id)));
         }
-        
+
         return true;
     }
 
@@ -115,7 +115,7 @@ class ModificarUsuarioViewModel extends ViewModel
         } catch (\Exception $e) {
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_REMOVE_INTERNAL_ERROR, array($id)));
         }
-        
+
         return true;
     }
 

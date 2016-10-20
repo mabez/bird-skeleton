@@ -1,39 +1,26 @@
 <?php
 namespace Pagamento;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
+use Autenticacao\AutenticacaoManager;
 
-class PagamentoManager implements ServiceManagerAwareInterface
+class PagamentoManager
 {
-    private $serviceManager; 
+    private $repository;
+    private $autenticacaoManager;
 
-    /**
-     * Insere o serviceManager
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
-     * @see \Zend\ServiceManager\ServiceManagerAwareInterface::setServiceManager()
-     */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function __construct(PagamentoRepository $repository, AutenticacaoManager $autenticacaoManager)
     {
-        $this->serviceManager = $serviceManager;
+        $this->repository = $repository;
+        $this->autenticacaoManager = $autenticacaoManager;
     }
-    
-    /**
-     * Obtem o serviceManager
-     * @return \Zend\ServiceManager\ServiceManager
-     */
-    private function getServiceManager()
-    {
-        return $this->serviceManager;
-    }
-    
+
     /**
      * Obtem o Repository dessa entidade
      * @return PagamentoRepository
      */
     private function getRepository()
     {
-        return $this->getServiceManager()->get('PagamentoRepository');
+        return $this->repository;
     }
 
     /**
@@ -52,7 +39,7 @@ class PagamentoManager implements ServiceManagerAwareInterface
     {
         return $this->preencherLista($this->getRepository()->findAll());
     }
-    
+
     /**
      * Gera um lista completa de pagamentos
      * @param array $pagamentos
@@ -64,18 +51,18 @@ class PagamentoManager implements ServiceManagerAwareInterface
         foreach ($pagamentos as $pagamento) {
             $resultado[] = $pagamento->setAutenticacao($this->getAutenticacaoManager()->obterAutenticacaoBasica($pagamento->getAutenticacaoId()));
         }
-        
+
         return $resultado;
     }
-    
+
     /**
      * @return \Autenticacao\AutenticacaoManager
      */
     private function getAutenticacaoManager()
     {
-        return $this->getServiceManager()->get('AutenticacaoManager');
+        return $this->autenticacaoManager;
     }
-    
+
     public function obterValorTotalPagamentos()
     {
         return $this->getRepository()->sumValor()['sum'];

@@ -9,9 +9,9 @@ class SiteController extends AcessoController
 {
 
     use FlashMessagesContainerTrait;
-    
+
     protected $resource = 'admin-site';
-    
+
     /**
      * Mostra a página de administração das informações do site
      * @return AdminSiteViewModel
@@ -19,15 +19,6 @@ class SiteController extends AcessoController
     public function indexAction()
     {
         return $this->getViewModel()->setTemplate('admin/admin/site');
-    }
-
-    /**
-     * Obtem a ViewModel
-     * @return AdminSiteViewModel
-     */
-    private function getViewModel()
-    {
-        return $this->getServiceLocator()->get('AdminSiteViewModel');
     }
 
     /**

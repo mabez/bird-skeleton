@@ -3,22 +3,19 @@ namespace Login\Registrar;
 
 use Acesso\AcessoController;
 use Notificacao\FlashMessagesContainerTrait;
+use Login\LoginViewModel;
 
 class RegistrarController extends AcessoController
 {
     use FlashMessagesContainerTrait;
-    
+
     protected $resource = 'registrar';
-    
-    /**
-     * Obtem a ViewModel da página de registrar
-     *
-     * @return RegistrarViewModel
-     */
-    private function getViewModel()
-    {
-        return $this->serviceLocator->get('RegistrarViewModel');
-    }
+    protected $loginViewModel;
+
+	public function __construct(RegistrarViewModel $viewModel, LoginViewModel $loginViewModel) {
+        $this->viewModel = $viewModel;
+        $this->loginViewModel = $loginViewModel;
+	}
 
     /**
      * Mostra a página de registrar
@@ -27,8 +24,7 @@ class RegistrarController extends AcessoController
      */
     public function indexAction()
     {
-        $viewModel = $this->getViewModel();
-        return $viewModel->setTemplate('login/new');
+        return $this->getViewModel()->setTemplate('login/new');
     }
 
     /**
@@ -37,19 +33,18 @@ class RegistrarController extends AcessoController
      */
     public function registrarAction()
     {
-        $viewModel = $this->getViewModel();
-        $viewModel->getFormulario()->setData($this->params()->fromPost());
-        if ($viewModel->getFormulario()->isValid() && $viewModel->save()) {
+        $this->getViewModel()->getFormulario()->setData($this->params()->fromPost());
+        if ($this->getViewModel()->getFormulario()->isValid() && $this->getViewModel()->save()) {
             $redirect = $this->params()->fromPost('routeRedirect');
-            $this->getServiceLocator()->get('LoginViewModel')->validaLogin($viewModel->getFormulario()->getData());
-            $viewModel->getFormulario($redirect?$redirect:'site');
+            $this->loginViewModel->validaLogin($this->getViewModel()->getFormulario()->getData());
+            $this->getViewModel()->getFormulario($redirect?$redirect:'site');
         }
-        
-        $mensagens = $viewModel->getNotificacoes();
+
+        $mensagens = $this->getViewModel()->getNotificacoes();
         if ($mensagens) {
             $this->setFlashMessagesFromNotificacoes($mensagens);
         } else {
-            $this->setFlashMessagesFromNotificacoes($viewModel->getFormulario()->getMessages());
+            $this->setFlashMessagesFromNotificacoes($this->getViewModel()->getFormulario()->getMessages());
         }
         return $this->redirect()->toRoute('registrar');
     }

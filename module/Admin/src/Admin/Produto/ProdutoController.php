@@ -3,14 +3,14 @@
 namespace Admin\Produto;
 
 use Notificacao\FlashMessagesContainerTrait;
-use Acesso\AcessoController;
+use Admin\AbstractModificavelController;
 
-class ProdutoController extends AcessoController
+class ProdutoController extends AbstractModificavelController
 {
     use FlashMessagesContainerTrait;
-    
+
     protected $resource = 'admin-produto';
-    
+
     /**
      * Mostra a página de administração de anúncios
      * @return ProdutosViewModel
@@ -19,25 +19,7 @@ class ProdutoController extends AcessoController
     {
         return $this->getViewModel()->setTemplate('admin/produto/index');
     }
-    
-    /**
-     * Obtem a model da pagina de administração de produtos
-     * @return ProdutosViewModel
-     */
-    private function getViewModel()
-    {
-        return $this->getServiceLocator()->get('AdminProdutosViewModel');
-    }
 
-    /**
-     * Obtem a model da pagina de modificação do produto
-     * @return ProdutosViewModel
-     */
-    private function getModificarViewModel()
-    {
-        return $this->getServiceLocator()->get('AdminModificarProdutoViewModel');
-    }
-    
     /**
      * Mostra página de Modificação de anúncio
      * @return ModificarProdutoViewModel
@@ -46,7 +28,7 @@ class ProdutoController extends AcessoController
     {
         return $this->getModificarViewModel()->setTemplate('admin/produto/modificar');
     }
-    
+
     /**
      * Salva o produto com as informações enviadas por post
      */
@@ -75,7 +57,7 @@ class ProdutoController extends AcessoController
 
         return $this->redirect()->toRoute('site');
     }
-    
+
     /**
      * remove o produto identificado com o id passado po get
      */
@@ -83,13 +65,13 @@ class ProdutoController extends AcessoController
     {
         $id = $this->params('produtoId');
         $routeRedirect = $this->params('routeRedirect');
-        
+
         $this->getModificarViewModel()->remove($id);
         $this->setFlashMessagesFromNotificacoes($this->getModificarViewModel()->getNotificacoes());
         if (!$routeRedirect) {
             return $this->redirect()->toRoute('admin-produto');
         }
-        
+
         return $this->redirect()->toRoute($routeRedirect);
     }
 }

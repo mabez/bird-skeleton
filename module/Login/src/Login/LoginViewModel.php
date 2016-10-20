@@ -5,16 +5,17 @@ use Autenticacao\Autenticacao;
 use Autenticacao\AutenticacaoManager;
 use Notificacao\Notificacao;
 use Notificacao\NotificacoesContainerTrait;
-use Zend\View\Model\ViewModel;
 use Zend\Authentication\AuthenticationService;
+use Acesso\AcessoViewModel;
+use Acesso\Acesso;
 
 /**
  * Gerador da estrutura da página de login
  */
-class LoginViewModel extends ViewModel
+class LoginViewModel extends AcessoViewModel
 {
     use NotificacoesContainerTrait;
-    
+
     const MENSAGEM_ERRO_LOGIN_INVALIDO = 'Usuario ou senha inválidos.';
 
     private $authenticationService;
@@ -23,11 +24,13 @@ class LoginViewModel extends ViewModel
 
     /**
      * Injeta dependências
+     * @param \Acesso\Acesso
      * @param \AutenticacaoManager $autenticacaoManager
      * @param LoginForm $form
      */
-    public function __construct(AuthenticationService $authenticationService, AutenticacaoManager $autenticacaoManager, LoginForm $form)
+    public function __construct(Acesso $acesso, AuthenticationService $authenticationService, AutenticacaoManager $autenticacaoManager, LoginForm $form)
     {
+        parent::__construct($acesso);
         $this->authenticationService = $authenticationService;
         $this->autenticacaoManager = $autenticacaoManager;
         $this->form = $form;
@@ -80,7 +83,7 @@ class LoginViewModel extends ViewModel
 
         return false;
     }
-    
+
     public function limparAutenticacao()
     {
         $this->authenticationService->clearIdentity();

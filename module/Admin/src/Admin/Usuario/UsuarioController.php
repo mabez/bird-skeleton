@@ -2,15 +2,15 @@
 
 namespace Admin\Usuario;
 
-use Acesso\AcessoController;
 use Notificacao\FlashMessagesContainerTrait;
+use Admin\AbstractModificavelController;
 
-class UsuarioController extends AcessoController
+class UsuarioController extends AbstractModificavelController
 {
     use FlashMessagesContainerTrait;
-    
+
     protected $resource = 'admin-usuario';
-    
+
     /**
      * Mostra a página de administração de usuários
      * @return AdminUsuarioViewModel
@@ -19,25 +19,7 @@ class UsuarioController extends AcessoController
     {
         return $this->getViewModel()->setTemplate('admin/usuario/index');
     }
-    
-    /**
-     * Obtem a model da pagina de administração de usuários
-     * @return AdminUsuarioViewModel
-     */
-    private function getViewModel()
-    {
-        return $this->getServiceLocator()->get('AdminUsuarioViewModel');
-    }
 
-    /**
-     * Obtem a model da pagina de modificação do usuário
-     * @return AdminModificarUsuarioViewModel
-     */
-    private function getModificarViewModel()
-    {
-        return $this->getServiceLocator()->get('AdminModificarUsuarioViewModel');
-    }
-    
     /**
      * Mostra página de Modificação de usuário
      * @return AdminModificarUsuarioViewModel
@@ -46,7 +28,7 @@ class UsuarioController extends AcessoController
     {
         return $this->getModificarViewModel()->setTemplate('admin/usuario/modificar');
     }
-    
+
     /**
      * Salva o usuário com as informações enviadas por post
      */
@@ -71,7 +53,7 @@ class UsuarioController extends AcessoController
 
         return $this->redirect()->toRoute($routeRedirect);
     }
-    
+
     /**
      * remove o usuario identificado com o id passado po get
      */
@@ -79,13 +61,13 @@ class UsuarioController extends AcessoController
     {
         $id = $this->params('usuarioId');
         $routeRedirect = $this->params('routeRedirect');
-        
+
         $this->getModificarViewModel()->remove($id);
         $this->setFlashMessagesFromNotificacoes($this->getModificarViewModel()->getNotificacoes());
         if (!$routeRedirect) {
             return $this->redirect()->toRoute('admin-usuario');
         }
-        
+
         return $this->redirect()->toRoute($routeRedirect);
     }
 }
