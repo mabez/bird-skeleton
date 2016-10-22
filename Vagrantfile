@@ -7,9 +7,14 @@ VAGRANTFILE_API_VERSION = '2'
 DOCUMENT_ROOT_ZEND="/var/www/bird-skeleton/public"
 
 echo "configurando o servidor...\n";
+
 apt-get update
-apt-get install -y apache2 git curl php5-cli php5 php5-intl libapache2-mod-php5
-apt-get -y install postgresql php5-pgsql 
+apt-get install -y language-pack-en-base
+LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
+apt-get update
+
+apt-get -y install apache2 git curl php7.0 php7.0-mysql php7.0-mbstring php7.0-dom php7.0-libsodium zip unzip
+apt-get -y install postgresql php7.0-pgsql 
 apt-get install -y expect
 
 echo "criando o banco de dados...\n";
