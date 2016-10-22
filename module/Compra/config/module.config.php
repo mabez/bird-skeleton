@@ -2,12 +2,10 @@
 
 return array(
     'service_manager' => array(
-        'invokables' => array(
-           'CompraManager' => 'Compra\CompraManager',
-           'CompraStatusManager' => 'Compra\Status\StatusManager'
-        ),
         'factories' => array(
+           'CompraManager' => 'Compra\CompraManagerFactory',
             'CompraRepository' => 'Compra\CompraRepositoryFactory',
+            'CompraStatusManager' => 'Compra\Status\StatusManagerFactory',
             'CompraStatusRepository' => 'Compra\Status\StatusRepositoryFactory'
         )
     )

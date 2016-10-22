@@ -1,8 +1,9 @@
 <?php
-namespace Application\Produto;
+namespace ApplicationFactory\Produto;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Acesso\AcessoViewModelFactory;
+use Application\Produto\ProdutosViewModel;
+use AcessoFactory\AcessoViewModelFactory;
 
 class ProdutosViewModelFactory extends AcessoViewModelFactory
 {

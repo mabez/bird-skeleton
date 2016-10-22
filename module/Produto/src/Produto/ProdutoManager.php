@@ -1,39 +1,26 @@
 <?php
 namespace Produto;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
-
-class ProdutoManager implements ServiceManagerAwareInterface
+class ProdutoManager
 {
-    private $serviceManager; 
+    private $repository;
 
     /**
-     * Insere o serviceManager
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
-     * @see \Zend\ServiceManager\ServiceManagerAwareInterface::setServiceManager()
+     *
+     * @param ProdutoRepository $repository
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function __construct(ProdutoRepository $repository)
     {
-        $this->serviceManager = $serviceManager;
+        $this->repository = $repository;
     }
-    
-    /**
-     * Obtem o serviceManager
-     * @return \Zend\ServiceManager\ServiceManager
-     */
-    private function getServiceManager()
-    {
-        return $this->serviceManager;
-    }
-    
+
     /**
      * Obtem o Repository dessa entidade
      * @return ProdutoRepository
      */
     private function getRepository()
     {
-        return $this->getServiceManager()->get('ProdutoRepository');
+        return $this->repository;
     }
 
     /**
@@ -54,7 +41,7 @@ class ProdutoManager implements ServiceManagerAwareInterface
     {
         return $this->getRepository()->findById($id);
     }
-    
+
     /**
      * Salva o anúncio passado por parâmetro
      * @param Produto $produto
@@ -63,7 +50,7 @@ class ProdutoManager implements ServiceManagerAwareInterface
     {
         return $this->getRepository()->save($produto);
     }
-    
+
     /**
      * Remove o produto passado por parâmetro
      * @param Produto $produto

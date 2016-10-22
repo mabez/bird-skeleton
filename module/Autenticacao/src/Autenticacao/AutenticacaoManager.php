@@ -1,30 +1,24 @@
 <?php
 namespace Autenticacao;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
-
-class AutenticacaoManager implements ServiceManagerAwareInterface
+use Autenticacao\Perfil\PerfilManager;
+class AutenticacaoManager
 {
-    private $serviceManager; 
+    private $repository;
+    private $adapter;
+    private $perfilManager;
 
     /**
-     * Insere o serviceManager
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
-     * @see \Zend\ServiceManager\ServiceManagerAwareInterface::setServiceManager()
+     *
+     * @param AutenticacaoRepository $repository
+     * @param AutenticacaoAdapter $adapter
+     * @param PerfilManager $perfilManager
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function __construct(AutenticacaoRepository $repository, AutenticacaoAdapter $adapter, PerfilManager $perfilManager)
     {
-        $this->serviceManager = $serviceManager;
-    }
-    
-    /**
-     * Obtem o serviceManager
-     * @return \Zend\ServiceManager\ServiceManager
-     */
-    private function getServiceManager()
-    {
-        return $this->serviceManager;
+        $this->repository = $repository;
+        $this->adapter = $adapter;
+        $this->perfilManager = $perfilManager;
     }
 
     /**
@@ -33,7 +27,16 @@ class AutenticacaoManager implements ServiceManagerAwareInterface
      */
     private function getRepository()
     {
-        return $this->getServiceManager()->get('AutenticacaoRepository');
+        return $this->repository;
+    }
+
+    /**
+     * Obtem o adapter de autenticacao
+     * @return AutenticacaoAdapter
+     */
+    private function getAdapter()
+    {
+        return $this->adapter;
     }
 
     /**
@@ -42,7 +45,7 @@ class AutenticacaoManager implements ServiceManagerAwareInterface
      */
     public function getPerfilManager()
     {
-        return $this->getServiceManager()->get('PerfilManager');
+        return $this->perfilManager;
     }
 
     /**
@@ -63,30 +66,18 @@ class AutenticacaoManager implements ServiceManagerAwareInterface
     {
         return $this->getRepository()->findAll();
     }
-    
-    /**
-     * Econtra Autenticacao trazendo todos os relacionamentos a partir do usuario e senha
-     * @param string $usuario
-     * @param string $senha
-     * @return Autenticacao
-     */
-    public function obterAutenticacaoCompleta($usuario, $senha)
-    {
-        $autenticacao = $this->getRepository()->findByUsuarioSenha($usuario, $senha);
-        return $autenticacao ? $autenticacao->setPerfil($this->getPerfilManager()->obterPerfil($autenticacao->getPerfilId())): null;
-    }
-    
+
     /**
      * @param Autenticacao $autenticacao
      * @return \Zend\Authentication\Result
      */
     public function autenticar(Autenticacao $autenticacao)
     {
-        return $this->getServiceManager()->get('AutenticacaoAdapter')
+        return $this->getAdapter()
             ->setAutenticacao($autenticacao)
             ->authenticate();
     }
-    
+
     /**
      * Salva a Autenticacao passado por parâmetro
      * @param Autenticacao $autenticacao
@@ -96,8 +87,7 @@ class AutenticacaoManager implements ServiceManagerAwareInterface
         try{
             return $this->getRepository()
                 ->save(
-                    $this->getServiceManager()
-                        ->get('AutenticacaoAdapter')
+                    $this->getAdapter()
                         ->setAutenticacao($autenticacao)
                         ->getPreparedAutenticacao()
                 );
@@ -105,7 +95,7 @@ class AutenticacaoManager implements ServiceManagerAwareInterface
             var_dump($e->getMessage().' '.$e->getTraceAsString());die;
         }
     }
-    
+
     /**
      * Remove a autenticacao passada por parâmetro
      * @param Autenticacao $autenticacao

@@ -1,39 +1,26 @@
 <?php
 namespace Site;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
-
-class SiteManager implements ServiceManagerAwareInterface
+class SiteManager
 {
-    private $serviceManager; 
-    
+    private $repository;
+
     /**
-     * Insere o serviceManager
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
-     * @see \Zend\ServiceManager\ServiceManagerAwareInterface::setServiceManager()
+     *
+     * @param SiteRepository $repository
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function __construct(SiteRepository $repository)
     {
-        $this->serviceManager = $serviceManager;
+        $this->repository = $repository;
     }
-    
-    /**
-     * Obtem o serviceManager
-     * @return \Zend\ServiceManager\ServiceManager
-     */
-    private function getServiceManager()
-    {
-        return $this->serviceManager;
-    }
-    
+
     /**
      * Obtem o Repository dessa entidade
      * @return SiteRepository
      */
     private function getRepository()
     {
-        return $this->getServiceManager()->get('SiteRepository');
+        return $this->repository;
     }
 
     /**
@@ -44,7 +31,7 @@ class SiteManager implements ServiceManagerAwareInterface
     {
         return $this->getRepository()->findFirst();
     }
-    
+
     /**
      * Salva o site passado por parâmetro
      * @param Site $site

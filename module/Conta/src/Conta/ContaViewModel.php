@@ -1,17 +1,19 @@
 <?php
 namespace Conta;
 
-use Zend\View\Model\ViewModel;
+use Acesso\AcessoViewModel;
+use Acesso\Acesso;
 
 /**
  * Gerador da estrutura da página de conta
  */
-class ContaViewModel extends ViewModel
+class ContaViewModel extends AcessoViewModel
 {
     protected $mensagens = array();
 
-    public function __construct()
+    public function __construct(Acesso $acesso)
     {
+        parent::__construct($acesso);
         $this->setTituloPagina('Minha Conta');
     }
 

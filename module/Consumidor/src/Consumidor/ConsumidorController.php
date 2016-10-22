@@ -4,12 +4,23 @@ namespace Consumidor;
 
 use Acesso\AcessoController;
 use Notificacao\FlashMessagesContainerTrait;
+use Acesso\AcessoViewModel;
+use Consumidor\Compra\CompraViewModel;
 
 class ConsumidorController extends AcessoController
 {
     use FlashMessagesContainerTrait;
-    
+
     protected $resource = 'comprar';
+    protected $compraViewModel;
+    protected $autenticacaoId;
+
+    public function __construct(AcessoViewModel $viewModel, CompraViewModel $compraViewModel, $autenticacaoId)
+    {
+        parent::__construct($viewModel);
+        $this->compraViewModel = $compraViewModel;
+        $this->autenticacaoId = $autenticacaoId;
+    }
 
     /**
      * Ação de comprar um produto
@@ -17,14 +28,13 @@ class ConsumidorController extends AcessoController
      */
     public function executarCompraAction()
     {
-        $callbackIdentificacaoId = $this->getServiceLocator()->get("ViewHelperManager")->get('identificacaoId');
         $params = array_merge_recursive(
             $this->params()->fromPost(),
             array(
-                'autenticacao_id' => $callbackIdentificacaoId()
+                'autenticacao_id' => $this->autenticacaoId
             )
         );
-        
+
         $routeRedirect = $this->params('routeRedirect');
         $this->getCompraViewModel()->setPreparedData($params);
 
@@ -35,14 +45,14 @@ class ConsumidorController extends AcessoController
             $this->setFlashMessagesFromNotificacoes($this->getCompraViewModel()->getForm()->getMessages());
             $routeRedirect = null;
         }
-        
+
         if (!$routeRedirect) {
             return $this->redirect()->toRoute('site');
         }
-        
+
         return $this->redirect()->toRoute($routeRedirect);
     }
-    
+
     public function comprarAction()
     {
         return $this->getCompraViewModel()->setTemplate('comprar/index');
@@ -53,6 +63,6 @@ class ConsumidorController extends AcessoController
      */
     private function getCompraViewModel()
     {
-        return $this->getServiceLocator()->get('CompraViewModel');
+        return $this->compraViewModel;
     }
 }

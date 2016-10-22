@@ -4,12 +4,12 @@ namespace Autenticacao;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class AutenticacaoAdapterFactory implements FactoryInterface
+class AutenticacaoManagerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator) {
-        return new AutenticacaoAdapter(
+        return new AutenticacaoManager(
             $serviceLocator->get('AutenticacaoRepository'),
-            $serviceLocator->get('IdentificacaoGenerator'),
+            $serviceLocator->get('AutenticacaoAdapter'),
             $serviceLocator->get('PerfilManager')
         );
     }

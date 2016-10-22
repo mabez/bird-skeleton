@@ -2,9 +2,9 @@
 
 return array(
     'controllers' => array(
-        'invokables' => array(
-            'ContaComprasController' => 'Conta\Compra\CompraController',
-            'ContaRegistroController' => 'Conta\Registro\RegistroController'
+        'factories' => array(
+            'ContaComprasController' => 'Conta\Compra\CompraControllerFactory',
+            'ContaRegistroController' => 'Conta\Registro\RegistroControllerFactory'
         )
     )
 );

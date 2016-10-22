@@ -8,17 +8,8 @@ use Notificacao\FlashMessagesContainerTrait;
 class RegistroController extends AcessoController
 {
     use FlashMessagesContainerTrait;
-    
+
     protected $resource = 'conta-registro';
-    
-    /**
-     * Obtem a model da pagina de gerenciamento do registro da conta
-     * @return ContaRegistroViewModel
-     */
-    private function getViewModel()
-    {
-        return $this->getServiceLocator()->get('ContaRegistroViewModel');
-    }
 
     /**
      * Mostra página de Modificação de registro de conta

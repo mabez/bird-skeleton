@@ -2,7 +2,7 @@
 namespace Login\Registrar;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Acesso\AcessoViewModelFactory;
+use AcessoFactory\AcessoViewModelFactory;
 
 class RegistrarViewModelFactory extends AcessoViewModelFactory
 {

@@ -1,12 +1,12 @@
 <?php
-namespace Application\Site;
+namespace Conta\Compra;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class SiteControllerFactory implements FactoryInterface
+class CompraControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator) {
-        return new SiteController($serviceLocator->getServiceLocator()->get('AcessoViewModel'));
+        return new CompraController($serviceLocator->getServiceLocator()->get('ContaCompraViewModel'));
     }
 }

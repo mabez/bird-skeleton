@@ -6,11 +6,9 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
-        'invokables' => array(
-            'SiteManager' => 'Site\SiteManager',
-        ),
         'factories' => array(
+            'SiteManager' => 'Site\SiteManagerFactory',
             'SiteRepository' => 'Site\SiteRepositoryFactory'
         )
-    ),
+    )
 );

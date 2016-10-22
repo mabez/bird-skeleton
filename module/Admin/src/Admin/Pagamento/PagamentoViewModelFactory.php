@@ -2,7 +2,7 @@
 namespace Admin\Pagamento;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Acesso\AcessoViewModelFactory;
+use AcessoFactory\AcessoViewModelFactory;
 
 class PagamentoViewModelFactory extends AcessoViewModelFactory
 {

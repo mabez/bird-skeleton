@@ -3,7 +3,7 @@ namespace Admin\Site;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Session\Container;
-use Acesso\AcessoViewModelFactory;
+use AcessoFactory\AcessoViewModelFactory;
 
 class SiteViewModelFactory extends AcessoViewModelFactory
 {

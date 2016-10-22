@@ -1,14 +1,15 @@
 <?php
 namespace Conta\Registro;
 
-use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Authentication\AuthenticationService;
+use AcessoFactory\AcessoViewModelFactory;
 
-class RegistroViewModelFactory implements FactoryInterface
+class RegistroViewModelFactory extends AcessoViewModelFactory
 {
     public function createService(ServiceLocatorInterface $serviceLocator) {
         return new RegistroViewModel(
+            $this->getAcesso($serviceLocator),
             new AuthenticationService(),
             $serviceLocator->get('AutenticacaoManager'),
             new RegistroForm(),

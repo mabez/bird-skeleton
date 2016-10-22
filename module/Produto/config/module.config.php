@@ -2,10 +2,8 @@
 
 return array(
     'service_manager' => array(
-        'invokables' => array(
-            'ProdutoManager' => 'Produto\ProdutoManager',
-        ),
         'factories' => array(
+            'ProdutoManager' => 'Produto\ProdutoManagerFactory',
             'ProdutoRepository' => 'Produto\ProdutoRepositoryFactory'
         )
     )

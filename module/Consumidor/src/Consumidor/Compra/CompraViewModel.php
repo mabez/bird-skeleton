@@ -46,8 +46,9 @@ class CompraViewModel extends ViewModel
         $this->eventManager = $eventManager;
         $this->expressCheckout = $expressCheckout;
 
+        $produtoId = false;
         extract($params);
-        if (isset($produtoId)) {
+        if ($produtoId) {
             $this->variables['formulario'] = $form->setProdutoId($produtoId)->prepare();
             $this->variables['produto'] = $compraManager->getProdutoManager()->getProduto($produtoId);
         }

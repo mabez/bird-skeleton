@@ -15,14 +15,14 @@ use Notificacao\NotificacoesContainerTrait;
 class RegistroViewModel extends ContaViewModel
 {
     use NotificacoesContainerTrait;
-    
+
     const MESSAGE_UPDATE_SUCCESS = 'Dados modificados com sucesso!';
     const MESSAGE_INTERNAL_ERROR = 'Ocorreu um erro ao salvar os dados!';
-    
+
     private $autenticacaoManager;
     protected $form;
     protected $usuario;
-    
+
     /**
      * Injeta as dependências
      * @param \Zend\Authentication\AuthenticationService $authentication
@@ -30,12 +30,12 @@ class RegistroViewModel extends ContaViewModel
      * @param RegistroForm $form
      * @param mixed $params
      */
-    public function __construct(AuthenticationService $authentication, AutenticacaoManager $autenticacaoManager, RegistroForm $form, $params = array())
+    public function __construct(Acesso $acesso, AuthenticationService $authentication, AutenticacaoManager $autenticacaoManager, RegistroForm $form, $params = array())
     {
-        parent::__construct();
+        parent::__construct($acesso);
         extract($params);
         if (!isset($redirect)) $redirect = null;
-        
+
         $this->usuario = $authentication->getIdentity();
         $this->setDescricaoPagina('Modificando meus dados.');
         $form->setEntity($this->usuario);
@@ -64,7 +64,7 @@ class RegistroViewModel extends ContaViewModel
         } catch (\Exception $e) {
             $this->addNotificacao(new Notificacao(Notificacao::TIPO_ERRO, self::MESSAGE_INTERNAL_ERROR, array($usuario->getId())));
         }
-        
+
         return true;
     }
 

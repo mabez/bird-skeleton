@@ -3,7 +3,7 @@ namespace Login;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Authentication\AuthenticationService;
-use Acesso\AcessoViewModelFactory;
+use AcessoFactory\AcessoViewModelFactory;
 
 class LoginViewModelFactory extends AcessoViewModelFactory
 {

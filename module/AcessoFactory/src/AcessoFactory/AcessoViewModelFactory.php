@@ -1,9 +1,11 @@
 <?php
-namespace Acesso;
+namespace AcessoFactory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Authentication\AuthenticationService;
+use Acesso\Acesso;
+use Acesso\AcessoViewModel;
 
 class AcessoViewModelFactory implements FactoryInterface
 {

@@ -1,39 +1,26 @@
 <?php
 namespace Autenticacao\Perfil;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
-
-class PerfilManager implements ServiceManagerAwareInterface
+class PerfilManager
 {
-    private $serviceManager; 
+    private $repository;
 
     /**
-     * Insere o serviceManager
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
-     * @see \Zend\ServiceManager\ServiceManagerAwareInterface::setServiceManager()
+     *
+     * @param PerfilRepository $repository
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function __construct(PerfilRepository $repository)
     {
-        $this->serviceManager = $serviceManager;
+        $this->repository = $repository;
     }
-    
-    /**
-     * Obtem o serviceManager
-     * @return \Zend\ServiceManager\ServiceManager
-     */
-    private function getServiceManager()
-    {
-        return $this->serviceManager;
-    }
-    
+
     /**
      * Obtem o Repository dessa entidade
      * @return PerfilRepository
      */
     private function getRepository()
     {
-        return $this->getServiceManager()->get('PerfilRepository');
+        return $this->repository;
     }
 
     /**

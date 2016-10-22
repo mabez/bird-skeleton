@@ -1,40 +1,40 @@
 <?php
 namespace Compra;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
 use \Iterator;
+use Compra\Status\StatusManager;
+use Produto\ProdutoManager;
+use Autenticacao\AutenticacaoManager;
 
-class CompraManager implements ServiceManagerAwareInterface
+class CompraManager
 {
-    private $serviceManager; 
+    private $repository;
+    private $statusManager;
+    private $produtoManager;
+    private $autenticacaoManager;
 
     /**
-     * Insere o serviceManager
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
-     * @see \Zend\ServiceManager\ServiceManagerAwareInterface::setServiceManager()
+     *
+     * @param CompraRepository $repository
+     * @param StatusManager $statusManager
+     * @param ProdutoManager $produtoManager
+     * @param AutenticacaoManager $autenticacaoManager
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function __construct(CompraRepository $repository, StatusManager $statusManager, ProdutoManager $produtoManager, AutenticacaoManager $autenticacaoManager)
     {
-        $this->serviceManager = $serviceManager;
+        $this->repository = $repository;
+        $this->statusManager = $statusManager;
+        $this->produtoManager = $produtoManager;
+        $this->autenticacaoManager = $autenticacaoManager;
     }
-    
-    /**
-     * Obtem o serviceManager
-     * @return \Zend\ServiceManager\ServiceManager
-     */
-    private function getServiceManager()
-    {
-        return $this->serviceManager;
-    }
-    
+
     /**
      * Obtem o Repository dessa entidade
      * @return CompraRepository
      */
     private function getRepository()
     {
-        return $this->getServiceManager()->get('CompraRepository');
+        return $this->repository;
     }
 
     /**
@@ -45,7 +45,7 @@ class CompraManager implements ServiceManagerAwareInterface
     {
         return $this->getRepository()->save($compra);
     }
-    
+
     /**
      * Obtem todas as compras registradas
      */
@@ -53,7 +53,7 @@ class CompraManager implements ServiceManagerAwareInterface
     {
         return $this->generateListByIterator($this->getRepository()->findAll());
     }
-    
+
     /**
      * Gera um lista completa de compras a partir de um iterator
      * @param Iterator $iterator
@@ -64,10 +64,10 @@ class CompraManager implements ServiceManagerAwareInterface
         foreach ($iterator as $compra) {
             $resultado[] = $this->preencherCompra($compra);
         }
-        
+
         return $resultado;
     }
-    
+
     /**
      * Obtem todas as compra relacionadas a autenticacao informada
      * @param int $autentcacaoId
@@ -76,21 +76,21 @@ class CompraManager implements ServiceManagerAwareInterface
     {
         return $this->generateListByIterator($this->getRepository()->findAllByAutenticacaoId($autentcacaoId));
     }
-    
+
     /**
      * @return \Produto\ProdutoManager
      */
     public function getProdutoManager()
     {
-        return $this->getServiceManager()->get('ProdutoManager');
+        return $this->produtoManager;
     }
-    
+
     /**
      * @return \Autenticacao\AutenticacaoManager
      */
     private function getAutenticacaoManager()
     {
-        return $this->getServiceManager()->get('AutenticacaoManager');
+        return $this->autenticacaoManager;
     }
 
     /**
@@ -121,6 +121,6 @@ class CompraManager implements ServiceManagerAwareInterface
      */
     public function getStatusManager()
     {
-        return $this->getServiceManager()->get('CompraStatusManager');
+        return $this->statusManager;
     }
 }

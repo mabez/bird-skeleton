@@ -2,7 +2,7 @@
 namespace Admin;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Acesso\AcessoViewModelFactory;
+use AcessoFactory\AcessoViewModelFactory;
 
 class AdminViewModelFactory extends AcessoViewModelFactory
 {

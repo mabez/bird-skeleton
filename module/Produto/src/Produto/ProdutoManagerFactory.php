@@ -1,12 +1,12 @@
 <?php
-namespace Acesso;
+namespace Produto;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class AcessoControllerFactory implements FactoryInterface
+class ProdutoManagerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator) {
-        return new AcessoController($serviceLocator->getServiceLocator()->get('AcessoViewModel'));
+        return new ProdutoManager($serviceLocator->get('ProdutoRepository'));
     }
 }

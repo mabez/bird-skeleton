@@ -2,3 +2,8 @@ vendor
 composer.lock
 deployment.*
 .vagrant
+.buildpath
+.project
+.settings/*
+public/img/*
+data/cache/twig/*

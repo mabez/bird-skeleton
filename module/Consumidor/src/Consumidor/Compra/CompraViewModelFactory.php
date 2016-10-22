@@ -13,7 +13,7 @@ class CompraViewModelFactory implements FactoryInterface
             new CompraForm(),
             new ArraySerializable(),
             $serviceLocator->get('Application')->getMvcEvent()->getApplication()->getEventManager(),
-            $serviceLocator->get('ExpressCheckout'),
+            $serviceLocator->get('ConsumidorExpressCheckout'),
             $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams()
         );
     }

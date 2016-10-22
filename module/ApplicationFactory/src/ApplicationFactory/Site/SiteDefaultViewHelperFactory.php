@@ -1,9 +1,10 @@
 <?php
-namespace Application\Site;
+namespace ApplicationFactory\Site;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Session\Container;
+use Application\Site\SiteDefaultViewHelper;
 
 class SiteDefaultViewHelperFactory implements FactoryInterface
 {

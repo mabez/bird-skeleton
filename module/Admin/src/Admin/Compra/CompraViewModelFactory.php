@@ -2,7 +2,7 @@
 namespace Admin\Compra;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Acesso\AcessoViewModelFactory;
+use AcessoFactory\AcessoViewModelFactory;
 
 class CompraViewModelFactory extends AcessoViewModelFactory
 {

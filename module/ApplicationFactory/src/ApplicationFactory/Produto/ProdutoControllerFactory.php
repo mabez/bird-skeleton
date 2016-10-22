@@ -1,8 +1,9 @@
 <?php
-namespace Application\Produto;
+namespace ApplicationFactory\Produto;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Application\Produto\ProdutoController;
 
 class ProdutoControllerFactory implements FactoryInterface
 {

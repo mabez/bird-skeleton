@@ -3,8 +3,10 @@
 return array(
     'modules' => array(
         'Acesso',
+        'AcessoFactory',
         'Admin',
         'Application',
+        'ApplicationFactory',
         'Autenticacao',
         'AvancadoForm',
         'Compra',

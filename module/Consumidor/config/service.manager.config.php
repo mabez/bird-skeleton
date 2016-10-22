@@ -2,8 +2,9 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'CompraViewModel' => 'Consumidor\Compra\CompraViewModelFactory',
-            'ExpressCheckout' => 'Consumidor\Paypal\ExpressCheckoutFactory'
+            'ConsumidorCompraViewModel' => 'Consumidor\Compra\CompraViewModelFactory',
+            'ConsumidorExpressCheckout' => 'Consumidor\Paypal\ExpressCheckoutFactory',
+            'ConsumidorViewModel' => 'Acesso\AcessoViewModelFactory'
         )
     )
 );

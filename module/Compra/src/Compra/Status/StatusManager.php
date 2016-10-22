@@ -1,41 +1,28 @@
 <?php
 namespace Compra\Status;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
-
-class StatusManager implements ServiceManagerAwareInterface
+class StatusManager
 {
-    private $serviceManager;
-    
+    private $repository;
+
     /**
-     * Insere o serviceManager
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
-     * @see \Zend\ServiceManager\ServiceManagerAwareInterface::setServiceManager()
+     *
+     * @param StatusRepository $repository
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function __construct(StatusRepository $repository)
     {
-        $this->serviceManager = $serviceManager;
+        $this->repository = $repository;
     }
-    
-    /**
-     * Obtem o serviceManager
-     * @return \Zend\ServiceManager\ServiceManager
-     */
-    private function getServiceManager()
-    {
-        return $this->serviceManager;
-    }
-    
+
     /**
      * Obtem o Repository dessa entidade
      * @return StatusRepository
      */
     private function getRepository()
     {
-        return $this->getServiceManager()->get('CompraStatusRepository');
+        return $this->repository;
     }
-    
+
     /**
      * Obtem todas os status de compras registrados
      */
@@ -53,7 +40,7 @@ class StatusManager implements ServiceManagerAwareInterface
     {
         return $this->getRepository()->findById($id);
     }
-    
+
     /**
      * Obtem o status identificado pelo nome
      * @param string $nome
