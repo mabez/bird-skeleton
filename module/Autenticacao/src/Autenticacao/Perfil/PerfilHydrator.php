@@ -1,7 +1,7 @@
 <?php
 namespace Autenticacao\Perfil;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 
 class PerfilHydrator implements HydratorInterface
 {

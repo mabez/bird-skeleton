@@ -4,6 +4,7 @@ namespace Conta\Registro;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Authentication\AuthenticationService;
 use AcessoFactory\AcessoViewModelFactory;
+use Interop\Container\ContainerInterface;
 
 class RegistroViewModelFactory extends AcessoViewModelFactory
 {
@@ -15,5 +16,10 @@ class RegistroViewModelFactory extends AcessoViewModelFactory
             new RegistroForm(),
             $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams()
         );
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+
     }
 }

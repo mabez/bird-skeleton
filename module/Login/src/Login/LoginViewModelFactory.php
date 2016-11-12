@@ -4,6 +4,7 @@ namespace Login;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Authentication\AuthenticationService;
 use AcessoFactory\AcessoViewModelFactory;
+use Interop\Container\ContainerInterface;
 
 class LoginViewModelFactory extends AcessoViewModelFactory
 {
@@ -14,5 +15,10 @@ class LoginViewModelFactory extends AcessoViewModelFactory
             $serviceLocator->get('AutenticacaoManager'),
             new LoginForm()
         );
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+
     }
 }

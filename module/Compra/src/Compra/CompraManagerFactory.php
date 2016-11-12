@@ -3,6 +3,7 @@ namespace Compra;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 class CompraManagerFactory implements FactoryInterface
 {
@@ -13,5 +14,10 @@ class CompraManagerFactory implements FactoryInterface
             $serviceLocator->get('ProdutoManager'),
             $serviceLocator->get('AutenticacaoManager')
         );
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+
     }
 }

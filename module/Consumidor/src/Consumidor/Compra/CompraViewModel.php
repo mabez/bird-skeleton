@@ -6,7 +6,7 @@ use Compra\Compra;
 use Zend\View\Model\ViewModel;
 use Notificacao\NotificacoesContainerTrait;
 use Notificacao\Notificacao;
-use Zend\Stdlib\Hydrator\HydrationInterface;
+use Zend\Hydrator\HydrationInterface;
 use Zend\EventManager\EventManagerInterface;
 use Paypal\ExpressCheckout\ExpressCheckout;
 use Paypal\ExpressCheckout\PaymentRequest\PaymentRequest;

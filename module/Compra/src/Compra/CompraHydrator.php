@@ -1,7 +1,7 @@
 <?php
 namespace Compra;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 
 class CompraHydrator implements HydratorInterface
 {

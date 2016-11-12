@@ -1,7 +1,7 @@
 <?php
 namespace Produto;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 
 class ProdutoHydrator implements HydratorInterface
 {

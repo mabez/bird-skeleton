@@ -1,7 +1,7 @@
 <?php
 namespace Compra\Status;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 
 class StatusHydrator implements HydratorInterface
 {

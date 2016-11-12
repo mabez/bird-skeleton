@@ -3,6 +3,7 @@ namespace Login\Registrar;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
 use AcessoFactory\AcessoViewModelFactory;
+use Interop\Container\ContainerInterface;
 
 class RegistrarViewModelFactory extends AcessoViewModelFactory
 {
@@ -12,5 +13,10 @@ class RegistrarViewModelFactory extends AcessoViewModelFactory
             $serviceLocator->get('AutenticacaoManager'),
             new RegistrarForm()
         );
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+
     }
 }

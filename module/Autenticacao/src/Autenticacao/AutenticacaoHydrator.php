@@ -1,7 +1,7 @@
 <?php
 namespace Autenticacao;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 
 class AutenticacaoHydrator implements HydratorInterface
 {

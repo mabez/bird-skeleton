@@ -3,7 +3,8 @@ namespace Consumidor\Compra;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Stdlib\Hydrator\ArraySerializable;
+use Zend\Hydrator\ArraySerializable;
+use Interop\Container\ContainerInterface;
 
 class CompraViewModelFactory implements FactoryInterface
 {
@@ -17,4 +18,10 @@ class CompraViewModelFactory implements FactoryInterface
             $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams()
         );
     }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+
+    }
+
 }

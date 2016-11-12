@@ -4,6 +4,7 @@ namespace ApplicationFactory\Produto;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Application\Produto\ProdutosViewModel;
 use AcessoFactory\AcessoViewModelFactory;
+use Interop\Container\ContainerInterface;
 
 class ProdutosViewModelFactory extends AcessoViewModelFactory
 {
@@ -12,5 +13,10 @@ class ProdutosViewModelFactory extends AcessoViewModelFactory
             $this->getAcesso($serviceLocator),
             $serviceLocator->get('ProdutoManager')
         );
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+
     }
 }

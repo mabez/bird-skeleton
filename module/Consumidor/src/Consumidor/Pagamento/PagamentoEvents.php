@@ -4,7 +4,7 @@ namespace Consumidor\Pagamento;
 use Zend\EventManager\ListenerAggregateInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\EventInterface;
-use Zend\Stdlib\Hydrator\ArraySerializable;
+use Zend\Hydrator\ArraySerializable;
 use Pagamento\Pagamento;
 use Pagamento\PagamentoManager;
 use Consumidor\Compra\CompraViewModel;
@@ -14,10 +14,10 @@ use Consumidor\Compra\CompraViewModel;
  */
 class PagamentoEvents implements ListenerAggregateInterface
 {
-    
+
     protected $listeners = array();
     protected $pagamentoManager;
-    
+
     /**
      * Injeta dependências
      * @param \Pagamento\PagamentoManager $pagamentoManager
@@ -41,7 +41,7 @@ class PagamentoEvents implements ListenerAggregateInterface
     public function detach(EventManagerInterface $events)
     {
     }
-    
+
     /**
      * Registra o pagamento a partir dos dados passados pelo evento
      * @param EventInterface $e

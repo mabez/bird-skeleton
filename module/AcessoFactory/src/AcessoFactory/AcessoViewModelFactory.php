@@ -6,6 +6,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Authentication\AuthenticationService;
 use Acesso\Acesso;
 use Acesso\AcessoViewModel;
+use Interop\Container\ContainerInterface;
 
 class AcessoViewModelFactory implements FactoryInterface
 {
@@ -17,5 +18,10 @@ class AcessoViewModelFactory implements FactoryInterface
     {
         $zendConfig = $serviceLocator->get('config');
         return new Acesso(new AuthenticationService(), $zendConfig['roles_resources']);
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+
     }
 }

@@ -3,6 +3,7 @@ namespace Consumidor;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 class ConsumidorControllerFactory implements FactoryInterface
 {
@@ -13,5 +14,10 @@ class ConsumidorControllerFactory implements FactoryInterface
             $serviceLocator->getServiceLocator()->get('ConsumidorCompraViewModel'),
             $callbackIdentificacaoId()
         );
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+
     }
 }

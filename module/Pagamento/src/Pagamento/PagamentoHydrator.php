@@ -1,7 +1,7 @@
 <?php
 namespace Pagamento;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 
 class PagamentoHydrator implements HydratorInterface
 {
