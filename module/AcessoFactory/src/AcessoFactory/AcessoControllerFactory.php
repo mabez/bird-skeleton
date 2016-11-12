@@ -1,26 +1,15 @@
 <?php
 namespace AcessoFactory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Acesso\AcessoController;
 use Interop\Container\ContainerInterface;
 
 class AcessoControllerFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $serviceLocator) {
-        return new AcessoController($serviceLocator->getServiceLocator()->get('AcessoViewModel'));
-    }
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-
+        return new AcessoController($container->get('AcessoViewModel'));
     }
 }
-
-// use Interop\Container\ContainerInterface;
-
-// public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
-// {
-
-// }
