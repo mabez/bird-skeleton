@@ -1,16 +1,16 @@
 <?php
 namespace Admin\Pagamento;
 
-use Zend\ServiceManager\ServiceLocatorInterface;
 use AcessoFactory\AcessoViewModelFactory;
+use Interop\Container\ContainerInterface;
 
 class PagamentoViewModelFactory extends AcessoViewModelFactory
 {
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new PagamentoViewModel(
-            $this->getAcesso($serviceLocator),
-            $serviceLocator->get('PagamentoManager')
+            $this->getAcesso($container),
+            $container->get('PagamentoManager')
         );
     }
 }

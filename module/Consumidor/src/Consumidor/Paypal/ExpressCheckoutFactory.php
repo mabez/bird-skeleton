@@ -1,13 +1,14 @@
 <?php
 namespace Consumidor\Paypal;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Paypal\ExpressCheckout\ExpressCheckout;
+use Interop\Container\ContainerInterface;
 
 class ExpressCheckoutFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $serviceLocator) {
-        return new ExpressCheckout($serviceLocator->get('config')['paypal']);
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+        return new ExpressCheckout($container->get('config')['paypal']);
     }
 }

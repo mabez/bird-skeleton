@@ -30,7 +30,7 @@ class PagamentoEvents implements ListenerAggregateInterface
     /**
      * @see \Zend\EventManager\ListenerAggregateInterface::attach()
      */
-    public function attach(EventManagerInterface $events)
+    public function attach(EventManagerInterface $events, $priority = 1)
     {
         $this->listeners[] = $events->attach(CompraViewModel::EVENT_COMPRA_FINALIZADA, array($this, 'registrarPagamento'));
     }

@@ -1,16 +1,17 @@
 <?php
 namespace Admin\Usuario;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 class ModificarUsuarioViewModelFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $serviceLocator) {
-        return new ModificarUsuarioViewModel(
-            $serviceLocator->get('AutenticacaoManager'),
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+            return new ModificarUsuarioViewModel(
+            $container->get('AutenticacaoManager'),
             new UsuarioForm(),
-            $serviceLocator->get('Application')->getMvcEvent()->getRouteMatch()->getParams()
+            $container->get('Application')->getMvcEvent()->getRouteMatch()->getParams()
         );
     }
 }

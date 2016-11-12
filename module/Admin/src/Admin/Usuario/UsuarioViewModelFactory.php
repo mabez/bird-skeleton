@@ -1,17 +1,17 @@
 <?php
 namespace Admin\Usuario;
 
-use Zend\ServiceManager\ServiceLocatorInterface;
 use AcessoFactory\AcessoViewModelFactory;
+use Interop\Container\ContainerInterface;
 
 class UsuarioViewModelFactory extends AcessoViewModelFactory
 {
 
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new UsuarioViewModel(
-            $this->getAcesso($serviceLocator),
-            $serviceLocator->get('AutenticacaoManager')
+            $this->getAcesso($container),
+            $container->get('AutenticacaoManager')
         );
     }
 }

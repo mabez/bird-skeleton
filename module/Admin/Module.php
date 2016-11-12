@@ -2,9 +2,7 @@
 
 namespace Admin;
 
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
-
-class Module implements ViewHelperProviderInterface
+class Module
 {
     public function getConfig()
     {
@@ -13,7 +11,8 @@ class Module implements ViewHelperProviderInterface
             include __DIR__ . '/config/controllers.config.php',
             include __DIR__ . '/config/router.config.php',
             include __DIR__ . '/config/service.manager.config.php',
-            include __DIR__ . '/config/view.manager.config.php'
+            include __DIR__ . '/config/view.manager.config.php',
+            include __DIR__ . '/config/view.helper.config.php'
         );
     }
 
@@ -24,15 +23,6 @@ class Module implements ViewHelperProviderInterface
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
                 )
-            )
-        );
-    }
-
-    public function getViewHelperConfig()
-    {
-        return array(
-            'factories' => array(
-                'valorTotalCompra' => 'ValorTotalCompra\ValorTotalCompraViewHelperFactory'
             )
         );
     }

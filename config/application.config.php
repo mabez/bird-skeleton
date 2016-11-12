@@ -19,7 +19,9 @@ return array(
         'Produto',
         'Site',
         'ValorTotalCompra',
-        'ZfcTwig'
+        'ZfcTwig',
+        'Zend\Router',
+        'Zend\Mvc\Plugin\FlashMessenger'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

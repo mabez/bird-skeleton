@@ -1,23 +1,18 @@
 <?php
 namespace Compra;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 
 class CompraManagerFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $serviceLocator) {
-        return new CompraManager(
-            $serviceLocator->get('CompraRepository'),
-            $serviceLocator->get('CompraStatusManager'),
-            $serviceLocator->get('ProdutoManager'),
-            $serviceLocator->get('AutenticacaoManager')
-        );
-    }
-
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-
+        return new CompraManager(
+            $container->get('CompraRepository'),
+            $container->get('CompraStatusManager'),
+            $container->get('ProdutoManager'),
+            $container->get('AutenticacaoManager')
+        );
     }
 }

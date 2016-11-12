@@ -1,15 +1,16 @@
 <?php
 namespace Admin;
 
-use Zend\ServiceManager\ServiceLocatorInterface;
 use AcessoFactory\AcessoViewModelFactory;
+use Interop\Container\ContainerInterface;
 
 class AdminViewModelFactory extends AcessoViewModelFactory
 {
-    public function createService(ServiceLocatorInterface $serviceLocator) {
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
         return new AdminViewModel(
-            $this->getAcesso($serviceLocator),
-            $serviceLocator->get('config')['admin_routes']
+            $this->getAcesso($container),
+            $container->get('config')['admin_routes']
         );
     }
 }

@@ -24,13 +24,4 @@ class Module
             ),
         );
     }
-    
-    public function getViewHelperConfig()
-    {
-        return array(
-            'invokables' => array(
-                'flashmessenger' => 'Zend\View\Helper\FlashMessenger'
-            )
-        );
-   }
 }

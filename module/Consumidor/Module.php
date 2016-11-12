@@ -39,10 +39,10 @@ class Module
             ),
         );
     }
-    
+
     private function attachListeners(EventManagerInterface $eventManager, ServiceLocatorInterface $serviceLocator)
     {
         $pagamentoEvents = new PagamentoEvents($serviceLocator->get('PagamentoManager'));
-        $eventManager->attachAggregate($pagamentoEvents);
+        $pagamentoEvents->attach($eventManager);
     }
 }

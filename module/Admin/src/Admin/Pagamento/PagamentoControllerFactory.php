@@ -1,14 +1,16 @@
 <?php
 namespace Admin\Pagamento;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 class PagamentoControllerFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $serviceLocator) {
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
         return new PagamentoController(
-            $serviceLocator->getServiceLocator()->get('AdminPagamentoViewModel')
+            $container->get('AdminPagamentoViewModel')
         );
     }
+
 }
