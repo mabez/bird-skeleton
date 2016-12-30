@@ -21,7 +21,8 @@ return array(
         'ValorTotalCompra',
         'ZfcTwig',
         'Zend\Router',
-        'Zend\Mvc\Plugin\FlashMessenger'
+        'Zend\Mvc\Plugin\FlashMessenger',
+        'Zend\Form'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

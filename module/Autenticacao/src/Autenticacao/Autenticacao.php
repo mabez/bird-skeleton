@@ -3,14 +3,19 @@ namespace Autenticacao;
 
 class Autenticacao
 {
+
     private $id;
+
     private $usuario;
+
     private $senha;
+
     private $perfilId;
+
     private $perfil;
-    
-    
+
     /**
+     *
      * @return int
      */
     public function getId()
@@ -19,6 +24,7 @@ class Autenticacao
     }
 
     /**
+     *
      * @param int $id
      * @return Autenticacao
      */
@@ -29,6 +35,7 @@ class Autenticacao
     }
 
     /**
+     *
      * @return string
      */
     public function getUsuario()
@@ -37,6 +44,7 @@ class Autenticacao
     }
 
     /**
+     *
      * @return string
      */
     public function getSenha()
@@ -45,6 +53,7 @@ class Autenticacao
     }
 
     /**
+     *
      * @param string $usuario
      * @return Autenticacao
      */
@@ -55,6 +64,7 @@ class Autenticacao
     }
 
     /**
+     *
      * @param string $senha
      * @return Autenticacao
      */
@@ -65,14 +75,16 @@ class Autenticacao
     }
 
     /**
+     *
      * @return int
      */
     public function getPerfilId()
     {
         return $this->perfilId;
     }
-    
+
     /**
+     *
      * @param int $perfilId
      * @return \Autenticacao\Login
      */
@@ -83,14 +95,16 @@ class Autenticacao
     }
 
     /**
+     *
      * @return \Autenticacao\Perfil\Perfil
      */
     public function getPerfil()
     {
         return $this->perfil;
     }
-    
+
     /**
+     *
      * @param \Autenticacao\Perfil\Perfil $perfil
      * @return Autenticacao
      */
@@ -99,9 +113,10 @@ class Autenticacao
         $this->perfil = $perfil;
         return $this;
     }
-    
-     /**
+
+    /**
      * Obtem a estrutura da entity Autenticacao em formato array
+     *
      * @return array
      */
     public function toArray()
@@ -115,14 +130,21 @@ class Autenticacao
 
     /**
      * Preenche a entidade com os campos do array
+     *
      * @param array $array
      * @return Autenticacao
      */
     public function exchangeArray($array)
     {
-        $this->setId($array['id']);
-        $this->usuario = $array['usuario'];
-        $this->senha = $array['senha'];
+        if (isset($array['id'])) {
+            $this->setId($array['id']);
+        }
+        if (isset($array['usuario'])) {
+            $this->usuario = $array['usuario'];
+        }
+        if (isset($array['senha'])) {
+            $this->senha = $array['senha'];
+        }
         if (isset($array['perfil_id'])) {
             $this->perfilId = $array['perfil_id'];
         }
