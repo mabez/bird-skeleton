@@ -21,9 +21,7 @@ class Module implements ViewHelperProviderInterface
             include __DIR__ . '/config/controllers.config.php',
             include __DIR__ . '/config/db.config.php',
             include __DIR__ . '/config/router.config.php',
-            include __DIR__ . '/config/service.manager.config.php',
-            include __DIR__ . '/config/view.manager.config.php',
-            include __DIR__ . '/config/zfctwig.config.php'
+            include __DIR__ . '/config/service.manager.config.php'
         );
     }
 
