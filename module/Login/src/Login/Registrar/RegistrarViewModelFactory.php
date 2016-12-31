@@ -7,16 +7,9 @@ use Interop\Container\ContainerInterface;
 
 class RegistrarViewModelFactory extends AcessoViewModelFactory
 {
-    public function createService(ServiceLocatorInterface $serviceLocator) {
-        return new RegistrarViewModel(
-            $this->getAcesso($serviceLocator),
-            $serviceLocator->get('AutenticacaoManager'),
-            new RegistrarForm()
-        );
-    }
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-
+        return new RegistrarViewModel($this->getAcesso($container), $container->get('AutenticacaoManager'), new RegistrarForm());
     }
 }

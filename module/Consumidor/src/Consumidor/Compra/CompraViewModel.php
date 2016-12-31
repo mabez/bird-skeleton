@@ -8,9 +8,9 @@ use Notificacao\NotificacoesContainerTrait;
 use Notificacao\Notificacao;
 use Zend\Hydrator\HydrationInterface;
 use Zend\EventManager\EventManagerInterface;
-use Paypal\ExpressCheckout\ExpressCheckout;
-use Paypal\ExpressCheckout\PaymentRequest\PaymentRequest;
-use Paypal\ExpressCheckout\PaymentRequest\LPaymentRequest;
+// use Paypal\ExpressCheckout\ExpressCheckout;
+// use Paypal\ExpressCheckout\PaymentRequest\PaymentRequest;
+// use Paypal\ExpressCheckout\PaymentRequest\LPaymentRequest;
 
 /**
  * Gerador da estrutura da página de anúncios
@@ -38,13 +38,13 @@ class CompraViewModel extends ViewModel
      * @param \Produto\ProdutoManager $compraManager
      * @param CompraForm $form
      */
-    public function __construct(CompraManager $compraManager, CompraForm $form, HydrationInterface $hydrator, EventManagerInterface $eventManager, ExpressCheckout $expressCheckout, $params = array())
+    public function __construct(CompraManager $compraManager, CompraForm $form, HydrationInterface $hydrator, EventManagerInterface $eventManager, /*ExpressCheckout $expressCheckout,*/ $params = array())
     {
         $this->compraManager = $compraManager;
         $this->hydrator = $hydrator;
         $this->form = $form;
         $this->eventManager = $eventManager;
-        $this->expressCheckout = $expressCheckout;
+//        $this->expressCheckout = $expressCheckout;
 
         $produtoId = false;
         extract($params);
@@ -71,22 +71,22 @@ class CompraViewModel extends ViewModel
 
             $this->compraManager->preencherCompra($compra);
 
-            $paymentRequest = new PaymentRequest(0);
-            $paymentRequest->setAmt($compra->getProduto()->getPreco()*$compra->getQuantidade());
-            $paymentRequest->setCurrencyCode('BRL');
-            $paymentRequest->setInvNum(1234);
-            $paymentRequest->setItemAmt($compra->getProduto()->getPreco()*$compra->getQuantidade());
-            $paymentRequest->setPaymentAction('SALE');
+//             $paymentRequest = new PaymentRequest(0);
+//             $paymentRequest->setAmt($compra->getProduto()->getPreco()*$compra->getQuantidade());
+//             $paymentRequest->setCurrencyCode('BRL');
+//             $paymentRequest->setInvNum(1234);
+//             $paymentRequest->setItemAmt($compra->getProduto()->getPreco()*$compra->getQuantidade());
+//             $paymentRequest->setPaymentAction('SALE');
 
-            $lPaymentRequest = new LPaymentRequest();
-            $lPaymentRequest->setAmt($compra->getProduto()->getPreco());
-            $lPaymentRequest->setDesc($compra->getProduto()->getDescricao());
-            $lPaymentRequest->setItemAmt($compra->getProduto()->getPreco());
-            $lPaymentRequest->setName($compra->getProduto()->getTitulo());
-            $lPaymentRequest->setQty($compra->getQuantidade());
-            $paymentRequest->addLPaymentRequest($lPaymentRequest);
+//             $lPaymentRequest = new LPaymentRequest();
+//             $lPaymentRequest->setAmt($compra->getProduto()->getPreco());
+//             $lPaymentRequest->setDesc($compra->getProduto()->getDescricao());
+//             $lPaymentRequest->setItemAmt($compra->getProduto()->getPreco());
+//             $lPaymentRequest->setName($compra->getProduto()->getTitulo());
+//             $lPaymentRequest->setQty($compra->getQuantidade());
+//             $paymentRequest->addLPaymentRequest($lPaymentRequest);
 
-            $result = $this->expressCheckout->set($paymentRequest, 'http://localhost:8888', 'http://localhost:8888', 'BR_EC_EMPRESA', 'marcelbzrra@gmail.com');
+//             $result = $this->expressCheckout->set($paymentRequest, 'http://localhost:8888', 'http://localhost:8888', 'BR_EC_EMPRESA', 'marcelbzrra@gmail.com');
 
             $this->eventManager->trigger(self::EVENT_COMPRA_FINALIZADA, $this, $dados);
 

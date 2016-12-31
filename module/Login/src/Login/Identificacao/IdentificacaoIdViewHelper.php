@@ -13,7 +13,11 @@ class IdentificacaoIdViewHelper extends AbstractHelper
      */
     public function __invoke()
     {
-        return $this->authenticationService->getIdentity()->getId();
+        $identify = $this->authenticationService->getIdentity();
+        if($identify) {
+            return $identify->getId();
+        }
+        return null;
     }
 
     /**
