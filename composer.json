@@ -2,7 +2,7 @@
   "name" : "mabez/bird-skeleton",
   "description" : "Bird Skeleton",
   "require" : {
-    "php" : ">=5.5",
+    "php" : ">=7.0",
     "zendframework/zendframework" : "3.*",
     "kokspflanze/zfc-twig" : "1.3.*",
     "doctrine/annotations": "1.0.*"
