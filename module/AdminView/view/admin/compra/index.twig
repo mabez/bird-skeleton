@@ -1,0 +1,21 @@
+{% extends 'admin/index/index' %}
+{% block conteudo %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+			<div class="table-responsive">
+		        <table class="table table-striped">
+			        <thead>
+				        <tr><th>#</th><th>Consumidor</th><th>Produto</th><th>Quantidade</th><th>Valor</th><th>Valor Total</th><th>Status</th><th>Data</th></tr>
+			        </thead>
+			        <tbody>
+			        {% for compra in compras %}
+				        <tr><td>{{compra.id}}</td><td>{{compra.autenticacao.usuario}}</td><td>{{compra.produto.titulo}}</td><td>{{compra.quantidade}}</td><td>{{currencyFormat(compra.produto.preco, 'BRL', null, 'pt_BR')}}</td><td>{{currencyFormat(valorTotalCompra(compra), 'BRL', null, 'pt_BR')}}</td><td><span class="label label-{{compra.status.labelType}}">{{compra.status.nome}}</span></td><td>{{compra.data.format('H:i:s d/m/Y')}}</td></tr>
+			        {% endfor %}
+			        </tbody>
+		        </table>
+	        </div>
+    	</div>
+    </div>
+</div>
+{% endblock %}

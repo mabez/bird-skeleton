@@ -1,0 +1,39 @@
+{{doctype()}}
+
+<html lang="pt">
+    <head>
+        <meta charset="utf-8"/>
+        <title>{% block nomeSite %}{% endblock nomeSite %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+        <!-- Le styles -->
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" ref="/img/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+        <!-- Le scripts -->
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        {% embed 'layout/nav' with {'logoSite':block('logoSite'),'nomeSite':block('nomeSite'), 'autenticacao':autenticacao}%}
+        {% endembed %}
+		<hr>
+        <section class="container">
+            {% block cabecalho %}{% endblock cabecalho %}
+            {% embed 'layout/mensagens'%}
+            {% endembed %}
+            {% block topoconteudo %}{% endblock topoconteudo %}
+            {% block conteudo %}{% endblock conteudo %}
+            <hr>
+            <footer>
+                {% set _copyright = block('copyright') %}
+                {% if _copyright is not empty %}
+                    <p>&copy; {{ _copyright|raw }}</p>
+                {% endif %}
+            </footer>
+        </section> <!-- /container -->
+        {{inlineScript()}}
+    </body>
+</html>

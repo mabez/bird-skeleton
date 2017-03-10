@@ -1,0 +1,26 @@
+{% extends 'site/index/index' %}
+{% block topoconteudo %}
+    {% embed "login/bloco"%}
+    {% endembed %}
+{% endblock topoconteudo %}
+{% block conteudo %}
+<div class="row">
+    <div class="col-md-4">
+        {% for produto in produtos.coluna1 %}
+        {% embed 'produto/produto' with {'produto':produto} %}{% endembed %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        {% for produto in produtos.coluna2 %}
+        {% embed 'produto/produto' with {'produto':produto} %}{% endembed %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        {% for produto in produtos.coluna3 %}
+        {% embed 'produto/produto' with {'produto':produto} %}{% endembed %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock conteudo %}

@@ -1,0 +1,23 @@
+{% extends 'site/layout' %}
+{% block cabecalho %}
+    {% embed "admin/index/cabecalho"%}
+        {% block siteNome %}
+            {{siteDefault().nome}}
+        {% endblock siteNome %}
+    {% endembed %}
+{% endblock cabecalho %}
+{% block conteudo %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default">
+                <ul class="nav nav-pills nav-stacked nav-justified">
+		            {% for entidade in entidades %}
+                	    <li><a href="{{entidade.route}}"><h4>{{entidade.nome}}</h4></a></li>
+        		    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
