@@ -5,5 +5,5 @@ deployment.*
 .buildpath
 .project
 .settings/*
-public/img/*
-data/cache/twig/*
+public/img
+data/cache
