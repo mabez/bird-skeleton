@@ -9,7 +9,7 @@ class Manager
      *
      * @param StatusRepository $repository
      */
-    public function __construct(StatusRepository $repository)
+    public function __construct(Repository $repository)
     {
         $this->repository = $repository;
     }

@@ -48,7 +48,7 @@ class Repository
      * @param StatusHydrator $hydrator            
      * @param Status $prototipo            
      */
-    public function __construct(AdapterInterface $dbAdapter, StatusHydrator $hydrator, Status $prototipo)
+    public function __construct(AdapterInterface $dbAdapter, Hydrator $hydrator, Status $prototipo)
     {
         $this->setTableGatway(new TableGateway($this->tableName, $dbAdapter, null, new HydratingResultSet($hydrator, $prototipo)));
         $this->dbAdapter = $dbAdapter;

@@ -46,7 +46,7 @@ class Repository
      * @param CompraHydrator $hydrator            
      * @param Compra $prototipo            
      */
-    public function __construct(AdapterInterface $dbAdapter, CompraHydrator $hydrator, Compra $prototipo)
+    public function __construct(AdapterInterface $dbAdapter, Hydrator $hydrator, Compra $prototipo)
     {
         $this->setTableGatway(new TableGateway($this->tableName, $dbAdapter, null, new HydratingResultSet($hydrator, $prototipo)));
         $this->dbAdapter = $dbAdapter;

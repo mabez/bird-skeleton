@@ -2,7 +2,7 @@
 namespace Compra;
 
 use \Iterator;
-use Compra\Status\StatusManager;
+use Compra\Status\Manager as StatusManager;
 use Produto\ProdutoManager;
 use Autenticacao\AutenticacaoManager;
 
@@ -20,7 +20,7 @@ class Manager
      * @param ProdutoManager $produtoManager
      * @param AutenticacaoManager $autenticacaoManager
      */
-    public function __construct(CompraRepository $repository, StatusManager $statusManager, ProdutoManager $produtoManager, AutenticacaoManager $autenticacaoManager)
+    public function __construct(Repository $repository, StatusManager $statusManager, ProdutoManager $produtoManager, AutenticacaoManager $autenticacaoManager)
     {
         $this->repository = $repository;
         $this->statusManager = $statusManager;
