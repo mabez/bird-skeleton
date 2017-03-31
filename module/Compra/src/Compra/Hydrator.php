@@ -3,7 +3,7 @@ namespace Compra;
 
 use Zend\Hydrator\HydratorInterface;
 
-class CompraHydrator implements HydratorInterface
+class Hydrator implements HydratorInterface
 {
     /**
      * Converte um objeto Compra em vetor

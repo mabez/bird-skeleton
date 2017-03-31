@@ -6,7 +6,7 @@ use Compra\Status\StatusManager;
 use Produto\ProdutoManager;
 use Autenticacao\AutenticacaoManager;
 
-class CompraManager
+class Manager
 {
     private $repository;
     private $statusManager;

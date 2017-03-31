@@ -1,7 +1,6 @@
 <?php
-
-return array(
-    'modules' => array(
+return [
+    'modules' => [
         'Acesso',
         'AcessoFactory',
         'Admin',
@@ -14,6 +13,7 @@ return array(
         'AutenticacaoFactory',
         'AvancadoForm',
         'Compra',
+        'CompraFactory',
         'Conta',
         'Consumidor',
         'Login',
@@ -27,17 +27,19 @@ return array(
         'Zend\Router',
         'Zend\Mvc\Plugin\FlashMessenger',
         'Zend\Form'
-    ),
-    'module_listener_options' => array(
-        'module_paths' => array(
+    ],
+    'module_listener_options' => [
+        'module_paths' => [
             './module',
-            './vendor',
-        ),
-        'config_glob_paths' => array(
-            'config/autoload/{,*.}{global,local}.php',
-        )
-    ),
-    'view_manager' => array(
-        'strategies' => array('ZfcTwigViewStrategy')
-    )
-);
+            './vendor'
+        ],
+        'config_glob_paths' => [
+            'config/autoload/{,*.}{global,local}.php'
+        ]
+    ],
+    'view_manager' => [
+        'strategies' => [
+            'ZfcTwigViewStrategy'
+        ]
+    ]
+];

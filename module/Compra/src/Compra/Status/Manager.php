@@ -1,7 +1,7 @@
 <?php
 namespace Compra\Status;
 
-class StatusManager
+class Manager
 {
     private $repository;
 

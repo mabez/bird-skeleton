@@ -3,7 +3,7 @@ namespace Compra\Status;
 
 use Zend\Hydrator\HydratorInterface;
 
-class StatusHydrator implements HydratorInterface
+class Hydrator implements HydratorInterface
 {
     /**
      * Converte um objeto Status em vetor

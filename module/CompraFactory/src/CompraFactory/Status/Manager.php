@@ -1,14 +1,15 @@
 <?php
-namespace Compra\Status;
+namespace CompraFactory\Status;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Compra\Status\Manager as Service;
 
-class StatusManagerFactory implements FactoryInterface
+class Manager implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new StatusManager(
+        return new Service(
             $container->get('CompraStatusRepository')
         );
     }
