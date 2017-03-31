@@ -2,7 +2,7 @@
 namespace ValorTotalCompra;
 
 use Zend\View\Helper\AbstractHelper;
-use Compra\CompraManager;
+use Compra\Manager as CompraManager;
 use Compra\Compra;
 
 class ValorTotalCompraViewHelper extends AbstractHelper

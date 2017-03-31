@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Compra;
 
-use Compra\CompraManager;
+use Compra\Manager as CompraManager;
 use Acesso\AcessoViewModel;
 use Acesso\Acesso;
 

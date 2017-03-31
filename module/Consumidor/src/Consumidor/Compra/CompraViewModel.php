@@ -1,7 +1,7 @@
 <?php
 namespace Consumidor\Compra;
 
-use Compra\CompraManager;
+use Compra\Manager as CompraManager;
 use Compra\Compra;
 use Zend\View\Model\ViewModel;
 use Notificacao\NotificacoesContainerTrait;
