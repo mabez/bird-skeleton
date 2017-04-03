@@ -1,8 +1,10 @@
 <?php
+use ValorTotalCompraFactory\ViewHelper;
+
 return [
     'view_helper' => [
         'factories' => [
-            'valorTotalCompra' => 'ValorTotalCompraFactory\ViewHelper'
+            'valorTotalCompra' => ViewHelper::class
         ]
     ]
 ];

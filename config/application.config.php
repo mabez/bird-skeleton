@@ -1,6 +1,8 @@
 <?php
 return [
     'modules' => [
+        'ValorTotalCompra',
+        'ValorTotalCompraFactory',
         'Acesso',
         'AcessoFactory',
         'Admin',
@@ -22,8 +24,6 @@ return [
         'Paypal',
         'Produto',
         'Site',
-        'ValorTotalCompra',
-        'ValorTotalCompraFactory',
         'ZfcTwig',
         'Zend\Router',
         'Zend\Mvc\Plugin\FlashMessenger',
