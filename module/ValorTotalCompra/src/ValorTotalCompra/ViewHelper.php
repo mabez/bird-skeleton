@@ -5,7 +5,7 @@ use Zend\View\Helper\AbstractHelper;
 use Compra\Manager as CompraManager;
 use Compra\Compra;
 
-class ValorTotalCompraViewHelper extends AbstractHelper
+class ViewHelper extends AbstractHelper
 {
     private $compraManager;
 

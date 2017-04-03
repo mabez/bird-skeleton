@@ -2,7 +2,7 @@
 return [
     'view_helper' => [
         'factories' => [
-            'valorTotalCompra' => 'ValorTotalCompra\ValorTotalCompraViewHelperFactory'
+            'valorTotalCompra' => 'ValorTotalCompraFactory\ViewHelper'
         ]
     ]
 ];

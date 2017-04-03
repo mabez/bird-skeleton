@@ -23,6 +23,7 @@ return [
         'Produto',
         'Site',
         'ValorTotalCompra',
+        'ValorTotalCompraFactory',
         'ZfcTwig',
         'Zend\Router',
         'Zend\Mvc\Plugin\FlashMessenger',

@@ -44,7 +44,7 @@ cd /var/www/bird-skeleton
 echo "Importando o banco de dados"
 useradd bird_skeleton -p bird_skeleton
 su bird_skeleton << EOF
-psql < /var/www/bird-skeleton/data/postgresql/install.sql
+psql < /var/www/e-commerce/data/postgresql/install.sql
 EOF
 
 echo "Configurando a pasta de imagens"
@@ -55,7 +55,7 @@ chmod 777 -R /var/img
 
 echo "Configurando a pasta de cache"
 cd /var/www/bird-skeleton
-mkdir /var/cachei
+mkdir /var/cache
 rm -R data/cache
 ln -s /var/cache data/cache
 chmod 777 -R /var/cache
@@ -64,7 +64,7 @@ echo "** [ZEND] Visit http://localhost:8086 in your browser for to view the bird
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = 'bento/ubuntu-14.04'
+  config.vm.box = 'ubuntu/xenial64'
   config.vm.network "forwarded_port", guest: 80, host: 8090
   config.vm.hostname = "bird-skeleton"
   config.vm.synced_folder '.', '/var/www/bird-skeleton'
