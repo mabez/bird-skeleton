@@ -1,16 +1,23 @@
 <?php
+namespace AutenticacaoFactory;
 
-return array(
-    'service_manager' => array(
-        'factories' => array(
-            'AutenticacaoManager' => 'AutenticacaoFactory\AutenticacaoManagerFactory',
-            'AutenticacaoRepository' => 'AutenticacaoFactory\AutenticacaoRepositoryFactory',
-            'AutenticacaoAdapter' => 'AutenticacaoFactory\AutenticacaoAdapterFactory',
-            'IdentificacaoManager' => 'AutenticacaoFactory\Identificacao\IdentificacaoManagerFactory',
-            'IdentificacaoRepository' => 'AutenticacaoFactory\Identificacao\IdentificacaoRepositoryFactory',
-            'IdentificacaoGenerator' => 'AutenticacaoFactory\Identificacao\IdentificacaoGeneratorFactory',
-            'PerfilManager' => 'AutenticacaoFactory\Perfil\PerfilManagerFactory',
-            'PerfilRepository' => 'AutenticacaoFactory\Perfil\PerfilRepositoryFactory'
-        )
-    )
-);
+use AutenticacaoFactory\Identificacao\IdentificacaoManagerFactory;
+use AutenticacaoFactory\Identificacao\IdentificacaoRepositoryFactory;
+use AutenticacaoFactory\Identificacao\IdentificacaoGeneratorFactory;
+use AutenticacaoFactory\Perfil\PerfilManagerFactory;
+use AutenticacaoFactory\Perfil\PerfilRepositoryFactory;
+
+return [
+    'service_manager' => [
+        'factories' => [
+            'AutenticacaoManager' => AutenticacaoManagerFactory::class,
+            'AutenticacaoRepository' => AutenticacaoRepositoryFactory::class,
+            'AutenticacaoAdapter' => AutenticacaoAdapterFactory::class,
+            'IdentificacaoManager' => IdentificacaoManagerFactory::class,
+            'IdentificacaoRepository' => IdentificacaoRepositoryFactory::class,
+            'IdentificacaoGenerator' => IdentificacaoGeneratorFactory::class,
+            'PerfilManager' => PerfilManagerFactory::class,
+            'PerfilRepository' => PerfilRepositoryFactory::class
+        ]
+    ]
+];

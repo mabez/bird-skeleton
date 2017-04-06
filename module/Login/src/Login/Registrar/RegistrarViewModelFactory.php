@@ -1,7 +1,6 @@
 <?php
 namespace Login\Registrar;
 
-use Zend\ServiceManager\ServiceLocatorInterface;
 use AcessoFactory\AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 
