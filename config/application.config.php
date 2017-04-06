@@ -9,7 +9,6 @@ return [
         'Application',
         'ApplicationFactory',
         'ApplicationView',
-        'Autenticacao',
         'AutenticacaoFactory',
         'AvancadoForm',
         'Compra',
