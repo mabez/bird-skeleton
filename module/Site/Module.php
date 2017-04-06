@@ -4,8 +4,9 @@ namespace Site;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
-class Module
+class Module implements ConfigProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {

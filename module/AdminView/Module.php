@@ -1,12 +1,16 @@
 <?php
 namespace AdminView;
 
-class Module
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use ValorTotalCompraFactory\ViewHelper as ValorTotalCompraFactory;
+use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+
+class Module implements ConfigProviderInterface, ViewHelperProviderInterface
 {
 
     public function getConfig()
     {
-        return array_merge_recursive(include __DIR__ . '/config/view.manager.config.php', include __DIR__ . '/config/view.helper.config.php');
+        return include __DIR__ . '/config/view.manager.config.php';
     }
 
     public function getAutoloaderConfig()
@@ -18,5 +22,14 @@ class Module
                 )
             )
         );
+    }
+
+    public function getViewHelperConfig()
+    {
+        return [
+            'factories' => [
+                'valorTotalCompra' => ValorTotalCompraFactory::class
+            ]
+        ];
     }
 }

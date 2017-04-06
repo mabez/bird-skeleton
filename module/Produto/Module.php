@@ -3,8 +3,9 @@
 namespace Produto;
 
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
-class Module implements ViewHelperProviderInterface
+class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 {
     public function getConfig()
     {

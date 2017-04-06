@@ -5,8 +5,9 @@ namespace ApplicationFactory;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
-class Module implements ViewHelperProviderInterface
+class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {

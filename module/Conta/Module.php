@@ -3,8 +3,10 @@
 namespace Conta;
 
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use ValorTotalCompraFactory\ViewHelper as ValorTotalCompraFactory;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
-class Module implements ViewHelperProviderInterface
+class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 {
     public function getConfig()
     {
@@ -32,7 +34,7 @@ class Module implements ViewHelperProviderInterface
         return array(
             'factories' => array(
                 'identificacaoId' => 'Login\Identificacao\IdentificacaoIdViewHelperFactory',
-                'valorTotalCompra' => 'ValorTotalCompra\ValorTotalCompraViewHelperFactory'
+                'valorTotalCompra' => ValorTotalCompraFactory::class
             )
         );
     }
