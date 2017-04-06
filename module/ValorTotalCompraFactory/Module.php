@@ -1,5 +1,4 @@
 <?php
-
 namespace ValorTotalCompraFactory;
 
 class Module

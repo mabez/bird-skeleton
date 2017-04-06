@@ -1,12 +1,12 @@
 <?php
-
 namespace AdminView;
 
 class Module
 {
+
     public function getConfig()
     {
-        return include __DIR__ . '/config/view.manager.config.php';
+        return array_merge_recursive(include __DIR__ . '/config/view.manager.config.php', include __DIR__ . '/config/view.helper.config.php');
     }
 
     public function getAutoloaderConfig()
