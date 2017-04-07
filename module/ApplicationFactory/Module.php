@@ -6,6 +6,11 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\I18n\View\Helper\CurrencyFormat;
+use AcessoFactory\AcessoViewHelperFactory;
+use Login\Identificacao\IdentificacaoUsuarioViewHelperFactory;
+use Login\Identificacao\IdentificadoViewHelperFactory;
+use ApplicationFactory\Site\SiteDefaultViewHelperFactory;
 
 class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 {
@@ -39,13 +44,16 @@ class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 
     public function getViewHelperConfig()
     {
-        return array(
-            'factories' => array(
-              'acesso' => 'AcessoFactory\AcessoViewHelperFactory',
-              'identificacaoUsuario' => 'Login\Identificacao\IdentificacaoUsuarioViewHelperFactory',
-              'identificado' => 'Login\Identificacao\IdentificadoViewHelperFactory',
-              'siteDefault' => 'ApplicationFactory\Site\SiteDefaultViewHelperFactory'
-            )
-        );
+        return [
+            'factories' => [
+              'acesso' => AcessoViewHelperFactory::class,
+              'identificacaoUsuario' => IdentificacaoUsuarioViewHelperFactory::class,
+              'identificado' => IdentificadoViewHelperFactory::class,
+              'siteDefault' => SiteDefaultViewHelperFactory::class
+            ],
+            'invokables' => [
+                'currencyFormat' => CurrencyFormat::class
+            ]
+        ];
    }
 }

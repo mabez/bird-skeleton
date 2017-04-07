@@ -1,11 +1,10 @@
 <?php
 
-namespace Produto;
+namespace ProdutoFactory;
 
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
-class Module implements ViewHelperProviderInterface, ConfigProviderInterface
+class Module implements ConfigProviderInterface
 {
     public function getConfig()
     {
@@ -20,15 +19,6 @@ class Module implements ViewHelperProviderInterface, ConfigProviderInterface
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
-        );
-    }
-    
-    public function getViewHelperConfig()
-    {
-        return array(
-            'invokables' => array(
-                'currencyFormat' => 'Zend\I18n\View\Helper\CurrencyFormat'
-            )
         );
     }
 }

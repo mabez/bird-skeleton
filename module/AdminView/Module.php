@@ -4,6 +4,7 @@ namespace AdminView;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use ValorTotalCompraFactory\ViewHelper as ValorTotalCompraFactory;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use Zend\I18n\View\Helper\CurrencyFormat;
 
 class Module implements ConfigProviderInterface, ViewHelperProviderInterface
 {
@@ -28,7 +29,10 @@ class Module implements ConfigProviderInterface, ViewHelperProviderInterface
     {
         return [
             'factories' => [
-                'valorTotalCompra' => ValorTotalCompraFactory::class
+                'valorTotalCompra' => ValorTotalCompraFactory::class,
+            ],
+            'invokables' => [
+                'currencyFormat' => CurrencyFormat::class
             ]
         ];
     }

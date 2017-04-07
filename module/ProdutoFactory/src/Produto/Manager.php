@@ -1,13 +1,14 @@
 <?php
-namespace Produto;
+namespace ProdutoFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Produto\ProdutoManager as Service;
 
-class ProdutoManagerFactory implements FactoryInterface
+class Manager implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new ProdutoManager($container->get('ProdutoRepository'));
+        return new Service($container->get('ProdutoRepository'));
     }
 }

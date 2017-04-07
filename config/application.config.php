@@ -19,7 +19,7 @@ return [
         'Notificacao',
         'Pagamento',
         'Paypal',
-        'Produto',
+        'ProdutoFactory',
         'Site',
         'ValorTotalCompra',
         'ValorTotalCompraFactory',

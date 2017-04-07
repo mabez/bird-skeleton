@@ -5,6 +5,8 @@ namespace Conta;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use ValorTotalCompraFactory\ViewHelper as ValorTotalCompraFactory;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\I18n\View\Helper\CurrencyFormat;
+use Login\Identificacao\IdentificacaoIdViewHelperFactory;
 
 class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 {
@@ -31,11 +33,14 @@ class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 
     public function getViewHelperConfig()
     {
-        return array(
-            'factories' => array(
-                'identificacaoId' => 'Login\Identificacao\IdentificacaoIdViewHelperFactory',
+        return [
+            'factories' => [
+                'identificacaoId' => IdentificacaoIdViewHelperFactory::class,
                 'valorTotalCompra' => ValorTotalCompraFactory::class
-            )
-        );
+            ],
+            'invokables' => [
+                'currencyFormat' => CurrencyFormat::class
+            ]
+        ];
     }
 }
