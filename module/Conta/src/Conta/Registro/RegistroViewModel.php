@@ -1,10 +1,10 @@
 <?php
 namespace Conta\Registro;
 
-use Autenticacao\AutenticacaoManager;
+use Ecompassaro\Autenticacao\Manager as AutenticacaoManager;
 use Zend\Authentication\AuthenticationService;
 use Notificacao\Notificacao;
-use Autenticacao\Autenticacao;
+use Ecompassaro\Autenticacao\Autenticacao;
 use Acesso\Acesso;
 use Conta\ContaViewModel;
 use Notificacao\NotificacoesContainerTrait;

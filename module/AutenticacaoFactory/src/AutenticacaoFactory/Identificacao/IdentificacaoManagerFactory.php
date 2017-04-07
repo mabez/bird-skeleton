@@ -3,7 +3,7 @@ namespace AutenticacaoFactory\Identificacao;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Autenticacao\Identificacao\IdentificacaoManager;
+use Ecompassaro\Autenticacao\Identificacao\Manager as IdentificacaoManager;
 
 class IdentificacaoManagerFactory implements FactoryInterface
 {

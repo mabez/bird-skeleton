@@ -1,8 +1,8 @@
 <?php
 namespace Admin\Usuario;
 
-use Autenticacao\AutenticacaoManager;
-use Autenticacao\Autenticacao;
+use Ecompassaro\Autenticacao\Manager as AutenticacaoManager;
+use Ecompassaro\Autenticacao\Autenticacao;
 use Acesso\Acesso;
 use Zend\View\Model\ViewModel;
 use Notificacao\NotificacoesContainerTrait;

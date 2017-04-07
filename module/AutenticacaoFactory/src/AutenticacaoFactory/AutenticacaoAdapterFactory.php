@@ -3,7 +3,7 @@ namespace AutenticacaoFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Autenticacao\AutenticacaoAdapter;
+use Ecompassaro\Autenticacao\Adapter as AutenticacaoAdapter;
 
 class AutenticacaoAdapterFactory implements FactoryInterface
 {

@@ -2,8 +2,8 @@
 namespace ValorTotalCompra;
 
 use Zend\View\Helper\AbstractHelper;
-use Compra\Manager as CompraManager;
-use Compra\Compra;
+use Ecompassaro\Compra\Manager as CompraManager;
+use Ecompassaro\Compra\Compra;
 
 class ViewHelper extends AbstractHelper
 {

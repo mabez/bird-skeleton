@@ -3,7 +3,7 @@ namespace ProdutoFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Produto\ProdutoManager as Service;
+use Ecompassaro\Produto\Manager as Service;
 
 class Manager implements FactoryInterface
 {

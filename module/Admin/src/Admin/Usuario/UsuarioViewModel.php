@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Usuario;
 
-use Autenticacao\AutenticacaoManager;
+use Ecompassaro\Autenticacao\Manager as AutenticacaoManager;
 use Acesso\AcessoViewModel;
 use Acesso\Acesso;
 

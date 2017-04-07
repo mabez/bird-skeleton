@@ -1,7 +1,8 @@
 <?php
 namespace Admin\Produto;
 
-use Produto\ProdutoManager;
+
+use Ecompassaro\Produto\Manager as ProdutoManager;
 use Acesso\AcessoViewModel;
 use Acesso\Acesso;
 

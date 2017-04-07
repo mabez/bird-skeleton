@@ -1,7 +1,7 @@
 <?php
 namespace Application\Produto;
 
-use Produto\ProdutoManager;
+use Ecompassaro\Produto\Manager as ProdutoManager;
 use \Iterator;
 use Acesso\AcessoViewModel;
 use Acesso\Acesso;

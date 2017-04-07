@@ -4,9 +4,9 @@ namespace AutenticacaoFactory\Perfil;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Db\Adapter\Adapter;
 use Interop\Container\ContainerInterface;
-use Autenticacao\Perfil\PerfilRepository;
-use Autenticacao\Perfil\PerfilHydrator;
-use Autenticacao\Perfil\Perfil;
+use Ecompassaro\Autenticacao\Perfil\Repository as PerfilRepository;
+use Ecompassaro\Autenticacao\Perfil\Hydrator as PerfilHydrator;
+use Ecompassaro\Autenticacao\Perfil;
 
 class PerfilRepositoryFactory implements FactoryInterface
 {

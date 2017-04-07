@@ -4,9 +4,9 @@ namespace CompraFactory\Status;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Db\Adapter\Adapter;
 use Interop\Container\ContainerInterface;
-use Compra\Status\Hydrator;
-use Compra\Status\Status;
-use Compra\Status\Repository as Service;
+use Ecompassaro\Compra\Status\Hydrator;
+use Ecompassaro\Compra\Status;
+use Ecompassaro\Compra\Status\Repository as Service;
 
 class Repository implements FactoryInterface
 {

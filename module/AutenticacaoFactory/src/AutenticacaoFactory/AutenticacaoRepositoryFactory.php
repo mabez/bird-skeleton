@@ -4,9 +4,9 @@ namespace AutenticacaoFactory;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Db\Adapter\Adapter;
 use Interop\Container\ContainerInterface;
-use Autenticacao\AutenticacaoRepository;
-use Autenticacao\AutenticacaoHydrator;
-use Autenticacao\Autenticacao;
+use Ecompassaro\Autenticacao\Repository as AutenticacaoRepository;
+use Ecompassaro\Autenticacao\Hydrator as AutenticacaoHydrator;
+use Ecompassaro\Autenticacao\Autenticacao;
 
 class AutenticacaoRepositoryFactory implements FactoryInterface
 {

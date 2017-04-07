@@ -2,8 +2,8 @@
 namespace Login\Registrar;
 
 use Acesso\Acesso;
-use Autenticacao\AutenticacaoManager;
-use Autenticacao\Autenticacao;
+use Ecompassaro\Autenticacao\Manager as AutenticacaoManager;
+use Ecompassaro\Autenticacao\Autenticacao;
 use Notificacao\Notificacao;
 use Notificacao\NotificacoesContainerTrait;
 use Acesso\AcessoViewModel;

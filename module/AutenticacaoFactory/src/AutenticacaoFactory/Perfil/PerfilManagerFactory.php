@@ -3,7 +3,7 @@ namespace AutenticacaoFactory\Perfil;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Autenticacao\Perfil\PerfilManager;
+use Ecompassaro\Autenticacao\Perfil\Manager as PerfilManager;
 
 class PerfilManagerFactory implements FactoryInterface
 {

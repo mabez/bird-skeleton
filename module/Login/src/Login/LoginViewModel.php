@@ -1,8 +1,8 @@
 <?php
 namespace Login;
 
-use Autenticacao\Autenticacao;
-use Autenticacao\AutenticacaoManager;
+use Ecompassaro\Autenticacao\Autenticacao;
+use Ecompassaro\Autenticacao\Manager as AutenticacaoManager;
 use Notificacao\Notificacao;
 use Notificacao\NotificacoesContainerTrait;
 use Zend\Authentication\AuthenticationService;

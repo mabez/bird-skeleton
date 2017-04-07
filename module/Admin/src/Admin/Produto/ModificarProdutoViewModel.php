@@ -1,8 +1,8 @@
 <?php
 namespace Admin\Produto;
 
-use Produto\ProdutoManager;
-use Produto\Produto;
+use Ecompassaro\Produto\Manager as ProdutoManager;
+use Ecompassaro\Produto\Produto;
 use Zend\View\Model\ViewModel;
 use Notificacao\Notificacao;
 use Notificacao\NotificacoesContainerTrait;

@@ -1,7 +1,7 @@
 <?php
 namespace Pagamento;
 
-use Autenticacao\AutenticacaoManager;
+use Ecompassaro\Autenticacao\Manager as AutenticacaoManager;
 
 class PagamentoManager
 {
