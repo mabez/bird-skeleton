@@ -11,7 +11,6 @@ return [
         'ApplicationView',
         'AutenticacaoFactory',
         'AvancadoForm',
-        'Compra',
         'CompraFactory',
         'Conta',
         'Consumidor',
