@@ -3,7 +3,7 @@
 namespace Conta;
 
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
-use ValorTotalCompraFactory\ViewHelper as ValorTotalCompraFactory;
+use CompraFactory\ValorTotal\ViewHelper as ValorTotalCompraFactory;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\I18n\View\Helper\CurrencyFormat;
 use Login\Identificacao\IdentificacaoIdViewHelperFactory;

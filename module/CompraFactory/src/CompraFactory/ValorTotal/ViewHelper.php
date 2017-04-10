@@ -1,5 +1,5 @@
 <?php
-namespace ValorTotalCompraFactory;
+namespace CompraFactory\ValorTotal;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;

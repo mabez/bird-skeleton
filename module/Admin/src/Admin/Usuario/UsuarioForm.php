@@ -2,7 +2,7 @@
 namespace Admin\Usuario;
 
 use Login\LoginForm;
-use Autenticacao\Autenticacao;
+use Ecompassaro\Autenticacao\Autenticacao;
 use AvancadoForm\AvancadoFieldsetContainerTrait;
 
 class UsuarioForm extends LoginForm

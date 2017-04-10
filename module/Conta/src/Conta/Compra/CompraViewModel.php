@@ -1,7 +1,7 @@
 <?php
 namespace Conta\Compra;
 
-use Compra\Manager as CompraManager;
+use Ecompassaro\Compra\Manager as CompraManager;
 use Zend\Authentication\AuthenticationService;
 use Conta\ContaViewModel;
 use Acesso\Acesso;

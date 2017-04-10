@@ -2,7 +2,7 @@
 namespace Conta\Registro;
 
 use Login\LoginForm;
-use Autenticacao\Autenticacao;
+use Ecompassaro\Autenticacao\Autenticacao;
 
 class RegistroForm extends LoginForm
 {

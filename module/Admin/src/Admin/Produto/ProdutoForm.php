@@ -2,7 +2,7 @@
 namespace Admin\Produto;
 
 use Zend\Form\Form;
-use Produto\Produto;
+use Ecompassaro\Produto\Produto;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use AvancadoForm\AvancadoFieldsetContainerTrait;
 

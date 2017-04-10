@@ -1,7 +1,7 @@
 <?php
 namespace Pagamento;
 
-use Autenticacao\Autenticacao;
+use Ecompassaro\Autenticacao\Autenticacao;
 use \DateTime;
 
 class Pagamento
@@ -47,7 +47,7 @@ class Pagamento
 
     /**
      *
-     * @return \Autenticacao\Autenticacao
+     * @return Autenticacao
      */
     public function getAutenticacao()
     {
@@ -67,10 +67,10 @@ class Pagamento
 
     /**
      *
-     * @param \Autenticacao\Autenticacao $autenticacao            
+     * @param Autenticacao $autenticacao            
      * @return Pagamento
      */
-    public function setAutenticacao($autenticacao)
+    public function setAutenticacao(Autenticacao $autenticacao)
     {
         $this->autenticacao = $autenticacao;
         return $this;

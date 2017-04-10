@@ -3,7 +3,7 @@ namespace CompraFactory\Status;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Compra\Status\Manager as Service;
+use Ecompassaro\Compra\Status\Manager as Service;
 
 class Manager implements FactoryInterface
 {
