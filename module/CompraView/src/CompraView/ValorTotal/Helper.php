@@ -1,11 +1,11 @@
 <?php
-namespace CompraFactory\ValorTotal;
+namespace CompraView\ValorTotal;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use ValorTotalCompra\ViewHelper as Service;
+use Ecompassaro\CompraView\ValorTotal\Helper as Service;
 
-class ViewHelper implements FactoryInterface
+class Helper implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
