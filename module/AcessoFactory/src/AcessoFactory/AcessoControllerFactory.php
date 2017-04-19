@@ -8,12 +8,9 @@ use Interop\Container\ContainerInterface;
 class AcessoControllerFactory implements FactoryInterface
 {
 
-    const RESOURCE = 'acesso';
-
-    const ROUTE_DEFAULT = 'site';
-
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new AcessoController($container->get('AcessoViewModel'), self::RESOURCE, self::ROUTE_DEFAULT);
+        $acessoConfig = $container->get('config')['acesso'];
+        return new AcessoController($container->get('AcessoViewModel'), $acessoConfig['resource'], $acessoConfig['route']);
     }
 }
