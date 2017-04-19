@@ -1,11 +1,11 @@
 <?php
 namespace Admin\Usuario;
 
-use Login\LoginForm;
+use Ecompassaro\Login\Form;
 use Ecompassaro\Autenticacao\Autenticacao;
 use AvancadoForm\AvancadoFieldsetContainerTrait;
 
-class UsuarioForm extends LoginForm
+class UsuarioForm extends Form
 {
     use AvancadoFieldsetContainerTrait;
 

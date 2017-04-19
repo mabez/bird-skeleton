@@ -4,6 +4,7 @@ namespace LoginFactory\Identificacao;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Authentication\AuthenticationService;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Login\Identificacao\IdViewHelper as IdentificacaoIdViewHelper;
 
 class IdViewHelper implements FactoryInterface
 {

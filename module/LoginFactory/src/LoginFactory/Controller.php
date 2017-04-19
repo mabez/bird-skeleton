@@ -3,6 +3,7 @@ namespace LoginFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Login\Controller as LoginController;
 
 class Controller implements FactoryInterface
 {

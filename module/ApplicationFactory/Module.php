@@ -8,8 +8,8 @@ use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\I18n\View\Helper\CurrencyFormat;
 use AcessoFactory\AcessoViewHelperFactory;
-use Login\Identificacao\IdentificacaoUsuarioViewHelperFactory;
-use Login\Identificacao\IdentificadoViewHelperFactory;
+use LoginFactory\Identificacao\UsuarioViewHelper as IdentificacaoUsuarioViewHelperFactory;
+use LoginFactory\Identificacao\ViewHelper as IdentificadoViewHelperFactory;
 use ApplicationFactory\Site\SiteDefaultViewHelperFactory;
 
 class Module implements ViewHelperProviderInterface, ConfigProviderInterface

@@ -3,6 +3,7 @@ namespace LoginFactory\Sair;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Login\Sair\Controller as SairController;
 
 class Controller implements FactoryInterface
 {

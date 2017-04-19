@@ -2,7 +2,7 @@
 namespace Conta;
 
 use Zend\I18n\View\Helper\CurrencyFormat;
-use Login\Identificacao\IdentificacaoIdViewHelperFactory;
+use LoginFactory\Identificacao\IdViewHelper as IdentificacaoIdViewHelperFactory;
 use Ecompassaro\CompraView\ValorTotal\Helper as ValorTotalViewHelper;
 
 return [

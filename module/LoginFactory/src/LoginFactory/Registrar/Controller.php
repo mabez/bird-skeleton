@@ -4,6 +4,7 @@ namespace LoginFactory\Registrar;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Login\Registrar\Controller as RegistrarController;
 
 class Controller implements FactoryInterface
 {

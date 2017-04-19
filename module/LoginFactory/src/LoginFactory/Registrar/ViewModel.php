@@ -3,6 +3,8 @@ namespace LoginFactory\Registrar;
 
 use AcessoFactory\AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Login\Registrar\ViewModel as RegistrarViewModel;
+use Ecompassaro\Login\Registrar\Form as RegistrarForm;
 
 class ViewModel extends AcessoViewModelFactory
 {
