@@ -1,7 +1,7 @@
 <?php
 namespace Application\Site;
 
-use Acesso\AcessoController;
+use Ecompassaro\Acesso\Controller as AcessoController;
 use Zend\View\Model\ViewModel;
 
 class SiteController extends AcessoController

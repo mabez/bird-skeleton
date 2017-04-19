@@ -2,7 +2,7 @@
 
 namespace Admin\Usuario;
 
-use Notificacao\FlashMessagesContainerTrait;
+use Ecompassaro\Notificacao\FlashMessagesContainerTrait;
 use Admin\AbstractModificavelController;
 
 class UsuarioController extends AbstractModificavelController

@@ -2,7 +2,7 @@
 
 namespace Admin\Compra;
 
-use Acesso\AcessoController;
+use Ecompassaro\Acesso\Controller as AcessoController;
 
 class CompraController extends AcessoController
 {

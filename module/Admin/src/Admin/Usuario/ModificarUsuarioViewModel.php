@@ -3,10 +3,10 @@ namespace Admin\Usuario;
 
 use Ecompassaro\Autenticacao\Manager as AutenticacaoManager;
 use Ecompassaro\Autenticacao\Autenticacao;
-use Acesso\Acesso;
+use Ecompassaro\Acesso\Acesso;
 use Zend\View\Model\ViewModel;
-use Notificacao\NotificacoesContainerTrait;
-use Notificacao\Notificacao;
+use Ecompassaro\Notificacao\NotificacoesContainerTrait;
+use Ecompassaro\Notificacao\Notificacao;
 use Admin\ModificarViewModelInterface;
 
 /**

@@ -2,8 +2,8 @@
 
 namespace Admin\Site;
 
-use Acesso\AcessoController;
-use Notificacao\FlashMessagesContainerTrait;
+use Ecompassaro\Acesso\Controller as AcessoController;
+use Ecompassaro\Notificacao\FlashMessagesContainerTrait;
 
 class SiteController extends AcessoController
 {

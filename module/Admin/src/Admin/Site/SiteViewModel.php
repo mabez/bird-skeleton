@@ -3,11 +3,11 @@ namespace Admin\Site;
 
 use Site\SiteManager;
 use Site\Site;
-use Notificacao\Notificacao;
-use Notificacao\NotificacoesContainerTrait;
+use Ecompassaro\Notificacao\Notificacao;
+use Ecompassaro\Notificacao\NotificacoesContainerTrait;
 use Zend\Session\Container;
-use Acesso\AcessoViewModel;
-use Acesso\Acesso;
+use Ecompassaro\Acesso\ViewModel as AcessoViewModel;
+use Ecompassaro\Acesso\Acesso;
 
 /**
  * Gerador da estrutura da página de administração de informações do site

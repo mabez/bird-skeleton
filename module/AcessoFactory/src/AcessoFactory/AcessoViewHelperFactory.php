@@ -3,8 +3,8 @@ namespace AcessoFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Authentication\AuthenticationService;
-use Acesso\AcessoViewHelper;
-use Acesso\Acesso;
+use Ecompassaro\Acesso\ViewHelper as AcessoViewHelper;
+use Ecompassaro\Acesso\Acesso;
 use Interop\Container\ContainerInterface;
 
 class AcessoViewHelperFactory implements FactoryInterface

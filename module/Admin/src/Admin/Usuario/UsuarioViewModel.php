@@ -2,8 +2,8 @@
 namespace Admin\Usuario;
 
 use Ecompassaro\Autenticacao\Manager as AutenticacaoManager;
-use Acesso\AcessoViewModel;
-use Acesso\Acesso;
+use Ecompassaro\Acesso\ViewModel as AcessoViewModel;
+use Ecompassaro\Acesso\Acesso;
 
 /**
  * Gerador da estrutura da página de administração de informações do site

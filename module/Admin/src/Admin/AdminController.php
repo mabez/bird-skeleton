@@ -1,7 +1,7 @@
 <?php
 namespace Admin;
 
-use Acesso\AcessoController;
+use Ecompassaro\Acesso\Controller as AcessoController;
 
 class AdminController extends AcessoController
 {

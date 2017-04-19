@@ -1,8 +1,8 @@
 <?php
 namespace Admin;
 
-use Acesso\AcessoViewModel;
-use Acesso\AcessoController;
+use Ecompassaro\Acesso\ViewModel as AcessoViewModel;
+use Ecompassaro\Acesso\Controller as AcessoController;
 
 abstract class AbstractModificavelController extends AcessoController
 {

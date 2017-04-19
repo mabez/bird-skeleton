@@ -2,7 +2,7 @@
 
 namespace Admin\Pagamento;
 
-use Acesso\AcessoController;
+use Ecompassaro\Acesso\Controller as AcessoController;
 
 class PagamentoController extends AcessoController
 {

@@ -1,8 +1,8 @@
 <?php
 namespace Admin;
 
-use Acesso\AcessoViewModel;
-use Acesso\Acesso;
+use Ecompassaro\Acesso\ViewModel as AcessoViewModel;
+use Ecompassaro\Acesso\Acesso;
 
 /**
  * Gerador da estrutura da página de admin do site

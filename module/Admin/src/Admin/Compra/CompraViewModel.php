@@ -2,8 +2,8 @@
 namespace Admin\Compra;
 
 use Ecompassaro\Compra\Manager as CompraManager;
-use Acesso\AcessoViewModel;
-use Acesso\Acesso;
+use Ecompassaro\Acesso\ViewModel as AcessoViewModel;
+use Ecompassaro\Acesso\Acesso;
 
 /**
  * Gerador da estrutura da página de administração de compras

@@ -1,7 +1,6 @@
 <?php
 return [
     'modules' => [
-        'Acesso',
         'AcessoFactory',
         'Admin',
         'AdminFactory',
@@ -13,10 +12,9 @@ return [
         'AvancadoForm',
         'CompraFactory',
         'CompraView',
-        'Conta',
+        'ContaFactory',
         'Consumidor',
-        'Login',
-        'Notificacao',
+        'LoginFactory',
         'Pagamento',
         'Paypal',
         'ProdutoFactory',

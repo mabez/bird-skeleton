@@ -2,9 +2,9 @@
 
 namespace Consumidor;
 
-use Acesso\AcessoController;
-use Notificacao\FlashMessagesContainerTrait;
-use Acesso\AcessoViewModel;
+use Ecompassaro\Acesso\Controller as AcessoController;
+use Ecompassaro\Notificacao\FlashMessagesContainerTrait;
+use Ecompassaro\Acesso\ViewModel as AcessoViewModel;
 use Consumidor\Compra\CompraViewModel;
 
 class ConsumidorController extends AcessoController

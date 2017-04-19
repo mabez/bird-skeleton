@@ -2,7 +2,7 @@
 
 namespace Admin\Produto;
 
-use Notificacao\FlashMessagesContainerTrait;
+use Ecompassaro\Notificacao\FlashMessagesContainerTrait;
 use Admin\AbstractModificavelController;
 
 class ProdutoController extends AbstractModificavelController
