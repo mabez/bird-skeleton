@@ -1,0 +1,14 @@
+<?php
+return array(
+    'roles_resources' => array(
+        'admin' => array(
+            'admin',
+        ),
+        'anonimo' => array(
+            'login',
+        ),
+        'consumidor' => array(
+            'comprar',
+        )
+    )
+);

@@ -1,5 +1,4 @@
 <?php
-
 namespace Site;
 
 use Zend\Mvc\ModuleRouteListener;
@@ -8,16 +7,17 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 class Module implements ConfigProviderInterface
 {
+
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+        $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
     }
 
     public function getConfig()
     {
-        return include __DIR__ . '/config/module.config.php';
+        return array_merge_recursive(include __DIR__ . '/config/acesso.roles.resources.config.php', include __DIR__ . '/config/module.config.php');
     }
 
     public function getAutoloaderConfig()
@@ -25,9 +25,9 @@ class Module implements ConfigProviderInterface
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
+                )
+            )
         );
     }
 }

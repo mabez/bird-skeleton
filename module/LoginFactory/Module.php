@@ -18,6 +18,7 @@ class Module implements ConfigProviderInterface
     public function getConfig()
     {
         return array_merge_recursive(
+            include __DIR__ . '/config/acesso.roles.resources.config.php',
             include __DIR__ . '/config/controllers.config.php',
             include __DIR__ . '/config/router.config.php',
             include __DIR__ . '/config/service.manager.config.php',
