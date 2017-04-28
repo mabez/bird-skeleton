@@ -1,14 +1,15 @@
 <?php
+namespace SiteFactory;
 
-return array(
-    'service_manager' => array(
-        'abstract_factories' => array(
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-        'factories' => array(
-            'SiteManager' => 'SiteFactory\Manager',
-            'SiteRepository' => 'SiteFactory\Repository'
-        )
-    )
-);
+return [
+    'service_manager' => [
+        'abstract_factories' => [
+            \Zend\Cache\Service\StorageCacheAbstractServiceFactory::class,
+            \Zend\Log\LoggerAbstractServiceFactory::class
+        ],
+        'factories' => [
+            'SiteManager' => Manager::class,
+            'SiteRepository' => Repository::class
+        ]
+    ]
+];

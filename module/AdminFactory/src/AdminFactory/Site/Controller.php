@@ -1,16 +1,16 @@
 <?php
-namespace AdminFactory\Compra;
+namespace AdminFactory\Site;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Admin\Compra\CompraController;
+use Ecompassaro\Admin\Site\Controller as SiteController;
 
-class CompraControllerFactory implements FactoryInterface
+class Controller implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new CompraController(
-            $container->get('AdminCompraViewModel')
+            return new SiteController(
+            $container->get('AdminSiteViewModel')
         );
     }
 }

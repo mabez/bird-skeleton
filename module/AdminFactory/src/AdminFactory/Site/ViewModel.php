@@ -4,10 +4,10 @@ namespace AdminFactory\Site;
 use Zend\Session\Container;
 use AcessoFactory\AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
-use Admin\Site\SiteViewModel;
-use Admin\Site\SiteForm;
+use Ecompassaro\Admin\Site\ViewModel as SiteViewModel;
+use Ecompassaro\Admin\Site\Form as SiteForm;
 
-class SiteViewModelFactory extends AcessoViewModelFactory
+class ViewModel extends AcessoViewModelFactory
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

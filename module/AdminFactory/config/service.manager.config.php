@@ -1,16 +1,17 @@
 <?php
+namespace AdminFactory;
 
-return array(
-    'service_manager' => array(
-        'factories' => array(
-            'AdminProdutosViewModel' => 'AdminFactory\Produto\ProdutosViewModelFactory',
-            'AdminCompraViewModel' => 'AdminFactory\Compra\CompraViewModelFactory',
-            'AdminModificarProdutoViewModel' => 'AdminFactory\Produto\ModificarProdutoViewModelFactory',
-            'AdminModificarUsuarioViewModel' => 'AdminFactory\Usuario\ModificarUsuarioViewModelFactory',
-            'AdminPagamentoViewModel' => 'AdminFactory\Pagamento\PagamentoViewModelFactory',
-            'AdminSiteViewModel' => 'AdminFactory\Site\SiteViewModelFactory',
-            'AdminUsuarioViewModel' => 'AdminFactory\Usuario\UsuarioViewModelFactory',
-            'AdminViewModel' => 'AdminFactory\AdminViewModelFactory'
-        )
-    )
-);
+return [
+    'service_manager' => [
+        'factories' => [
+            'AdminProdutosViewModel' => \AdminFactory\Produto\ViewModel::class,
+            'AdminCompraViewModel' => \AdminFactory\Compra\ViewModel::class,
+            'AdminModificarProdutoViewModel' => \AdminFactory\Produto\ModificarViewModel::class,
+            'AdminModificarUsuarioViewModel' => \AdminFactory\Usuario\ModificarViewModel::class,
+            'AdminPagamentoViewModel' => \AdminFactory\Pagamento\ViewModel::class,
+            'AdminSiteViewModel' => \AdminFactory\Site\ViewModel::class,
+            'AdminUsuarioViewModel' => \AdminFactory\Usuario\ViewModel::class,
+            'AdminViewModel' => ViewModel::class
+        ]
+    ]
+];

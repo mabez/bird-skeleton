@@ -1,14 +1,15 @@
 <?php
+namespace AdminFactory;
 
-return array(
-    'controllers' => array(
-        'factories' => array(
-            'AdminProdutosController' => 'AdminFactory\Produto\ProdutoControllerFactory',
-            'AdminComprasController' => 'AdminFactory\Compra\CompraControllerFactory',
-            'AdminController' => 'AdminFactory\AdminControllerFactory',
-            'AdminPagamentoController' => 'AdminFactory\Pagamento\PagamentoControllerFactory',
-            'AdminSiteController' => 'AdminFactory\Site\SiteControllerFactory',
-            'AdminUsuariosController' => 'AdminFactory\Usuario\UsuarioControllerFactory'
-        )
-    )
-);
+return [
+    'controllers' => [
+        'factories' => [
+            'AdminProdutosController' => \AdminFactory\Produto\Controller::class,
+            'AdminComprasController' => \AdminFactory\Compra\Controller::class,
+            'AdminController' => Controller::class,
+            'AdminPagamentoController' => \AdminFactory\Pagamento\Controller::class,
+            'AdminSiteController' => \AdminFactory\Site\Controller::class,
+            'AdminUsuariosController' => \AdminFactory\Usuario\Controller::class
+        ]
+    ]
+];

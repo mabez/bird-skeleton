@@ -3,10 +3,10 @@ namespace AdminFactory\Produto;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Admin\Produto\ModificarProdutoViewModel;
-use Admin\Produto\ProdutoForm;
+use Ecompassaro\Admin\Produto\ModificarViewModel as ModificarProdutoViewModel;
+use Ecompassaro\Admin\Produto\Form as ProdutoForm;
 
-class ModificarProdutoViewModelFactory implements FactoryInterface
+class ModificarViewModel implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

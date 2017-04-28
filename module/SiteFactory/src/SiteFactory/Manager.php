@@ -1,8 +1,9 @@
 <?php
-namespace Site;
+namespace SiteFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Site\Manager as SiteManager;
 
 class Manager implements FactoryInterface
 {

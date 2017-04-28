@@ -3,9 +3,9 @@ namespace AdminFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Admin\AdminController;
+use Ecompassaro\Admin\Controller as AdminController;
 
-class AdminControllerFactory implements FactoryInterface
+class Controller implements FactoryInterface
 {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)

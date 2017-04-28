@@ -1,10 +1,11 @@
 <?php
-namespace Admin\Usuario;
+namespace AdminFactory\Usuario;
 
 use AcessoFactory\AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Admin\Usuario\ViewModel as UsuarioViewModel;
 
-class UsuarioViewModelFactory extends AcessoViewModelFactory
+class ViewModel extends AcessoViewModelFactory
 {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)

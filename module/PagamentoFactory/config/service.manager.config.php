@@ -1,10 +1,11 @@
 <?php
+namespace PagamentoFactory;
 
-return array(
-    'service_manager' => array(
-        'factories' => array(
-            'PagamentoManager' => 'PagamentoFactory\Manager',
-            'PagamentoRepository' => 'PagamentoFactory\Repository'
-        )
-    )
-);
+return [
+    'service_manager' => [
+        'factories' => [
+            'PagamentoManager' => Manager::class,
+            'PagamentoRepository' => Repository::class
+        ]
+    ]
+];

@@ -1,164 +1,162 @@
 <?php
-
-return array(
-    'router' => array(
-        'routes' => array(
-            'admin' => array(
+return [
+    'router' => [
+        'routes' => [
+            'admin' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/',
-                    'defaults' => array(
-                       '__NAMESPACE__' => 'Admin',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Admin',
                         'controller' => 'AdminController',
                         'action' => 'index'
-                    )
-                ),
+                    ]
+                ],
                 'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
+                'child_routes' => [
+                    'default' => [
                         'type' => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route' => '/[:controller[/:action]][/]',
-                            'constraints' => array(
+                            'constraints' => [
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            )
-                        ),
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                            ],
+                            'defaults' => []
+                        ],
                         'may_terminate' => true
-                    )
-                )
-            ),
-            'admin-produto' => array(
+                    ]
+                ]
+            ],
+            'admin-produto' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/produtos/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminProdutosController',
                         'action' => 'index'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            ),
-            'admin-produtos-modificar' => array(
+                ]
+            ],
+            'admin-produtos-modificar' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/produtos/modificar[/:produtoId][/:routeRedirect][/]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminProdutosController',
                         'action' => 'modificar'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            ),
-            'admin-produtos-remover' => array(
+                ]
+            ],
+            'admin-produtos-remover' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/produtos/remover/:produtoId[/:routeRedirect][/]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminProdutosController',
                         'action' => 'remover'
-                    )
-                ),
+                    ]
+                ],
                 'may_terminate' => true
-            ),
-            'admin-produtos-salvar' => array(
+            ],
+            'admin-produtos-salvar' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/produtos/salvar[/:routeRedirect][/]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminProdutosController',
                         'action' => 'salvar'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            ),
-            'admin-compras' => array(
+                ]
+            ],
+            'admin-compras' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/compras/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminComprasController',
                         'action' => 'index'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            ),
-            'admin-pagamentos' => array(
+                ]
+            ],
+            'admin-pagamentos' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/pagamentos/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminPagamentoController',
                         'action' => 'index'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            ),
-            'admin-site' => array(
+                ]
+            ],
+            'admin-site' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/site/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminSiteController',
                         'action' => 'index'
-                    )
-                )
-            ),
-            'admin-site-salvar' => array(
+                    ]
+                ]
+            ],
+            'admin-site-salvar' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/site/salvar/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminSiteController',
                         'action' => 'salvar'
-                    )
-                )
-            ),
-            'admin-usuario' => array(
+                    ]
+                ]
+            ],
+            'admin-usuario' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/usuario/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminUsuariosController',
                         'action' => 'index'
-                    )
-                )
-            ),
-            'admin-usuario-modificar' => array(
+                    ]
+                ]
+            ],
+            'admin-usuario-modificar' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/usuario/modificar[/:usuarioId][/:routeRedirect][/]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminUsuariosController',
                         'action' => 'modificar'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            ),
-            'admin-usuario-remover' => array(
+                ]
+            ],
+            'admin-usuario-remover' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/usuario/remover/:usuarioId[/:routeRedirect][/]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminUsuariosController',
                         'action' => 'remover'
-                    )
-                ),
+                    ]
+                ],
                 'may_terminate' => true
-            ),
-            'admin-usuario-salvar' => array(
+            ],
+            'admin-usuario-salvar' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/admin/usuario/salvar[/:routeRedirect][/]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'AdminUsuariosController',
                         'action' => 'salvar'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            )
-        )
-    )
-);
+                ]
+            ]
+        ]
+    ]
+];

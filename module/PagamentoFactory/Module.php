@@ -1,6 +1,6 @@
 <?php
 
-namespace Pagamento;
+namespace PagamentoFactory;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 

@@ -1,18 +1,17 @@
 <?php
-namespace AdminFactory\Usuario;
+namespace AdminFactory\Pagamento;
 
 use AcessoFactory\AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
-use Admin\Usuario\UsuarioViewModel;
+use Ecompassaro\Admin\Pagamento\ViewModel as PagamentoViewModel;
 
-class UsuarioViewModelFactory extends AcessoViewModelFactory
+class ViewModel extends AcessoViewModelFactory
 {
-
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new UsuarioViewModel(
+        return new PagamentoViewModel(
             $this->getAcesso($container),
-            $container->get('AutenticacaoManager')
+            $container->get('PagamentoManager')
         );
     }
 }

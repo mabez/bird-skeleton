@@ -3,9 +3,9 @@ namespace AdminFactory;
 
 use AcessoFactory\AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
-use Admin\AdminViewModel;
+use Ecompassaro\Admin\ViewModel as AdminViewModel;
 
-class AdminViewModelFactory extends AcessoViewModelFactory
+class ViewModel extends AcessoViewModelFactory
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

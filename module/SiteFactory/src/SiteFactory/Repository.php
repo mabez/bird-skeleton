@@ -1,9 +1,11 @@
 <?php
-namespace Site;
+namespace SiteFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Db\Adapter\Adapter;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Site\Repository as SiteRepository;
+
 
 class Repository implements FactoryInterface
 {

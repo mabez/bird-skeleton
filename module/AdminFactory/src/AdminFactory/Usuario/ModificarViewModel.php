@@ -1,10 +1,12 @@
 <?php
-namespace Admin\Usuario;
+namespace AdminFactory\Usuario;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Admin\Usuario\ModificarViewModel as ModificarUsuarioViewModel;
+use Ecompassaro\Admin\Usuario\Form as UsuarioForm;
 
-class ModificarUsuarioViewModelFactory implements FactoryInterface
+class ModificarViewModel implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

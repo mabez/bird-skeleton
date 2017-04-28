@@ -3,9 +3,9 @@ namespace AdminFactory\Pagamento;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Admin\Pagamento\PagamentoController;
+use Ecompassaro\Admin\Pagamento\Controller as PagamentoController;
 
-class PagamentoControllerFactory implements FactoryInterface
+class Controller implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

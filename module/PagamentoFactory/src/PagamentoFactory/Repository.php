@@ -1,5 +1,5 @@
 <?php
-namespace Pagamento;
+namespace PagamentoFactory;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Db\Adapter\Adapter;

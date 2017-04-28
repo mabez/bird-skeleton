@@ -3,9 +3,9 @@ namespace AdminFactory\Usuario;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Admin\Usuario\UsuarioController;
+use Ecompassaro\Admin\Usuario\Controller as UsuarioController;
 
-class UsuarioControllerFactory implements FactoryInterface
+class Controller implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
