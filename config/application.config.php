@@ -2,7 +2,6 @@
 return [
     'modules' => [
         'AcessoFactory',
-        'Admin',
         'AdminFactory',
         'AdminView',
         'Application',

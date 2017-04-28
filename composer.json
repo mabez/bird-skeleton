@@ -2,8 +2,8 @@
   "name" : "mabez/bird-skeleton",
   "description" : "Bird Skeleton",
   "type" : "project",
-  "version" : "0.3.5",
-  "time":"2017-04-28 11:04:10",
+  "version" : "0.3.6",
+  "time":"2017-04-28 11:12:11",
   "require" : {
     "php" : ">=7.0",
     "zendframework/zendframework" : "3.*",
