@@ -5,8 +5,8 @@ use Zend\EventManager\ListenerAggregateInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\EventInterface;
 use Zend\Hydrator\ArraySerializable;
-use Pagamento\Pagamento;
-use Pagamento\PagamentoManager;
+use Ecompassaro\Pagamento\Pagamento;
+use Ecompassaro\Pagamento\Manager as PagamentoManager;
 use Consumidor\Compra\CompraViewModel;
 
 /**

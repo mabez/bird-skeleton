@@ -4,8 +4,11 @@ namespace Pagamento;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Db\Adapter\Adapter;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Pagamento\Repository as PagamentoRepository;
+use Ecompassaro\Pagamento\Hydrator as PagamentoHydrator;
+use Ecompassaro\Pagamento\Pagamento;
 
-class PagamentoRepositoryFactory implements FactoryInterface
+class Repository implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

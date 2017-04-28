@@ -3,7 +3,7 @@ namespace Admin\Usuario;
 
 use Ecompassaro\Login\Form;
 use Ecompassaro\Autenticacao\Autenticacao;
-use AvancadoForm\AvancadoFieldsetContainerTrait;
+use Ecompassaro\AvancadoForm\FieldsetContainerTrait as AvancadoFieldsetContainerTrait;
 
 class UsuarioForm extends Form
 {

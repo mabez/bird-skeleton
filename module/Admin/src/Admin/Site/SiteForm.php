@@ -2,7 +2,7 @@
 namespace Admin\Site;
 
 use Zend\Form\Form;
-use Site\Site;
+use Ecompassaro\Site\Site;
 use Zend\InputFilter\Factory as InputFilterFactory;
 
 class SiteForm extends Form

@@ -2,7 +2,7 @@
 namespace Application\Site;
 
 use Zend\View\Helper\AbstractHelper;
-use Site\SiteManager;
+use Ecompassaro\Site\Manager as SiteManager;
 use Zend\Session\Container;
 
 class SiteDefaultViewHelper extends AbstractHelper

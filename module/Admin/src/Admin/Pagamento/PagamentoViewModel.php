@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Pagamento;
 
-use Pagamento\PagamentoManager;
+use Ecompassaro\Pagamento\Manager as PagamentoManager;
 use Ecompassaro\Acesso\ViewModel as AcessoViewModel;
 use Ecompassaro\Acesso\Acesso;
 

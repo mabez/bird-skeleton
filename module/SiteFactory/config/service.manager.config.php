@@ -7,8 +7,8 @@ return array(
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'factories' => array(
-            'SiteManager' => 'Site\SiteManagerFactory',
-            'SiteRepository' => 'Site\SiteRepositoryFactory'
+            'SiteManager' => 'SiteFactory\Manager',
+            'SiteRepository' => 'SiteFactory\Repository'
         )
     )
 );

@@ -4,7 +4,7 @@ namespace Admin\Produto;
 use Zend\Form\Form;
 use Ecompassaro\Produto\Produto;
 use Zend\InputFilter\Factory as InputFilterFactory;
-use AvancadoForm\AvancadoFieldsetContainerTrait;
+use Ecompassaro\AvancadoForm\FieldsetContainerTrait as AvancadoFieldsetContainerTrait;
 
 class ProdutoForm extends Form
 {

@@ -1,8 +1,8 @@
 <?php
 namespace Admin\Site;
 
-use Site\SiteManager;
-use Site\Site;
+use Ecompassaro\Site\Manager as SiteManager;
+use Ecompassaro\Site\Site;
 use Ecompassaro\Notificacao\Notificacao;
 use Ecompassaro\Notificacao\NotificacoesContainerTrait;
 use Zend\Session\Container;
