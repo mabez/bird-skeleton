@@ -10,6 +10,7 @@ class Module implements ConfigProviderInterface
     {
         return array_merge_recursive(
             include __DIR__ . '/config/acesso.roles.resources.config.php',
+            include __DIR__ . '/config/admin.routes.config.php',
             include __DIR__ . '/config/controllers.config.php',
             include __DIR__ . '/config/router.config.php',
             include __DIR__ . '/config/service.manager.config.php'
