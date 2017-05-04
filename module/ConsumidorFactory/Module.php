@@ -1,13 +1,13 @@
 <?php
 
-namespace Consumidor;
+namespace ConsumidorFactory;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use Consumidor\Pagamento\PagamentoEvents;
 use Zend\EventManager\EventManagerInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Ecompassaro\Consumidor\Pagamento\Events as PagamentoEvents;
 
 class Module implements ConfigProviderInterface
 {

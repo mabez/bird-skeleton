@@ -2,7 +2,7 @@
 namespace Consumidor\Paypal;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
-use Paypal\ExpressCheckout\ExpressCheckout;
+use Ecompassaro\Paypal\ExpressCheckout\ExpressCheckout;
 use Interop\Container\ContainerInterface;
 
 class ExpressCheckoutFactory implements FactoryInterface
