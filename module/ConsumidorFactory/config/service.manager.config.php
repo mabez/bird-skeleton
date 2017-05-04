@@ -8,7 +8,7 @@ return [
             //'ConsumidorExpressCheckout' => 'Consumidor\Paypal\ExpressCheckoutFactory',
         ],
         'alias' => [
-            'ConsumidorViewModel' => 'AcessoViewModelFactory'
+            'ConsumidorViewModel' => 'AcessoViewModel'
         ]
     ]
 ];
