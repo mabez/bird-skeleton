@@ -1,7 +1,7 @@
 <?php
 namespace AdminFactory;
 
-use AcessoFactory\AcessoViewModelFactory;
+use AcessoFactory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 use Ecompassaro\Admin\ViewModel as AdminViewModel;
 

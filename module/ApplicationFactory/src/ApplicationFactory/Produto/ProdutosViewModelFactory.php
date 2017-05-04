@@ -2,7 +2,7 @@
 namespace ApplicationFactory\Produto;
 
 use Application\Produto\ProdutosViewModel;
-use AcessoFactory\AcessoViewModelFactory;
+use AcessoFactory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 
 class ProdutosViewModelFactory extends AcessoViewModelFactory

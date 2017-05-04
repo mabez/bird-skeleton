@@ -7,7 +7,7 @@ use Ecompassaro\Acesso\ViewHelper as AcessoViewHelper;
 use Ecompassaro\Acesso\Acesso;
 use Interop\Container\ContainerInterface;
 
-class AcessoViewHelperFactory implements FactoryInterface
+class ViewHelper implements FactoryInterface
 {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)

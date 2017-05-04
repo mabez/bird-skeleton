@@ -7,7 +7,7 @@ use Ecompassaro\Acesso\Acesso;
 use Ecompassaro\Acesso\ViewModel as AcessoViewModel;
 use Interop\Container\ContainerInterface;
 
-class AcessoViewModelFactory implements FactoryInterface
+class ViewModel implements FactoryInterface
 {
     protected function getAcesso(ContainerInterface $container)
     {

@@ -1,7 +1,7 @@
 <?php
 namespace AdminFactory\Pagamento;
 
-use AcessoFactory\AcessoViewModelFactory;
+use AcessoFactory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 use Ecompassaro\Admin\Pagamento\ViewModel as PagamentoViewModel;
 

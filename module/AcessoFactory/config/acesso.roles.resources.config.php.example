@@ -1,14 +1,14 @@
 <?php
-return array(
-    'roles_resources' => array(
-        'admin' => array(
+return [
+    'roles_resources' => [
+        'admin' => [
             'admin',
-        ),
-        'anonimo' => array(
+        ],
+        'anonimo' => [
             'login',
-        ),
-        'consumidor' => array(
+        ],
+        'consumidor' => [
             'comprar',
-        )
-    )
-);
+        ]
+    ]
+];

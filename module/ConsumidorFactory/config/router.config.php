@@ -1,29 +1,29 @@
 <?php
-return array(
-    'router' => array(
-        'routes' => array(
-            'comprar' => array(
+return [
+    'router' => [
+        'routes' => [
+            'comprar' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/comprar[/:produtoId][/:routeRedirect][/]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'ConsumidorController',
                         'action' => 'executarCompra'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            ),
-            'consumidor-comprar' => array(
+                ]
+            ],
+            'consumidor-comprar' => [
                 'type' => 'Segment',
-                'options' => array(
+                'options' => [
                     'route' => '/produto/comprar[/:produtoId][/:routeRedirect][/]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'ConsumidorController',
                         'action' => 'comprar'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            )
-        )
-    )
-);
+                ]
+            ]
+        ]
+    ]
+];

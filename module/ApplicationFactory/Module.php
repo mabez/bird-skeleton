@@ -7,7 +7,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\I18n\View\Helper\CurrencyFormat;
-use AcessoFactory\AcessoViewHelperFactory;
+use AcessoFactory\ViewHelper as AcessoViewHelperFactory;
 use LoginFactory\Identificacao\UsuarioViewHelper as IdentificacaoUsuarioViewHelperFactory;
 use LoginFactory\Identificacao\ViewHelper as IdentificadoViewHelperFactory;
 use ApplicationFactory\Site\SiteDefaultViewHelperFactory;

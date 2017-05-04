@@ -1,11 +1,13 @@
 <?php
-namespace Consumidor\Compra;
+namespace ConsumidorFactory\Compra;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Hydrator\ArraySerializable;
 use Interop\Container\ContainerInterface;
+use Ecompassaro\Consumidor\Compra\ViewModel as CompraViewModel;
+use Ecompassaro\Consumidor\Compra\Form as CompraForm;
 
-class CompraViewModelFactory implements FactoryInterface
+class ViewModel implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

@@ -2,7 +2,7 @@
 namespace ContaFactory\Registro;
 
 use Zend\Authentication\AuthenticationService;
-use AcessoFactory\AcessoViewModelFactory;
+use AcessoFactory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 use Ecompassaro\Conta\Registro\ViewModel as RegistroViewModel;
 use Ecompassaro\Conta\Registro\Form as RegistroForm;

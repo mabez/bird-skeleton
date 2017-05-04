@@ -1,8 +1,10 @@
 <?php
-return array(
-    'controllers' => array(
-        'factories' => array(
-            'ConsumidorController' => 'Consumidor\ConsumidorControllerFactory'
-        )
-    )
-);
+namespace ConsumidorFactory;
+
+return [
+    'controllers' => [
+        'factories' => [
+            'ConsumidorController' => Controller::class
+        ]
+    ]
+];

@@ -5,7 +5,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 use Ecompassaro\Acesso\Controller as AcessoController;
 use Interop\Container\ContainerInterface;
 
-class AcessoControllerFactory implements FactoryInterface
+class Controller implements FactoryInterface
 {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)

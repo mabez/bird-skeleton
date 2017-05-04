@@ -1,10 +1,14 @@
 <?php
-return array(
-    'service_manager' => array(
-        'factories' => array(
-            'ConsumidorCompraViewModel' => 'Consumidor\Compra\CompraViewModelFactory',
+namespace ConsumidorFactory;
+
+return [
+    'service_manager' => [
+        'factories' => [
+            'ConsumidorCompraViewModel' => \ConsumidorFactory\Compra\ViewModel::class,
             //'ConsumidorExpressCheckout' => 'Consumidor\Paypal\ExpressCheckoutFactory',
-            'ConsumidorViewModel' => 'AcessoFactory\AcessoViewModelFactory'
-        )
-    )
-);
+        ],
+        'alias' => [
+            'ConsumidorViewModel' => 'AcessoViewModelFactory'
+        ]
+    ]
+];
