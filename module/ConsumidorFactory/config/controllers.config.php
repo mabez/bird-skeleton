@@ -4,7 +4,7 @@ namespace ConsumidorFactory;
 return [
     'controllers' => [
         'factories' => [
-            'ConsumidorController' => Controller::class
+            'ConsumidorController' => \ConsumidorFactory\Controller::class
         ]
     ]
 ];
