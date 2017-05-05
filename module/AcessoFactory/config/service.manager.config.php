@@ -4,7 +4,7 @@ namespace AcessoFactory;
 return [
     'service_manager' => [
         'factories' => [
-            'AcessoViewModel' => \AcessoFactory\ViewModel,
+            'AcessoViewModel' => \AcessoFactory\ViewModel::class,
         ]
     ]
 ];

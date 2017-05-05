@@ -17,7 +17,10 @@ class Module implements ConfigProviderInterface
 
     public function getConfig()
     {
-        return array_merge_recursive(include __DIR__ . '/config/service.manager.config.php', include __DIR__ . '/config/acesso.config.php');
+        return array_merge_recursive(
+            include __DIR__ . '/config/service.manager.config.php',
+            include __DIR__ . '/config/acesso.config.php'
+        );
     }
 
     public function getAutoloaderConfig()
@@ -30,4 +33,4 @@ class Module implements ConfigProviderInterface
             )
         );
     }
-    }
+}
