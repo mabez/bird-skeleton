@@ -7,7 +7,7 @@ return [
             'ConsumidorCompraViewModel' => \ConsumidorFactory\Compra\ViewModel::class,
             //'ConsumidorExpressCheckout' => 'Consumidor\Paypal\ExpressCheckoutFactory',
         ],
-        'alias' => [
+        'aliases' => [
             'ConsumidorViewModel' => 'AcessoViewModel'
         ]
     ]
