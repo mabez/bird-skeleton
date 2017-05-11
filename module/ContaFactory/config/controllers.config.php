@@ -3,8 +3,8 @@
 return array(
     'controllers' => array(
         'factories' => array(
-            'ContaComprasController' => 'ContaFactory\Compra\Controller',
-            'ContaRegistroController' => 'ContaFactory\Registro\Controller'
+            'ContaComprasController' => \ContaFactory\Compra\Controller::class,
+            'ContaRegistroController' => \ContaFactory\Registro\Controller::class
         )
     )
 );

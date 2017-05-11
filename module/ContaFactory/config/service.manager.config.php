@@ -3,8 +3,8 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'ContaCompraViewModel' => 'ContaFactory\Compra\ViewModel',
-            'ContaRegistroViewModel' => 'ContaFactory\Registro\ViewModelFactory',
+            'ContaCompraViewModel' => \ContaFactory\Compra\ViewModel::class,
+            'ContaRegistroViewModel' => \ContaFactory\Registro\ViewModel::class,
         )
     )
 );
