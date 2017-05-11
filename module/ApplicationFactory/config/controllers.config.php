@@ -2,8 +2,8 @@
 return array(
     'controllers' => array(
         'factories' => array(
-            'ProdutoController' => 'ApplicationFactory\Produto\ProdutoControllerFactory',
-            'IndexController' => 'ApplicationFactory\Site\SiteControllerFactory'
+            'ProdutoController' => \ApplicationFactory\Produto\Controller::class,
+            'IndexController' => \ApplicationFactory\Site\Controller::class
         )
     )
 );

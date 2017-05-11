@@ -10,7 +10,7 @@ use Zend\I18n\View\Helper\CurrencyFormat;
 use AcessoFactory\ViewHelper as AcessoViewHelperFactory;
 use LoginFactory\Identificacao\UsuarioViewHelper as IdentificacaoUsuarioViewHelperFactory;
 use LoginFactory\Identificacao\ViewHelper as IdentificadoViewHelperFactory;
-use ApplicationFactory\Site\SiteDefaultViewHelperFactory;
+use ApplicationFactory\Site\DefaultViewHelper as SiteDefaultViewHelperFactory;
 
 class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 {

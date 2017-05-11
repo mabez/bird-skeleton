@@ -1,11 +1,11 @@
 <?php
 namespace ApplicationFactory\Produto;
 
-use Application\Produto\ProdutosViewModel;
+use Ecompassaro\Application\Produto\ViewModel as ProdutosViewModel;
 use AcessoFactory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 
-class ProdutosViewModelFactory extends AcessoViewModelFactory
+class ViewModel extends AcessoViewModelFactory
 {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)

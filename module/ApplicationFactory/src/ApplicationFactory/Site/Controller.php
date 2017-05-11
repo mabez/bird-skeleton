@@ -2,10 +2,10 @@
 namespace ApplicationFactory\Site;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
-use Application\Site\SiteController;
+use Ecompassaro\Application\Site\Controller as SiteController;
 use Interop\Container\ContainerInterface;
 
-class SiteControllerFactory implements FactoryInterface
+class Controller implements FactoryInterface
 {
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)

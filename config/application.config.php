@@ -4,7 +4,6 @@ return [
         'AcessoFactory',
         'AdminFactory',
         'AdminView',
-        'Application',
         'ApplicationFactory',
         'ApplicationView',
         'AutenticacaoFactory',
