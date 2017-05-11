@@ -1,16 +1,16 @@
 <?php
 
-namespace ApplicationFactory;
+namespace BirdSkeleton\Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\I18n\View\Helper\CurrencyFormat;
-use AcessoFactory\ViewHelper as AcessoViewHelperFactory;
+use Ecompassaro\Acesso\Factory\ViewHelper as AcessoViewHelperFactory;
 use LoginFactory\Identificacao\UsuarioViewHelper as IdentificacaoUsuarioViewHelperFactory;
 use LoginFactory\Identificacao\ViewHelper as IdentificadoViewHelperFactory;
-use ApplicationFactory\Site\DefaultViewHelper as SiteDefaultViewHelperFactory;
+use Ecompassaro\Application\Factory\Site\DefaultViewHelper as SiteDefaultViewHelperFactory;
 
 class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 {
@@ -27,18 +27,9 @@ class Module implements ViewHelperProviderInterface, ConfigProviderInterface
             include __DIR__ . '/config/controllers.config.php',
             include __DIR__ . '/config/db.config.php',
             include __DIR__ . '/config/router.config.php',
+            include __DIR__ . '/config/view.manager.config.php',
+            include __DIR__ . '/config/zfctwig.config.php',
             include __DIR__ . '/config/service.manager.config.php'
-        );
-    }
-
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
-                )
-            )
         );
     }
 

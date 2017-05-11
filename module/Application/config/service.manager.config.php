@@ -2,7 +2,7 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'ProdutosViewModel' => \ApplicationFactory\Produto\ViewModel::class
+            'ProdutosViewModel' => \Ecompassaro\Application\Factory\Produto\ViewModel::class
         )
     )
 );

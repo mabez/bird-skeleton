@@ -1,11 +1,10 @@
 <?php
 return [
     'modules' => [
-        'AcessoFactory',
+        'Acesso',
         'AdminFactory',
         'AdminView',
-        'ApplicationFactory',
-        'ApplicationView',
+        'Application',
         'AutenticacaoFactory',
         'CompraFactory',
         'CompraView',

@@ -1,5 +1,5 @@
 <?php
-namespace AcessoFactory;
+namespace BirdSkeleton\Acesso;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
@@ -20,17 +20,6 @@ class Module implements ConfigProviderInterface
         return array_merge_recursive(
             include __DIR__ . '/config/service.manager.config.php',
             include __DIR__ . '/config/acesso.config.php'
-        );
-    }
-
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
-                )
-            )
         );
     }
 }
