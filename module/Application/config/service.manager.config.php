@@ -1,8 +1,8 @@
 <?php
-return array(
-    'service_manager' => array(
-        'factories' => array(
+return [
+    'service_manager' => [
+        'factories' => [
             'ProdutosViewModel' => \Ecompassaro\Application\Factory\Produto\ViewModel::class
-        )
-    )
-);
+        ]
+    ]
+];

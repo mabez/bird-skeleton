@@ -1,18 +1,18 @@
 <?php
-return array(
-    'router' => array(
-        'routes' => array(
-            'site' => array(
+return [
+    'router' => [
+        'routes' => [
+            'site' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'ProdutoController',
                         'action' => 'index'
-                    ),
+                    ],
                     'may_terminate' => true
-                )
-            )
-        )
-    )
-);
+                ]
+            ]
+        ]
+    ]
+];

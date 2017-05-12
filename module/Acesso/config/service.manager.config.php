@@ -1,6 +1,4 @@
 <?php
-namespace BirdSkeleton\Acesso;
-
 return [
     'service_manager' => [
         'factories' => [
