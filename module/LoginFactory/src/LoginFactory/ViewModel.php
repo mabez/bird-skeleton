@@ -2,7 +2,7 @@
 namespace LoginFactory;
 
 use Zend\Authentication\AuthenticationService;
-use AcessoFactory\ViewModel as AcessoViewModelFactory;
+use Ecompassaro\Acesso\Factory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 use Ecompassaro\Login\ViewModel as LoginViewModel;
 use Ecompassaro\Login\Form as LoginForm;

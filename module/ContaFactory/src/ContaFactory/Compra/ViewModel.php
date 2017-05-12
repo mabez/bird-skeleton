@@ -2,7 +2,7 @@
 namespace ContaFactory\Compra;
 
 use Zend\Authentication\AuthenticationService;
-use AcessoFactory\ViewModel as AcessoViewModelFactory;
+use Ecompassaro\Acesso\Factory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 use Ecompassaro\Conta\Compra\ViewModel as CompraViewModel;
 

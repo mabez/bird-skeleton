@@ -2,7 +2,7 @@
 namespace AdminFactory\Site;
 
 use Zend\Session\Container;
-use AcessoFactory\ViewModel as AcessoViewModelFactory;
+use Ecompassaro\Acesso\Factory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 use Ecompassaro\Admin\Site\ViewModel as SiteViewModel;
 use Ecompassaro\Admin\Site\Form as SiteForm;

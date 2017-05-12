@@ -1,7 +1,7 @@
 <?php
 namespace LoginFactory\Registrar;
 
-use AcessoFactory\ViewModel as AcessoViewModelFactory;
+use Ecompassaro\Acesso\Factory\ViewModel as AcessoViewModelFactory;
 use Interop\Container\ContainerInterface;
 use Ecompassaro\Login\Registrar\ViewModel as RegistrarViewModel;
 use Ecompassaro\Login\Registrar\Form as RegistrarForm;
