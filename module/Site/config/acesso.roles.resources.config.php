@@ -1,4 +1,6 @@
 <?php
+namespace Site;
+
 return [
     'roles_resources' => [
         'admin' => [

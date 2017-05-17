@@ -13,7 +13,7 @@ return [
         'LoginFactory',
         'PagamentoFactory',
         'ProdutoFactory',
-        'SiteFactory',
+        'Site',
         'ZfcTwig',
         'Zend\Router',
         'Zend\Mvc\Plugin\FlashMessenger',

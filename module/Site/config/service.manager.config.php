@@ -1,5 +1,5 @@
 <?php
-namespace SiteFactory;
+namespace Site;
 
 return [
     'service_manager' => [
@@ -8,8 +8,8 @@ return [
             \Zend\Log\LoggerAbstractServiceFactory::class
         ],
         'factories' => [
-            'SiteManager' => Manager::class,
-            'SiteRepository' => Repository::class
+            'SiteManager' => \Ecompassaro\Site\Factory\Manager::class,
+            'SiteRepository' => \Ecompassaro\Site\Factory\Repository::class
         ]
     ]
 ];

@@ -2,8 +2,8 @@
   "name" : "mabez/bird-skeleton",
   "description" : "Bird Skeleton",
   "type" : "project",
-  "version" : "0.5.0",
-  "time":"2017-05-11 14:34:16",
+  "version" : "0.5.1",
+  "time":"2017-05-17 15:36:17",
   "require" : {
     "php" : ">=7.0",
     "zendframework/zendframework" : "3.*",
@@ -12,6 +12,7 @@
     "e-commerce-passaro/compra-view" : "1.1.0",
     "e-commerce-passaro/conta" : "1.3.0",
     "e-commerce-passaro/consumidor" : "1.2.0",
+    "e-commerce-passaro/site-factory" : "0.0.2",
     "kokspflanze/zfc-twig" : "1.3.2",
     "doctrine/annotations": "1.0.0"
   },
