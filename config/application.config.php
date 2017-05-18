@@ -12,7 +12,7 @@ return [
         'ConsumidorFactory',
         'LoginFactory',
         'PagamentoFactory',
-        'ProdutoFactory',
+        'Produto',
         'Site',
         'ZfcTwig',
         'Zend\Router',
