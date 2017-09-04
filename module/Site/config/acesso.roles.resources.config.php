@@ -1,5 +1,5 @@
 <?php
-namespace Site;
+namespace BirdSkeleton\Site;
 
 return [
     'roles_resources' => [

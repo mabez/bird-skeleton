@@ -1,5 +1,5 @@
 <?php
-namespace Site;
+namespace BirdSkeleton\Site;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;

@@ -1,8 +1,12 @@
 <?php
+namespace BirdSkeleton\Acesso;
+
+use Ecompassaro\Acesso\Factory\ViewModel;
+
 return [
     'service_manager' => [
         'factories' => [
-            'AcessoViewModel' => \Ecompassaro\Acesso\Factory\ViewModel::class,
+            'AcessoViewModel' => ViewModel::class,
         ]
     ]
 ];

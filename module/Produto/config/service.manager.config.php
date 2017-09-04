@@ -1,5 +1,5 @@
 <?php
-namespace Produto;
+namespace BirdSkeleton\Produto;
 
 return [
     'service_manager' => [

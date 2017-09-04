@@ -1,6 +1,6 @@
 <?php
 
-namespace Produto;
+namespace BirdSkeleton\Produto;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 

@@ -1,9 +1,14 @@
 <?php
+namespace BirdSkeleton\Apllication;
+
+use Ecompassaro\Application\Factory\Produto\Controller as ProdutoController;
+use Ecompassaro\Application\Factory\Site\Controller as SiteController;
+
 return [
     'controllers' => [
         'factories' => [
-            'ProdutoController' => \Ecompassaro\Application\Factory\Produto\Controller::class,
-            'IndexController' => \Ecompassaro\Application\Factory\Site\Controller::class
+            'ProdutoController' => ProdutoController::class,
+            'IndexController' => SiteController::class
         ]
     ]
 ];

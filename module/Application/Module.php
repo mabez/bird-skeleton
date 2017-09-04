@@ -1,6 +1,6 @@
 <?php
 
-namespace Application;
+namespace BirdSkeleton\Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
@@ -8,8 +8,8 @@ use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\I18n\View\Helper\CurrencyFormat;
 use Ecompassaro\Acesso\Factory\ViewHelper as AcessoViewHelperFactory;
-use LoginFactory\Identificacao\UsuarioViewHelper as IdentificacaoUsuarioViewHelperFactory;
-use LoginFactory\Identificacao\ViewHelper as IdentificadoViewHelperFactory;
+use BirdSkeleton\Login\Identificacao\UsuarioViewHelper as IdentificacaoUsuarioViewHelperFactory;
+use BirdSkeleton\Login\Identificacao\ViewHelper as IdentificadoViewHelperFactory;
 use Ecompassaro\Application\Factory\Site\DefaultViewHelper as SiteDefaultViewHelperFactory;
 
 class Module implements ViewHelperProviderInterface, ConfigProviderInterface
