@@ -9,7 +9,7 @@ return [
         'template_map' => [
             'produto/produto' => __DIR__ . '/../view/produto/index/produto.twig',
             'produto/lista' => __DIR__ . '/../view/produto/index/lista.twig',
-            'error/404' => __DIR__ . '/../error/404.twig',
+            'error/404' => __DIR__ . '/../view/error/404.twig',
             'error/index' => __DIR__ . '/../view/error/index.twig',
             'layout/layout' => __DIR__ . '/../view/layout/layout.twig',
             'layout/nav' => __DIR__ . '/../view/layout/nav.twig',

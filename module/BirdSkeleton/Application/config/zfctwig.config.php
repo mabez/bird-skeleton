@@ -6,7 +6,7 @@ return [
         ],
         'environment_options' => [
             'debug' => true,
-            'cache' => __DIR__ . '/../../../data/cache/twig',
+            'cache' => __DIR__ . '/../../../../data/cache/twig',
         ],
     ]
 ];
