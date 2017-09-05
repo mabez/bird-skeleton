@@ -51,13 +51,14 @@ class Module implements ViewHelperProviderInterface, ConfigProviderInterface, Au
 
    public function getAutoloaderConfig()
    {
-       return array(
-           'Zend\Loader\StandardAutoloader' => array(
-               'namespaces' => array(
-                   __NAMESPACE__ => __DIR__,
-               ),
-           ),
-       );
+       $moduleNamespace = explode('\\', __NAMESPACE__);
+       $moduleSuffix = $moduleNamespace[sizeof($moduleNamespace) - 1];
+       return [
+           'Zend\Loader\StandardAutoloader' => [
+               'namespaces' => [
+                   __NAMESPACE__ => __DIR__ . '/src/' . $moduleSuffix,
+               ],
+           ],
+       ];
    }
-
 }
