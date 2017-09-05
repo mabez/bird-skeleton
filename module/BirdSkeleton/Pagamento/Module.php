@@ -13,10 +13,12 @@ class Module implements ConfigProviderInterface
 
     public function getAutoloaderConfig()
     {
+        $moduleNamespace = explode('\\', __NAMESPACE__);
+        $moduleSuffix = $moduleNamespace[sizeof($moduleNamespace) - 1];
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                    __NAMESPACE__ => __DIR__ . '/src/' . $moduleSuffix,
                 ),
             ),
         );
