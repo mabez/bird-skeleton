@@ -3,8 +3,9 @@ namespace BirdSkeleton\Admin;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 
-class Module implements ConfigProviderInterface, ViewHelperProviderInterface
+class Module implements ConfigProviderInterface, ViewHelperProviderInterface, AutoloaderProviderInterface
 {
     public function getConfig()
     {
@@ -20,13 +21,15 @@ class Module implements ConfigProviderInterface, ViewHelperProviderInterface
 
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
-                )
-            )
-        );
+        $moduleNamespace = explode('\\', __NAMESPACE__);
+        $moduleSuffix = $moduleNamespace[sizeof($moduleNamespace) - 1];
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
+                    __NAMESPACE__ => __DIR__ . '/src/' . $moduleSuffix,
+                ],
+            ],
+        ];
     }
 
     public function getViewHelperConfig()

@@ -3,8 +3,9 @@ namespace BirdSkeleton\Conta;
 
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 
-class Module implements ViewHelperProviderInterface, ConfigProviderInterface
+class Module implements ViewHelperProviderInterface, ConfigProviderInterface, AutoloaderProviderInterface
 {
 
     public function getConfig()
@@ -14,13 +15,15 @@ class Module implements ViewHelperProviderInterface, ConfigProviderInterface
 
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
-                )
-            )
-        );
+        $moduleNamespace = explode('\\', __NAMESPACE__);
+        $moduleSuffix = $moduleNamespace[sizeof($moduleNamespace) - 1];
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
+                    __NAMESPACE__ => __DIR__ . '/src/' . $moduleSuffix,
+                ],
+            ],
+        ];
     }
 
     public function getViewHelperConfig()

@@ -5,8 +5,9 @@ namespace BirdSkeleton\Login;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 
-class Module implements ConfigProviderInterface
+class Module implements ConfigProviderInterface, AutoloaderProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {
@@ -28,12 +29,14 @@ class Module implements ConfigProviderInterface
 
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
+        $moduleNamespace = explode('\\', __NAMESPACE__);
+        $moduleSuffix = $moduleNamespace[sizeof($moduleNamespace) - 1];
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
+                    __NAMESPACE__ => __DIR__ . '/src/' . $moduleSuffix,
+                ],
+            ],
+        ];
     }
 }
