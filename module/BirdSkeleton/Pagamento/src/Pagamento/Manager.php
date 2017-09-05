@@ -9,6 +9,7 @@ class Manager implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
+      var_dump("teste");die;
         return new PagamentoManager(
             $container->get('PagamentoRepository'),
             $container->get('AutenticacaoManager')
