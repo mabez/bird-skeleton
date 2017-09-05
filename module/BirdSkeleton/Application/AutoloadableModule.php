@@ -9,14 +9,12 @@ abstract class AutoloadableModule implements AutoloaderProviderInterface
     {
         $moduleNamespace = explode('\\', __NAMESPACE__);
         $moduleSuffix = $moduleNamespace[sizeof($moduleNamespace) - 1];
-        $result = [
+        return [
             'Zend\Loader\StandardAutoloader' => [
                 'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . $moduleSuffix,
                 ],
             ],
         ];
-        var_dump($result);die;
-        return $result;
     }
 }
