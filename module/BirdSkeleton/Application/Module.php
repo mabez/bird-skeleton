@@ -11,8 +11,9 @@ use Ecompassaro\Acesso\Factory\ViewHelper as AcessoViewHelperFactory;
 use BirdSkeleton\Login\Identificacao\UsuarioViewHelper as IdentificacaoUsuarioViewHelperFactory;
 use BirdSkeleton\Login\Identificacao\ViewHelper as IdentificadoViewHelperFactory;
 use Ecompassaro\Application\Factory\Site\DefaultViewHelper as SiteDefaultViewHelperFactory;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 
-class Module implements ViewHelperProviderInterface, ConfigProviderInterface
+class Module implements ViewHelperProviderInterface, ConfigProviderInterface, AutoloaderProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {
@@ -47,4 +48,16 @@ class Module implements ViewHelperProviderInterface, ConfigProviderInterface
             ]
         ];
    }
+
+   public function getAutoloaderConfig()
+   {
+       return array(
+           'Zend\Loader\StandardAutoloader' => array(
+               'namespaces' => array(
+                   __NAMESPACE__ => __DIR__,
+               ),
+           ),
+       );
+   }
+
 }
