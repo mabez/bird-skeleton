@@ -16,7 +16,8 @@
 			        <h4>{{produto.descricao}}</h4>
 			        <h2>Preço: <span class="zf-green" id="precoProduto">{{currencyFormat(produto.preco, 'BRL', null, 'pt_BR')}}</span></h2>
 			        {{form().openTag(formulario)|raw}}
-				        {{formHidden(formulario.get('produto_id'))|raw}}
+                {{formHidden(formulario.get('temporary_id'))|raw}}
+                {{formHidden(formulario.get('produto_id'))|raw}}
 				        <input type="hidden" id="inputProdutoPreco" name="preco" value="{{produto.preco}}">
 			            <div class="form-group" id="inputCompraQuantidadeGroup">
 			                <div class="input-group input-group-lg">
